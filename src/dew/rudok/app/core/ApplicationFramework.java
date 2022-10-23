@@ -1,7 +1,7 @@
 package dew.rudok.app.core;
 
 //@Setter
-//@NoArgsContstructor
+//@NoArgsConstructor
 public abstract class ApplicationFramework {
 
     protected Gui gui;

@@ -18,11 +18,11 @@ public class MainFrame extends JFrame {
 
     private void initialise () {
         actionManager = new ActionManager();
-        intialiseGui();
+        initialiseGui();
 
     }
 
-    private void intialiseGui() {
+    private void initialiseGui() {
 
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
@@ -47,8 +47,6 @@ public class MainFrame extends JFrame {
         getContentPane().add(split, BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
-
-
     }
 
     public static MainFrame getInstance() {
