@@ -1,7 +1,12 @@
 package dew.rudok.app.gui.swing;
 
-public class SwingGui {
+import dew.rudok.app.core.Gui;
+
+public class SwingGui implements Gui {
 
 
+    @Override
+    public void start() {
 
+    }
 }
