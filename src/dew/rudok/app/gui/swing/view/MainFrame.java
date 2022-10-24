@@ -3,6 +3,7 @@ package dew.rudok.app.gui.swing.view;
 import dew.rudok.app.gui.swing.controller.ActionManager;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class MainFrame extends JFrame {
 
@@ -16,6 +17,15 @@ public class MainFrame extends JFrame {
     }
 
     private void initialise () {
+        actionManager = new ActionManager();
+        intialiseGui();
+
+    }
+
+    private void intialiseGui() {
+
+        Toolkit kit = Toolkit.getDefaultToolkit();
+
 
 
 
