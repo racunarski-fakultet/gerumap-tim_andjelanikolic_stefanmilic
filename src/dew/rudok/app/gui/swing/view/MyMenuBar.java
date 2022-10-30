@@ -11,6 +11,10 @@ public class MyMenuBar extends JMenuBar {
         fileMenu.add(MainFrame.getInstance().getActionManager().getExitAction());
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewProjectAction());
 
+        JMenu helpMenu = new JMenu("Help");
+        helpMenu.add(MainFrame.getInstance().getActionManager().getInfoAction());
+
         this.add(fileMenu);
+        this.add(helpMenu);
     }
 }
