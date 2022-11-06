@@ -1,10 +1,17 @@
 package dew.rudok.app.gui.swing.view;
 
+import dew.rudok.app.core.ApplicationFramework;
 import dew.rudok.app.gui.swing.controller.ActionManager;
+import dew.rudok.app.gui.swing.tree.MapTree;
+import dew.rudok.app.gui.swing.tree.MapTreeImplementation;
+import dew.rudok.app.gui.swing.tree.view.MapTreeView;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
-
+@Getter
+@Setter
 public class MainFrame extends JFrame {
 
     private static MainFrame instance;
@@ -12,17 +19,22 @@ public class MainFrame extends JFrame {
     private JMenuBar menu;
     private JToolBar toolBar;
 
+    private MapTree mapTree;
+    private MapTreeView projectExplorer;
+
     private  MainFrame () {
 
     }
 
     private void initialise () {
         actionManager = new ActionManager();
-        initialiseGui();
+        mapTree = new MapTreeImplementation();
+        projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
+        initialiseGui(projectExplorer);
 
     }
 
-    private void initialiseGui() {
+    private void initialiseGui(MapTreeView projectExplorer) {
 
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
@@ -41,7 +53,7 @@ public class MainFrame extends JFrame {
 
         JPanel desktop = new JPanel();
 
-        JScrollPane scroll = new JScrollPane();
+        JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200, 150));
         JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, desktop);
         getContentPane().add(split, BorderLayout.CENTER);

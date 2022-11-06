@@ -1,21 +1,32 @@
 package dew.rudok.app.core;
 
-//@Setter
-//@NoArgsConstructor
-public abstract class ApplicationFramework {
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+public class ApplicationFramework {
 
     protected Gui gui;
+    protected MapRepository mapRepository;
+    private static ApplicationFramework instance;
+    private ApplicationFramework() {
 
-    public ApplicationFramework() {
     }
 
-    public abstract void run ();
+    public void run (){this.gui.start();};
 
-    public void initialise (Gui gui) {
+    public void initialise (Gui gui, MapRepository mapRepository) {
         this.gui = gui;
+        this.mapRepository= mapRepository;
     }
 
-    public void setGui(Gui gui) {
-        this.gui = gui;
+    public static ApplicationFramework getInstance(){
+        if(instance==null){
+            instance = new ApplicationFramework();
+        }
+        return instance;
     }
+
+
 }

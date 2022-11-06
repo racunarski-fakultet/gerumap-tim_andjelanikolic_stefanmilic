@@ -2,32 +2,18 @@ package dew.rudok.app;
 
 import dew.rudok.app.core.ApplicationFramework;
 import dew.rudok.app.core.Gui;
+import dew.rudok.app.core.MapRepository;
 import dew.rudok.app.gui.swing.SwingGui;
+import dew.rudok.app.gui.swing.maprepository.MapRepositoryImpl;
 
-public class AppCore extends ApplicationFramework {
+public class AppCore  {
 
-    public static AppCore instance;
-
-    private AppCore () {
-
-    }
-
-    @Override
-    public void run() {
-        this.gui.start();
-    }
-
-    public static AppCore getInstance() {
-        if (instance == null) {
-            instance = new AppCore();
-        }
-        return instance;
-    }
 
     public static void main(String[] args) {
+        ApplicationFramework appCore = ApplicationFramework.getInstance();
         Gui gui = new SwingGui();
-        ApplicationFramework appCore = AppCore.getInstance();
-        appCore.initialise(gui);
+        MapRepository mapRepository = new MapRepositoryImpl();
+        appCore.initialise(gui, mapRepository);
         appCore.run();
     }
 

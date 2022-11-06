@@ -1,9 +1,11 @@
 package dew.rudok.app.gui.swing.maprepository.implementation;
 
-public class Project {
+import dew.rudok.app.gui.swing.maprepository.composite.MapNode;
 
-    private String ime;
-    private String autor;
-    private String putanja;
+public class Project extends MapNode {
+
+    public Project(String name, MapNode parent) {
+        super(name, parent);
+    }
 
 }
