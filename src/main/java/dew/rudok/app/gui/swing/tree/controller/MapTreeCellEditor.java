@@ -22,7 +22,7 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
         super(tree, renderer);
     }
 
-    public Component getTreeCellEditroComponent (JTree tree, Object clicked, boolean arg1, boolean arg2, boolean arg3, int arg4) {
+    public Component getTreeCellEditorComponent (JTree tree, Object clicked, boolean arg1, boolean arg2, boolean arg3, int arg4) {
 
         this.clicked = clicked;
         this.edit = new JTextField(clicked.toString());
