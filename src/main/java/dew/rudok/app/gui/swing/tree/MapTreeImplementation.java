@@ -18,8 +18,6 @@ public class MapTreeImplementation implements MapTree{
     private MapTreeView mapTreeView;
     private DefaultTreeModel treeModel;
 
-    private static int i = 0;
-
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
 
@@ -51,7 +49,7 @@ public class MapTreeImplementation implements MapTree{
 
     private MapNode createChild(MapNode parent) {
         if (parent instanceof ProjectExplorer)
-            return  new Project("Project" + i++, parent);
+            return  new Project("Project" + ((ProjectExplorer) parent).getChildren().size(), parent);
         return null;
     }
 }
