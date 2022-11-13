@@ -41,6 +41,19 @@ public class MapTreeImplementation implements MapTree{
         SwingUtilities.updateComponentTreeUI(mapTreeView);
     }
 
+
+//    @Override
+//    public void addChild(MapTreeItem parent, MapNode child) {
+////        if (!((parent.getMapNode()) instanceof MapNodeComposite)) {
+////            return;
+////        }
+//
+////        parent.add(child);
+//        ((MapNodeComposite) parent.getMapNode()).addChild(child);
+//        mapTreeView.expandPath(mapTreeView.getSelectionPath());
+//        SwingUtilities.updateComponentTreeUI(mapTreeView);
+//    }
+
     @Override
     public MapTreeItem getSelectedNode() {
 

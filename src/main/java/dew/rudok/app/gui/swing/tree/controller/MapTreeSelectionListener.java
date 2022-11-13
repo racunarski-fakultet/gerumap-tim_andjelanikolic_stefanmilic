@@ -12,9 +12,9 @@ public class MapTreeSelectionListener implements TreeSelectionListener {
     @Override
     public void valueChanged(TreeSelectionEvent e) {
         TreePath treePath = e.getPath();
-        MapTreeItem treeItemSelectedc = (MapTreeItem) treePath.getLastPathComponent();
+        MapTreeItem treeItemSelected = (MapTreeItem) treePath.getLastPathComponent();
 
-        System.out.println("Selektovan node: " + treeItemSelectedc.getMapNode().getName());
+        System.out.println("Selektovan node: " + treeItemSelected.getMapNode().getName());
         System.out.println("Putanja: " +  e.getPath());
 
     }

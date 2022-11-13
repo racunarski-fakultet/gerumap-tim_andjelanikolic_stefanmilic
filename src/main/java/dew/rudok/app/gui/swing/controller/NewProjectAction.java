@@ -1,5 +1,8 @@
 package dew.rudok.app.gui.swing.controller;
 
+import dew.rudok.app.gui.swing.maprepository.NodeFactory;
+import dew.rudok.app.gui.swing.maprepository.composite.MapNode;
+import dew.rudok.app.gui.swing.maprepository.factory.utils.FactoryUtils;
 import dew.rudok.app.gui.swing.tree.model.MapTreeItem;
 import dew.rudok.app.gui.swing.view.MainFrame;
 
@@ -18,9 +21,9 @@ public class NewProjectAction extends AbstractGeRuMapAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        MapTreeItem selected = (MapTreeItem) MainFrame.getInstance().getMapTree().getSelectedNode();
-        MainFrame.getInstance().getMapTree().addChild(selected);
-
+        MapNode selected = MainFrame.getInstance().getMapTree().getSelectedNode().getMapNode();
+        NodeFactory nf = FactoryUtils.getNodeFactory(selected);
+        MapTreeItem item = new MapTreeItem(nf.getNode(selected));
+//        MainFrame.getInstance().getMapTree().addChild(selected, item);
     }
 }

@@ -5,11 +5,11 @@ import dew.rudok.app.gui.swing.maprepository.composite.MapNode;
 import dew.rudok.app.gui.swing.maprepository.composite.MapNodeComposite;
 import dew.rudok.app.gui.swing.maprepository.implementation.ProjectExplorer;
 
-public class MapRepositoryImpl implements MapRepository {
+public class MapRepositoryImplemetation implements MapRepository {
 
     private ProjectExplorer projectExplorer;
 
-    public MapRepositoryImpl () {
+    public MapRepositoryImplemetation() {
         projectExplorer = new ProjectExplorer("My Project Explorer");
     }
 

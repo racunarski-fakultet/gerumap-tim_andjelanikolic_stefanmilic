@@ -2,6 +2,7 @@ package dew.rudok.app.gui.swing.maprepository.composite;
 
 import dew.rudok.app.core.MapRepository;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public abstract  class MapNode {
 
     private String name;
