@@ -3,7 +3,7 @@ package dew.rudok.app.gui.swing.controller;
 import javax.swing.*;
 import java.net.URL;
 
-public abstract class AbstractRudokAction extends AbstractAction {
+public abstract class AbstractGeRuMapAction extends AbstractAction {
 
     public Icon loadIcon(String fileName){
 

@@ -1,9 +1,8 @@
 package dew.rudok.app.gui.swing.controller;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-public class InfoAction extends AbstractRudokAction{
+public class InfoAction extends AbstractGeRuMapAction {
 
     public InfoAction() {
         putValue(NAME, "Info");
