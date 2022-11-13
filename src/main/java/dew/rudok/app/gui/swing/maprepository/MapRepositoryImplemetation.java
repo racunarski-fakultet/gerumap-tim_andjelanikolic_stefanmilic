@@ -18,7 +18,6 @@ public class MapRepositoryImplemetation implements MapRepository {
 
     }
 
-
     @Override
     public ProjectExplorer getProjectExplorer() {
         return projectExplorer;

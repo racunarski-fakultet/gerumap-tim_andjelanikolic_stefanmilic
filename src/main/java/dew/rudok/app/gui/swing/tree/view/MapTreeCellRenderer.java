@@ -1,5 +1,6 @@
 package dew.rudok.app.gui.swing.tree.view;
 
+import dew.rudok.app.gui.swing.maprepository.implementation.MindMap;
 import dew.rudok.app.gui.swing.maprepository.implementation.Project;
 import dew.rudok.app.gui.swing.maprepository.implementation.ProjectExplorer;
 import dew.rudok.app.gui.swing.tree.model.MapTreeItem;
@@ -20,10 +21,13 @@ public class MapTreeCellRenderer extends DefaultTreeCellRenderer {
         URL imageURL = null;
 
         if (((MapTreeItem)value).getMapNode() instanceof ProjectExplorer) {
-            imageURL = getClass().getResource("/images/tdiagram.gif");
+            imageURL = getClass().getResource("/images/projectExplorer.jpg");
         }
         else if (((MapTreeItem)value).getMapNode() instanceof Project) {
             imageURL = getClass().getResource("/images/tproject.gif");
+        }
+        else if(((MapTreeItem)value).getMapNode() instanceof MindMap){
+          imageURL = getClass().getResource("/images/mindmap.jpg");
         }
 
         Icon icon = null;

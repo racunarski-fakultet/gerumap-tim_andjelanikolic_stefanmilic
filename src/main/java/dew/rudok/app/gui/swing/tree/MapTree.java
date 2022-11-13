@@ -8,6 +8,6 @@ public interface MapTree {
 
     MapTreeView generateTree(ProjectExplorer projectExplorer);
     void addChild(MapTreeItem parent);
-
     MapTreeItem getSelectedNode();
+
 }
