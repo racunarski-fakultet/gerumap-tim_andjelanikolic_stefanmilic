@@ -10,9 +10,9 @@ import lombok.Setter;
 public class Message {
 
     String content;
-    MessageType type;
+    EventType type;
 
-    public Message(String content, MessageType type) {
+    public Message(String content, EventType type) {
         this.content = content;
         this.type = type;
     }

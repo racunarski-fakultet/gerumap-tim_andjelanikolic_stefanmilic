@@ -9,7 +9,7 @@ public class ApplicationFramework {
 
     protected Gui gui;
     protected MapRepository mapRepository;
-    protected ErrorLogger errorLogger;
+    protected Logger errorLogger;
     protected MessageGenerator messageGenerator;
     private static ApplicationFramework instance;
     private ApplicationFramework() {
@@ -18,7 +18,7 @@ public class ApplicationFramework {
 
     public void run (){this.gui.start();};
 
-    public void initialise (Gui gui, MapRepository mapRepository, ErrorLogger errorLogger, MessageGenerator messageGenerator) {
+    public void initialise (Gui gui, MapRepository mapRepository, Logger errorLogger, MessageGenerator messageGenerator) {
         this.gui = gui;
         this.mapRepository= mapRepository;
         this.errorLogger = errorLogger;

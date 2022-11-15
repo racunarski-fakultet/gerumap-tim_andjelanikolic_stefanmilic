@@ -6,62 +6,72 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Getter
 @Setter
 public class MessageGeneratorImplemetation implements MessageGenerator {
-
-    private List<Subscriber> subscribers;
+    private final List<Subscriber> subscribers;
     private Message message;
 
+    public MessageGeneratorImplemetation(){
+        this.subscribers = new ArrayList<>();
+    }
+
     @Override
-    public void generateMessage(MessageType messageType) {
-        if (messageType.equals(MessageType.CANNOT_ADD_CHILD)) {
-            this.notify();
-        } else if (messageType.equals(MessageType.DELETE_PROJECT_EXPLORER)) {
-            this.notify();
-        } else if (messageType.equals(MessageType.NAME_CANNOT_BE_EMPTY)) {
-            this.notify();
-        }else if (messageType.equals(MessageType.NOTHING_IS_SELECTED)) {
-            this.notify();
-        }else {
-            this.notify();
+    public void generateMessage(EventType type) {
+
+        notify(createMessage(type));
+    }
+
+    private Message createMessage(EventType type) {
+        switch (type) {
+
+            case CANNOT_ADD_CHILD:
+                return new Message("Cannot add child", EventType.ERROR);
+            case CANNOT_ADD_CHILD_TO_LEAF:
+                return new Message("Cannot add child to leaf node.", EventType.ERROR);
+            case NODE_NOT_SELECTED:
+                return new Message("Node not selected.", EventType.ERROR);
+            case AUTHOR_PROJECT_NOT_SELECTED:
+                return new Message("You can only set the author for Projects.", EventType.ERROR);
+            case MUST_INSERT_NAME:
+                return new Message("Must insert name", EventType.ERROR);
+            case CANNOT_DELETE_FILE:
+                return new Message("Cannot delete this file", EventType.ERROR);
+            case CANNOT_DELETE_NODE:
+                return new Message("Cannot delete project explorer.", EventType.ERROR);
+            case RESOURCE_NOT_FOUND:
+                return new Message("Resource not found", EventType.ERROR);
+            case NODE_ALREADY_EXISTS:
+                return new Message("There is already a node with this name.", EventType.ERROR);
+            default:
+                return null;
         }
     }
 
     @Override
-    public void addSubs(Subscriber subscriber) {
-        if (subscriber != null) {
-            if (this.subscribers == null) {
-                this.subscribers = new ArrayList();
-            }
+    public void addSubs(Subscriber sub) {
+        if (sub == null || subscribers.contains(sub))
+            return;
 
-            if (!this.subscribers.contains(subscriber)) {
-                this.subscribers.add(subscriber);
-            }
-        }
+        subscribers.add(sub);
     }
 
     @Override
-    public void removeSubs(Subscriber subscriber) {
-        if (subscriber != null && this.subscribers != null && this.subscribers.contains(subscriber)) {
-            this.subscribers.remove(subscriber);
-        }
+    public void removeSubs(Subscriber sub) {
+        if (sub == null || !subscribers.contains(sub))
+            return;
+        subscribers.remove(sub);
     }
 
     @Override
-    public void notify(Object notification) {
-        if (notification != null && this.subscribers != null && !this.subscribers.isEmpty()) {
-            Iterator iterator = this.subscribers.iterator();
+    public void notify(Object state) {
+        if (state == null || subscribers.isEmpty())
+            return;
 
-            while(iterator.hasNext()) {
-                Subscriber subscriber = (Subscriber)iterator.next();
-                subscriber.update(notification);
-            }
-
-        }
+        for (Subscriber subscriber:subscribers)
+            subscriber.update(state);
     }
-
 }
+

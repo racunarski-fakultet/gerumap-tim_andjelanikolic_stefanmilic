@@ -13,9 +13,9 @@ public class AppCore  {
         ApplicationFramework appCore = ApplicationFramework.getInstance();
         Gui gui = new SwingGui();
         MapRepository mapRepository = new MapRepositoryImplemetation();
-        ErrorLogger errorLogger = new ErrorLoggerImplemetation();
+        Logger errorLogger = new ErrorLoggerImplemetation();
         MessageGenerator messageGenerator = new MessageGeneratorImplemetation();
-        messageGenerator.addSubs((Subscriber) gui);
+        //messageGenerator.addSubs((Subscriber) gui);
 
 
         appCore.initialise(gui, mapRepository, errorLogger, messageGenerator);

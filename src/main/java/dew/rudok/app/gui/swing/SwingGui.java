@@ -12,4 +12,9 @@ public class SwingGui implements Gui {
         instance = MainFrame.getInstance();
         instance.setVisible(true);
     }
+
+    @Override
+    public void update(Object object) {
+
+    }
 }
