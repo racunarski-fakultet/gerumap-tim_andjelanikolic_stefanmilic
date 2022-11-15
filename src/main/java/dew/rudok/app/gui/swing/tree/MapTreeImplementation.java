@@ -4,7 +4,6 @@ import dew.rudok.app.gui.swing.maprepository.NodeFactory;
 import dew.rudok.app.gui.swing.maprepository.composite.MapNode;
 import dew.rudok.app.gui.swing.maprepository.composite.MapNodeComposite;
 import dew.rudok.app.gui.swing.maprepository.factory.utils.FactoryUtils;
-import dew.rudok.app.gui.swing.maprepository.implementation.Project;
 import dew.rudok.app.gui.swing.maprepository.implementation.ProjectExplorer;
 import dew.rudok.app.gui.swing.tree.model.MapTreeItem;
 import dew.rudok.app.gui.swing.tree.view.MapTreeView;
@@ -22,7 +21,6 @@ public class MapTreeImplementation implements MapTree{
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
-
         MapTreeItem root = new MapTreeItem(projectExplorer);
         treeModel = new DefaultTreeModel(root);
         mapTreeView = new MapTreeView(treeModel);
@@ -41,13 +39,22 @@ public class MapTreeImplementation implements MapTree{
         ((MapNodeComposite) parent.getMapNode()).addChild(child);
         mapTreeView.expandPath(mapTreeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(mapTreeView);
-        System.out.println(mapTreeView.toString());
     }
 
     @Override
     public MapTreeItem getSelectedNode() {
 
         return (MapTreeItem) mapTreeView.getLastSelectedPathComponent();
+    }
+
+    @Override
+    public void deleteChild(MapTreeItem child) {
+        if(child.getMapNode() instanceof ProjectExplorer)
+            return;
+        MapTreeItem parent = (MapTreeItem) child.getParent();
+        parent.remove(child);
+        mapTreeView.expandPath(mapTreeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(mapTreeView);
     }
 
     private MapNode createChild(MapNode parent) {

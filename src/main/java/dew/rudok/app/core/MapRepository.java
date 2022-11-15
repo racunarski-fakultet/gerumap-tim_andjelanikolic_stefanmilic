@@ -9,6 +9,4 @@ public interface MapRepository {
 
     ProjectExplorer getProjectExplorer();
     public void addChild(MapNodeComposite parent, MapNode child);
-
-
 }

@@ -14,7 +14,12 @@ public class MindMap extends MapNodeComposite {
 
     @Override
     public void addChild(MapNode child) {
-
+        if (child != null && child instanceof Element) {
+            Element element = (Element) child;
+            if (!this.getChildren().contains(element)) {
+                this.getChildren().add(element);
+            }
+        }
     }
 
     public MindMap(String name, MapNode parent, boolean template) {

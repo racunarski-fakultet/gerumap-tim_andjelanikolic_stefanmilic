@@ -12,7 +12,12 @@ public class Project extends MapNodeComposite {
 
     @Override
     public void addChild(MapNode child) {
-
+        if (child != null && child instanceof MindMap) {
+            MindMap mindMap = (MindMap) child;
+            if (!this.getChildren().contains(mindMap)) {
+                this.getChildren().add(mindMap);
+            }
+        }
     }
 
 }

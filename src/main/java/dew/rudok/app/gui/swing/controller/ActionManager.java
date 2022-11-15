@@ -1,11 +1,17 @@
 package dew.rudok.app.gui.swing.controller;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class ActionManager {
 
     private ExitAction exitAction;
     private NewProjectAction newProjectAction;
-    private InfoAction infoAction;
+    private DeleteAction deleteAction;
+    private ErrorAction errorAction;
 
     public ActionManager(){
         initialiseActions();
@@ -14,30 +20,9 @@ public class ActionManager {
     private void initialiseActions(){
         exitAction = new ExitAction();
         newProjectAction = new NewProjectAction();
-        infoAction = new InfoAction();
+        deleteAction = new DeleteAction();
+        errorAction = new ErrorAction();
     }
 
-    public ExitAction getExitAction() {
-        return exitAction;
-    }
 
-    public NewProjectAction getNewProjectAction() {
-        return newProjectAction;
-    }
-
-    public void setExitAction(ExitAction exitAction) {
-        this.exitAction = exitAction;
-    }
-
-    public void setNewProjectAction(NewProjectAction newProjectAction) {
-        this.newProjectAction = newProjectAction;
-    }
-
-    public InfoAction getInfoAction() {
-        return infoAction;
-    }
-
-    public void setInfoAction(InfoAction infoAction) {
-        this.infoAction = infoAction;
-    }
 }

@@ -15,6 +15,8 @@ public class AppCore  {
         MapRepository mapRepository = new MapRepositoryImplemetation();
         ErrorLogger errorLogger = new ErrorLoggerImplemetation();
         MessageGenerator messageGenerator = new MessageGeneratorImplemetation();
+        messageGenerator.addSubs((Subscriber) gui);
+
 
         appCore.initialise(gui, mapRepository, errorLogger, messageGenerator);
         appCore.run();

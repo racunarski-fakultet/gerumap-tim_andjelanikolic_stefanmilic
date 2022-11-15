@@ -1,6 +1,8 @@
 package dew.rudok.app.core;
 
-public interface ErrorLogger {
+import dew.rudok.app.gui.swing.message.Message;
 
-    public void log();
+public interface ErrorLogger {
+    public void log(Message message);
+
 }

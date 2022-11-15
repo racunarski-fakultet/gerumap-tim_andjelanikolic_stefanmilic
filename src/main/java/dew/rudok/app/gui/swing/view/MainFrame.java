@@ -1,6 +1,7 @@
 package dew.rudok.app.gui.swing.view;
 
 import dew.rudok.app.core.ApplicationFramework;
+import dew.rudok.app.core.Subscriber;
 import dew.rudok.app.gui.swing.controller.ActionManager;
 import dew.rudok.app.gui.swing.tree.MapTree;
 import dew.rudok.app.gui.swing.tree.MapTreeImplementation;
@@ -12,7 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 @Getter
 @Setter
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements Subscriber {
 
     private static MainFrame instance;
     private ActionManager actionManager;
@@ -27,6 +28,7 @@ public class MainFrame extends JFrame {
     }
 
     private void initialise () {
+
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
         projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
@@ -72,5 +74,10 @@ public class MainFrame extends JFrame {
 
     public ActionManager getActionManager() {
         return actionManager;
+    }
+
+    @Override
+    public void update(Object object) {
+
     }
 }

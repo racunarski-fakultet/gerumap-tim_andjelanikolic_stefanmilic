@@ -4,13 +4,9 @@ import dew.rudok.app.gui.swing.maprepository.composite.MapNode;
 import dew.rudok.app.gui.swing.maprepository.composite.MapNodeComposite;
 import lombok.NoArgsConstructor;
 
-public class Element extends MapNodeComposite {
+public class Element extends MapNode {
     public Element(String name, MapNode parent) {
         super(name, parent);
     }
 
-    @Override
-    public void addChild(MapNode child) {
-
-    }
 }
