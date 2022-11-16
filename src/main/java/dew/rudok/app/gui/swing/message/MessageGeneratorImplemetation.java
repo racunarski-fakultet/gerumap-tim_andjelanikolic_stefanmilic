@@ -5,13 +5,14 @@ import dew.rudok.app.core.Subscriber;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 public class MessageGeneratorImplemetation implements MessageGenerator {
-    private final List<Subscriber> subscribers;
+    private List<Subscriber> subscribers;
     private Message message;
 
     public MessageGeneratorImplemetation(){
@@ -20,7 +21,8 @@ public class MessageGeneratorImplemetation implements MessageGenerator {
 
     @Override
     public void generateMessage(EventType type) {
-
+        System.out.println(subscribers.size());
+        System.out.println("generatemessage");
         notify(createMessage(type));
     }
 
@@ -54,8 +56,9 @@ public class MessageGeneratorImplemetation implements MessageGenerator {
     public void addSubs(Subscriber sub) {
         if (sub == null || subscribers.contains(sub))
             return;
-
+        System.out.println("addsub");
         subscribers.add(sub);
+        System.out.println(subscribers.size());
     }
 
     @Override
@@ -67,8 +70,11 @@ public class MessageGeneratorImplemetation implements MessageGenerator {
 
     @Override
     public void notify(Object state) {
-        if (state == null || subscribers.isEmpty())
+        System.out.println("notify");
+        if (state == null || subscribers.isEmpty()) {
+            System.out.println(subscribers.size());
             return;
+        }
 
         for (Subscriber subscriber:subscribers)
             subscriber.update(state);

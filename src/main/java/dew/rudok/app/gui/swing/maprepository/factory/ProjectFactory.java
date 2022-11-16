@@ -15,6 +15,6 @@ public class ProjectFactory extends NodeFactory {
 
     @Override
     public MapNode createNode(MapNode node) {
-        return new Project("Project", node);
+        return new Project("Project" + ((ProjectExplorer) node).getChildren().size(), node);
     }
 }

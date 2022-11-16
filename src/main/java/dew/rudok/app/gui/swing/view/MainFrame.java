@@ -6,6 +6,9 @@ import dew.rudok.app.gui.swing.controller.ActionManager;
 import dew.rudok.app.gui.swing.tree.MapTree;
 import dew.rudok.app.gui.swing.tree.MapTreeImplementation;
 import dew.rudok.app.gui.swing.tree.view.MapTreeView;
+import dew.rudok.app.gui.swing.workspace.Workspace;
+import dew.rudok.app.gui.swing.workspace.WorkspaceImplemetation;
+import dew.rudok.app.gui.swing.workspace.view.ProjectView;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,15 +16,15 @@ import javax.swing.*;
 import java.awt.*;
 @Getter
 @Setter
-public class MainFrame extends JFrame implements Subscriber {
+public class MainFrame extends JFrame{
 
     private static MainFrame instance;
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
-
     private MapTree mapTree;
     private MapTreeView projectExplorer;
+    private WorkspaceImplemetation workspace;
 
     private  MainFrame () {
 
@@ -31,6 +34,7 @@ public class MainFrame extends JFrame implements Subscriber {
 
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
+        workspace = new WorkspaceImplemetation();
         projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
         initialiseGui(projectExplorer);
 
@@ -53,11 +57,11 @@ public class MainFrame extends JFrame implements Subscriber {
         toolBar = new Toolbar();
         add(toolBar, BorderLayout.NORTH);
 
-        JPanel desktop = new JPanel();
+        JPanel rightPanel = workspace.generateWorkspace();
 
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200, 150));
-        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, desktop);
+        JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, scroll, rightPanel);
         getContentPane().add(split, BorderLayout.CENTER);
         split.setDividerLocation(250);
         split.setOneTouchExpandable(true);
@@ -76,8 +80,4 @@ public class MainFrame extends JFrame implements Subscriber {
         return actionManager;
     }
 
-    @Override
-    public void update(Object object) {
-
-    }
 }
