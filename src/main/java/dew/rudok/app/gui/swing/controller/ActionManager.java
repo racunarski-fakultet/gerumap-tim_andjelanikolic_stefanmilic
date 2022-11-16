@@ -12,6 +12,7 @@ public class ActionManager {
     private NewProjectAction newProjectAction;
     private DeleteAction deleteAction;
     private ErrorAction errorAction;
+    private InfoAction infoAction;
 
     public ActionManager(){
         initialiseActions();
@@ -22,6 +23,7 @@ public class ActionManager {
         newProjectAction = new NewProjectAction();
         deleteAction = new DeleteAction();
         errorAction = new ErrorAction();
+        infoAction = new InfoAction();
     }
 
 

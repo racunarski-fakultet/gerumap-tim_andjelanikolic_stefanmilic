@@ -15,22 +15,7 @@ public class MyMenuBar extends JMenuBar {
         fileMenu.add(MainFrame.getInstance().getActionManager().getNewProjectAction());
 
         JMenu helpMenu = new JMenu("Help");
-        JMenuItem infoDialog = new JMenuItem("Info");
-
-        infoDialog.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                InfoDialog help = null;
-                try {
-                    help = new InfoDialog(MainFrame.getInstance(), "Info", false);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                help.setVisible(true);
-            }
-        });
-
-        helpMenu.add(infoDialog);
+        helpMenu.add(MainFrame.getInstance().getActionManager().getInfoAction());
 
         this.add(fileMenu);
         this.add(helpMenu);

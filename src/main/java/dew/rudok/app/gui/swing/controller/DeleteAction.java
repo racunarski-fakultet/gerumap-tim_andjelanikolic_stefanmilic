@@ -1,5 +1,6 @@
 package dew.rudok.app.gui.swing.controller;
 
+import dew.rudok.app.core.ApplicationFramework;
 import dew.rudok.app.core.MessageGenerator;
 import dew.rudok.app.gui.swing.maprepository.implementation.ProjectExplorer;
 import dew.rudok.app.gui.swing.message.EventType;
@@ -14,8 +15,6 @@ import java.awt.event.KeyEvent;
 
 public class DeleteAction extends AbstractGeRuMapAction {
 
-    MessageGenerator messageGenerator = new MessageGeneratorImplemetation();
-
     public DeleteAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, ActionEvent.CTRL_MASK));
         putValue(SMALL_ICON, loadIcon("/images/delete.png"));
@@ -28,8 +27,7 @@ public class DeleteAction extends AbstractGeRuMapAction {
     public void actionPerformed(ActionEvent e) {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
         if(selected.getMapNode() instanceof ProjectExplorer){
-            messageGenerator.generateMessage(EventType.CANNOT_ADD_CHILD);
-            System.out.println("RADI");
+            ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.CANNOT_ADD_CHILD);
         }
         MainFrame.getInstance().getMapTree().deleteChild(selected);
 
