@@ -12,10 +12,12 @@ import java.io.IOException;
 @NoArgsConstructor
 public class FileLogger implements Logger {
 
-    File file = new File("/resources");
+    File file;
 
     @Override
     public void log(Message message) {
+
+        file =  new File("/resources");
 
         String str = message.toString();
         BufferedWriter writer;
