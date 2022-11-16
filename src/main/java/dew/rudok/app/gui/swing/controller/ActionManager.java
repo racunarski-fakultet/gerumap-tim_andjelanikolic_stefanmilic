@@ -1,6 +1,7 @@
 package dew.rudok.app.gui.swing.controller;
 
 
+import dew.rudok.app.gui.swing.tree.controller.MapTreeCellEditor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,6 +14,8 @@ public class ActionManager {
     private DeleteAction deleteAction;
     private ErrorAction errorAction;
     private InfoAction infoAction;
+    private AuthorAction authorAction;
+
 
     public ActionManager(){
         initialiseActions();
@@ -24,6 +27,7 @@ public class ActionManager {
         deleteAction = new DeleteAction();
         errorAction = new ErrorAction();
         infoAction = new InfoAction();
+        authorAction = new AuthorAction();
     }
 
 
