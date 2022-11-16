@@ -1,0 +1,45 @@
+package dsw.gerumap.app.gui.swing.maprepository.implementation;
+
+import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
+import dsw.gerumap.app.gui.swing.maprepository.composite.MapNodeComposite;
+import dsw.gerumap.app.observer.Subscriber;
+
+public class ProjectExplorer extends MapNodeComposite {
+
+    public ProjectExplorer(String name) {
+        super(name, null);
+    }
+
+    @Override
+    public void addChild(MapNode child) {
+        if (child != null && child instanceof Project) {
+            Project project = (Project) child;
+            this.getChildren().add(project);
+        }
+    }
+
+    @Override
+    public void removeChild(MapNode child) {
+        if (child != null && child instanceof Project) {
+            Project project = (Project) child;
+            this.getChildren().remove(project);
+        }
+    }
+
+
+    @Override
+    public void addSubs(Subscriber subscriber) {
+
+    }
+
+    @Override
+    public void removeSubs(Subscriber subscriber) {
+
+    }
+
+    @Override
+    public void notify(Object notification) {
+
+    }
+}
+
