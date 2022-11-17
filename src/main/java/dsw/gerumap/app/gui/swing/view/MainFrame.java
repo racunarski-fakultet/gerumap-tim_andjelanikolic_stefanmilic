@@ -21,6 +21,7 @@ public class MainFrame extends JFrame{
     private JToolBar toolBar;
     private MapTree mapTree;
     private MapTreeView projectExplorer;
+    private JPanel projectView;
     private WorkspaceImplemetation workspace;
 
     private  MainFrame () {
@@ -31,7 +32,6 @@ public class MainFrame extends JFrame{
 
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
-        workspace = new WorkspaceImplemetation();
         projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
         initialiseGui(projectExplorer);
 

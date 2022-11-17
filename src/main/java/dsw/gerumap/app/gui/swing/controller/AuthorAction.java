@@ -28,9 +28,9 @@ public class AuthorAction extends AbstractGeRuMapAction {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
         if(selected.getMapNode() instanceof Project){
             String author = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input your name");
-            if(!author.isEmpty())
+            if(!author.isEmpty()) {
                 ((Project) selected.getMapNode()).setAuthor(author);
-            else
+            }else
                 ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.MUST_INSERT_NAME);
         }else if(!(selected.getMapNode() instanceof Project)){
             ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.AUTHOR_PROJECT_NOT_SELECTED);

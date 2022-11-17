@@ -17,8 +17,8 @@ import java.awt.*;
 public class MapView extends JPanel implements Subscriber {
 
     private MindMap mindMap;
-    private  JLabel label;
-    private int index;
+    private final JLabel label;
+    private final int index;
 
 
     public MapView(MindMap map, int index) {

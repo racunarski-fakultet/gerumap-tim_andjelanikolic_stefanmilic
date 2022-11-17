@@ -21,7 +21,8 @@ import java.util.List;
 public class ProjectView extends JPanel implements Subscriber {
     private JTabbedPane tabbedPane;
     private Project project;
-//    private List<MapView> tabs;
+    private List<MapView> tabs;
+
     private JLabel lblProjectName;
     private JLabel lblAuthor;
 
@@ -44,14 +45,14 @@ public class ProjectView extends JPanel implements Subscriber {
         this.project.addSubs(this);
     }
     public void updateLabel() {
-//        if (this.project == null) {
-//            this.topLabel.setText("");
-//            return;
-//        }
-//        this.topLabel.setText(this.project.getName() + " - " + this.project.getAuthor());
+        if (this.project == null) {
+            this.lblProjectName.setText("");
+            return;
+        }
+        this.lblProjectName.setText(this.project.getName() + " - " + this.project.getAuthor());
     }
 
-    public void refreshTabs(){
+    public void refreshWorkspace(MapNodeComposite selectedNode){
         this.tabbedPane.removeAll();
 
         if (this.project == null || this.project.getChildren().size() == 0) {
@@ -68,22 +69,22 @@ public class ProjectView extends JPanel implements Subscriber {
         this.tabbedPane.setVisible(true);
     }
 
-//    public void mousePressed(MouseEvent e) {
-//        MapTreeView map = MainFrame.getInstance().getProjectExplorer();
-//        int selRow = map.getRowForLocation(e.getX(), e.getY());
-//
-//        if(selRow != -1 && e.getClickCount() == 2){
-//            MapTreeItem selectedWrapper = (MapTreeItem) map.getLastSelectedPathComponent();
-//            MapNode selectedNode = selectedWrapper.getMapNode();
-//
-//            Workspace workspace = MainFrame.getInstance().getWorkspace();
-//            if(workspace instanceof WorkspaceImplemetation && selectedNode instanceof Project){
-//                ((WorkspaceImplemetation) workspace).getProjectView().refreshWorkspace((MapNodeComposite) selectedNode);
-//            }
-//
-//            SwingUtilities.updateComponentTreeUI(MainFrame.getInstance());
-//        }
-//    }
+    public void mousePressed(MouseEvent e) {
+        MapTreeView map = MainFrame.getInstance().getProjectExplorer();
+        int selRow = map.getRowForLocation(e.getX(), e.getY());
+
+        if(selRow != -1 && e.getClickCount() == 2){
+            MapTreeItem selectedWrapper = (MapTreeItem) map.getLastSelectedPathComponent();
+            MapNode selectedNode = selectedWrapper.getMapNode();
+
+            Workspace workspace = MainFrame.getInstance().getWorkspace();
+            if(workspace instanceof WorkspaceImplemetation && selectedNode instanceof Project){
+                ((WorkspaceImplemetation) workspace).getProjectView().refreshWorkspace((MapNodeComposite) selectedNode);
+            }
+
+            SwingUtilities.updateComponentTreeUI(MainFrame.getInstance());
+        }
+    }
 
     @Override
     public void update(Object object) {
