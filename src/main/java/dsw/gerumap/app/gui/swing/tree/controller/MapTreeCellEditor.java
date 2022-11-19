@@ -1,6 +1,9 @@
 package dsw.gerumap.app.gui.swing.tree.controller;
 
+import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
+import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -49,5 +52,13 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
 
         MapTreeItem click = (MapTreeItem) clicked;
         click.setName(e.getActionCommand());
+
+        if(click.getMapNode() instanceof  Project){
+            MainFrame.getInstance().getProjectView().refreshTabs(click.getMapNode());
+        }
+
+        if(click.getMapNode() instanceof MindMap){
+            MainFrame.getInstance().getProjectView().refreshTabs(click.getMapNode().getParent());
+        }
     }
 }

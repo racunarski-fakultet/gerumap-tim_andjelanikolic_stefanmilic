@@ -6,6 +6,8 @@ import dsw.gerumap.app.observer.Subscriber;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.IOException;
+
 @Getter
 public class Project extends MapNodeComposite {
 
@@ -38,20 +40,29 @@ public class Project extends MapNodeComposite {
 
     @Override
     public void addSubs(Subscriber subscriber) {
-
+        if (subscriber == null || subscribers.contains(subscriber))
+            return;
+        subscribers.add(subscriber);
     }
 
     @Override
     public void removeSubs(Subscriber subscriber) {
-
+        if (subscriber == null || !subscribers.contains(subscriber))
+            return;
+        subscribers.remove(subscriber);
     }
 
     @Override
-    public void notify(Object notification) {
+    public void notify(Object notification) throws IOException {
+        if (notification == null || subscribers.isEmpty()) {
+            return;
+        }
 
+        for (Subscriber subscriber:subscribers)
+            subscriber.update(notification);
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(String author) throws IOException {
         this.author = author;
         notify(author);
     }

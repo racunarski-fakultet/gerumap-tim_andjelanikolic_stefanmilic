@@ -30,19 +30,15 @@ public class MessageGeneratorImplemetation implements MessageGenerator {
             case CANNOT_DELETE_PROJECT_EXPLORER:
                 return new Message("Cannot delete My Project Explorer", EventType.ERROR);
             case CANNOT_ADD_CHILD_TO_LEAF:
-                return new Message("Cannot add child to leaf node.", EventType.ERROR);
+                return new Message("Cannot add child.", EventType.ERROR);
             case NODE_NOT_SELECTED:
                 return new Message("Node not selected.", EventType.ERROR);
-            case AUTHOR_PROJECT_NOT_SELECTED:
+            case PROJECT_NOT_SELECTED:
                 return new Message("You can only set the author for Projects.", EventType.ERROR);
             case MUST_INSERT_NAME:
                 return new Message("Must insert name", EventType.ERROR);
-            case CANNOT_DELETE_FILE:
-                return new Message("Cannot delete this file", EventType.ERROR);
-            case RESOURCE_NOT_FOUND:
-                return new Message("Resource not found", EventType.ERROR);
-            case NODE_ALREADY_EXISTS:
-                return new Message("There is already a node with this name.", EventType.ERROR);
+            case MUST_SET_AUTHOR:
+                return new Message("Please set author for this project", EventType.ERROR);
             default:
                 return null;
         }

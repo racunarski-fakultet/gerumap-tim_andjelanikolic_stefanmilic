@@ -2,16 +2,20 @@ package dsw.gerumap.app.gui.swing.view;
 
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.ActionManager;
+import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
-import dsw.gerumap.app.gui.swing.workspace.WorkspaceImplemetation;
-import dsw.gerumap.app.gui.swing.workspace.view.ProjectView;
+import dsw.gerumap.app.gui.swing.workspace.ProjectView;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 @Getter
 @Setter
 public class MainFrame extends JFrame{
@@ -23,8 +27,6 @@ public class MainFrame extends JFrame{
     private MapTree mapTree;
     private MapTreeView projectExplorer;
     private ProjectView projectView;
-
-
 
     private  MainFrame () {
 
@@ -58,6 +60,19 @@ public class MainFrame extends JFrame{
         add(toolBar, BorderLayout.NORTH);
 
         JPanel rightPanel = projectView;
+        rightPanel.addMouseListener(new MouseAdapter(){
+            public void mouseClicked(MouseEvent evt) {
+                if (evt.getClickCount() == 2) {
+                    MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
+
+
+                    if(selected.getMapNode() instanceof Project){
+                        MainFrame.getInstance().getProjectView().refreshTabs(selected.getMapNode());
+                        SwingUtilities.updateComponentTreeUI(MainFrame.getInstance());
+                    }
+                }
+            }
+        });
 
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200, 150));

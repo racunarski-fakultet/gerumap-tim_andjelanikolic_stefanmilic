@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -15,13 +16,14 @@ import java.util.List;
 public abstract  class MapNode implements Publisher {
 
     private String name;
-    private List<Subscriber> subscribers;
+    protected List<Subscriber> subscribers;
     @ToString.Exclude
     private MapNode parent;
 
     public MapNode(String name, MapNode parent) {
         this.name = name;
         this.parent = parent;
+        this.subscribers = new ArrayList<>();
     }
 
     @Override

@@ -12,10 +12,8 @@ public class ActionManager {
     private NewProjectAction newProjectAction;
     private DeleteAction deleteAction;
     private InfoAction infoAction;
-    private RenameAction renameAction;
     private AuthorAction authorAction;
 
-    private OpenTabAction openTabAction;
 
     public ActionManager(){
         initialiseActions();
@@ -26,9 +24,7 @@ public class ActionManager {
         newProjectAction = new NewProjectAction();
         deleteAction = new DeleteAction();
         infoAction = new InfoAction();
-        renameAction = new RenameAction();
         authorAction = new AuthorAction();
-        openTabAction = new OpenTabAction();
     }
 
 

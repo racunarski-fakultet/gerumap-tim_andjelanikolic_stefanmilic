@@ -23,22 +23,36 @@ public class AuthorAction extends AbstractGeRuMapAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
-        if(selected.getMapNode() instanceof Project){
+
+        if(selected == null) {
+            try {
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.NODE_NOT_SELECTED);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }else if(selected.getMapNode() instanceof Project){
             String author = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input your name");
-            if(!author.isEmpty()) {
-                ((Project) selected.getMapNode()).setAuthor(author);
-            }else {
+
+            if(author == null)
+                return;
+
+            if(!(author.isEmpty())) {
+                try {
+                    ((Project) selected.getMapNode()).setAuthor(author);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }else{
                 try {
                     ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.MUST_INSERT_NAME);
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
             }
-        }else if(!(selected.getMapNode() instanceof Project)){
+        } else{
             try {
-                ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.AUTHOR_PROJECT_NOT_SELECTED);
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.PROJECT_NOT_SELECTED);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
