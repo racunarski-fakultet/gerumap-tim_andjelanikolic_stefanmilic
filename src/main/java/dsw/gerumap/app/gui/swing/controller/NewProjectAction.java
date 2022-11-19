@@ -9,6 +9,7 @@ import dsw.gerumap.app.gui.swing.view.MainFrame;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 public class NewProjectAction extends AbstractGeRuMapAction {
 
@@ -24,12 +25,20 @@ public class NewProjectAction extends AbstractGeRuMapAction {
         MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
 
         if(selected == null) {
-            ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.NODE_NOT_SELECTED);
+            try {
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.NODE_NOT_SELECTED);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             return;
         }
 
         if(selected.getMapNode() instanceof Element){
-            ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.CANNOT_ADD_CHILD_TO_LEAF);
+            try {
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.CANNOT_ADD_CHILD_TO_LEAF);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
 
         MainFrame.getInstance().getMapTree().addChild(selected);

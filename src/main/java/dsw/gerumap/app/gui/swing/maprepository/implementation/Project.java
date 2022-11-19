@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
 public class Project extends MapNodeComposite {
 
     String author;
@@ -50,5 +49,10 @@ public class Project extends MapNodeComposite {
     @Override
     public void notify(Object notification) {
 
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+        notify(author);
     }
 }

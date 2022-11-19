@@ -4,29 +4,24 @@ import dsw.gerumap.app.core.Logger;
 import dsw.gerumap.app.gui.swing.message.Message;
 import lombok.NoArgsConstructor;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 @NoArgsConstructor
 public class FileLogger implements Logger {
 
-    File file;
+    String text;
 
     @Override
-    public void log(Message message) {
+    public void log(Message m) throws IOException {
+        text = m.getContent();
+        writeInFile();
+    }
 
-        file =  new File("/resources");
-
-        String str = message.toString();
-        BufferedWriter writer;
-        try {
-            writer = new BufferedWriter(new FileWriter(file));
-            writer.write(str);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public void writeInFile() throws IOException{
+        try(Writer writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("src/main/resources/log.txt"), "UTF-8"))){
+            writer.write(text);
+        }catch(Exception e){
+            e.printStackTrace();
         }
-
     }
 }

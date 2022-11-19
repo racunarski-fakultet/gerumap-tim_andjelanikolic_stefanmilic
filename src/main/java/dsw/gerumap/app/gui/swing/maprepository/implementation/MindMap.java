@@ -48,4 +48,9 @@ public class MindMap extends MapNodeComposite {
     public void notify(Object notification) {
 
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

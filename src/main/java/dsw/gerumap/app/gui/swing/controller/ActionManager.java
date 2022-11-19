@@ -11,11 +11,11 @@ public class ActionManager {
     private ExitAction exitAction;
     private NewProjectAction newProjectAction;
     private DeleteAction deleteAction;
-    private ErrorAction errorAction;
     private InfoAction infoAction;
     private RenameAction renameAction;
     private AuthorAction authorAction;
 
+    private OpenTabAction openTabAction;
 
     public ActionManager(){
         initialiseActions();
@@ -25,10 +25,10 @@ public class ActionManager {
         exitAction = new ExitAction();
         newProjectAction = new NewProjectAction();
         deleteAction = new DeleteAction();
-        errorAction = new ErrorAction();
         infoAction = new InfoAction();
         renameAction = new RenameAction();
         authorAction = new AuthorAction();
+        openTabAction = new OpenTabAction();
     }
 
 

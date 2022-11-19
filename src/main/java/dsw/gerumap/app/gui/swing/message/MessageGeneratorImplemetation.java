@@ -5,6 +5,7 @@ import dsw.gerumap.app.observer.Subscriber;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class MessageGeneratorImplemetation implements MessageGenerator {
     }
 
     @Override
-    public void generateMessage(EventType type) {
+    public void generateMessage(EventType type) throws IOException {
         notify(createMessage(type));
     }
 
@@ -62,7 +63,7 @@ public class MessageGeneratorImplemetation implements MessageGenerator {
     }
 
     @Override
-    public void notify(Object state) {
+    public void notify(Object state) throws IOException {
         if (state == null || subscribers.isEmpty()) {
             System.out.println(subscribers.size());
             return;

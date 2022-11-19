@@ -9,6 +9,7 @@ import dsw.gerumap.app.gui.swing.view.MainFrame;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 public class AuthorAction extends AbstractGeRuMapAction {
 
@@ -18,8 +19,6 @@ public class AuthorAction extends AbstractGeRuMapAction {
         putValue(SMALL_ICON, loadIcon("/images/author.png"));
         putValue(NAME, "Create author");
         putValue(SHORT_DESCRIPTION, "Create author");
-
-
     }
 
     @Override
@@ -30,10 +29,19 @@ public class AuthorAction extends AbstractGeRuMapAction {
             String author = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input your name");
             if(!author.isEmpty()) {
                 ((Project) selected.getMapNode()).setAuthor(author);
-            }else
-                ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.MUST_INSERT_NAME);
+            }else {
+                try {
+                    ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.MUST_INSERT_NAME);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
         }else if(!(selected.getMapNode() instanceof Project)){
-            ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.AUTHOR_PROJECT_NOT_SELECTED);
+            try {
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.AUTHOR_PROJECT_NOT_SELECTED);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 }

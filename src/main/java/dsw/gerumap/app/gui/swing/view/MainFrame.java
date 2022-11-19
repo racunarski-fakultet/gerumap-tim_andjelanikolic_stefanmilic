@@ -6,6 +6,7 @@ import dsw.gerumap.app.gui.swing.tree.MapTree;
 import dsw.gerumap.app.gui.swing.tree.MapTreeImplementation;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 import dsw.gerumap.app.gui.swing.workspace.WorkspaceImplemetation;
+import dsw.gerumap.app.gui.swing.workspace.view.ProjectView;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,8 +22,9 @@ public class MainFrame extends JFrame{
     private JToolBar toolBar;
     private MapTree mapTree;
     private MapTreeView projectExplorer;
-    private JPanel projectView;
-    private WorkspaceImplemetation workspace;
+    private ProjectView projectView;
+
+
 
     private  MainFrame () {
 
@@ -32,6 +34,7 @@ public class MainFrame extends JFrame{
 
         actionManager = new ActionManager();
         mapTree = new MapTreeImplementation();
+        projectView = new ProjectView();
         projectExplorer = mapTree.generateTree(ApplicationFramework.getInstance().getMapRepository().getProjectExplorer());
         initialiseGui(projectExplorer);
 
@@ -54,7 +57,7 @@ public class MainFrame extends JFrame{
         toolBar = new Toolbar();
         add(toolBar, BorderLayout.NORTH);
 
-        JPanel rightPanel = workspace.generateWorkspace();
+        JPanel rightPanel = projectView;
 
         JScrollPane scroll = new JScrollPane(projectExplorer);
         scroll.setMinimumSize(new Dimension(200, 150));

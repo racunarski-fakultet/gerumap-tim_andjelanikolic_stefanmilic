@@ -13,20 +13,19 @@ import java.awt.*;
 
 @Setter
 @Getter
-@ToString
 public class MapView extends JPanel implements Subscriber {
 
     private MindMap mindMap;
     private final JLabel label;
-    private final int index;
+    int index = 0;
 
 
-    public MapView(MindMap map, int index) {
+    public MapView(MindMap map) {
         this.setLayout(new FlowLayout());
         this.label = new JLabel("");
         this.add(label);
-        this.index = index;
         this.setMap(map);
+        index++;
     }
 
     public void setMap(MindMap mindMap) {
@@ -42,7 +41,8 @@ public class MapView extends JPanel implements Subscriber {
     public void updateTabName() {
         JTabbedPane tabbedPane = (JTabbedPane) SwingUtilities.getAncestorOfClass(JTabbedPane.class, this);
         if (tabbedPane == null) return;
-        tabbedPane.setTitleAt(this.index, this.mindMap.getName());
+        tabbedPane.setTitleAt(index, mindMap.getName());
+        tabbedPane.setTitleAt(index, mindMap.getName());
     }
 
     @Override
@@ -53,6 +53,11 @@ public class MapView extends JPanel implements Subscriber {
         if (actionType == MapTreeActionType.RENAME_MAP) {
             this.setMap((MindMap)action.getState());
         }
+    }
+
+    @Override
+    public String toString() {
+        return mindMap.getName();
     }
 }
 
