@@ -13,7 +13,6 @@ public class ConsoleLogger implements Logger {
     @Override
     public void log(Message message) {
         EventType et = message.getType();
-        String content = message.getContent();
 
         Date date = new Date();
         System.out.println("[" + et.toString() + "] [" + date +"] " + message.getContent());

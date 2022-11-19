@@ -4,6 +4,7 @@ import dsw.gerumap.app.core.MessageGenerator;
 import dsw.gerumap.app.observer.Subscriber;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,8 +20,9 @@ public class MessageGeneratorImplemetation implements MessageGenerator {
         this.subscribers = new ArrayList<>();
     }
 
+    @SneakyThrows
     @Override
-    public void generateMessage(EventType type) throws IOException {
+    public void generateMessage(EventType type) {
         notify(createMessage(type));
     }
 
