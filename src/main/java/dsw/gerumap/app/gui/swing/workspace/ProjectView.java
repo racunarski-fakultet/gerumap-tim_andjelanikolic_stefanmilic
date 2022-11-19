@@ -53,7 +53,7 @@ public class ProjectView extends JPanel implements Subscriber {
         }
 
         for (MapNode child: ((Project) selected).getChildren()){
-            MapView tab = new MapView((MindMap)child);
+            MapView tab = new MapView((MindMap)child, tabbedPane.getTabCount());
             tabs.add(tab);
         }
 

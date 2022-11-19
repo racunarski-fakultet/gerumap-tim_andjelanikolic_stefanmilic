@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,4 +36,8 @@ public abstract  class MapNode implements Publisher {
         return false;
     }
 
+    public void setName(String name) throws IOException {
+        this.name = name;
+        notify(name);
+    }
 }

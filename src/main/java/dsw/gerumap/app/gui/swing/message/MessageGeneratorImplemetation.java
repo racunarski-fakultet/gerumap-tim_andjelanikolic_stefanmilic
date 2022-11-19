@@ -41,6 +41,8 @@ public class MessageGeneratorImplemetation implements MessageGenerator {
                 return new Message("Must insert name", EventType.ERROR);
             case MUST_SET_AUTHOR:
                 return new Message("Please set author for this project", EventType.ERROR);
+            case BLANK_NAME:
+                return new Message("Name cannot be blank", EventType.ERROR);
             default:
                 return null;
         }

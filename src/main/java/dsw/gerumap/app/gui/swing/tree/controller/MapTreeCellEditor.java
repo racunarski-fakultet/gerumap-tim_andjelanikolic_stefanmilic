@@ -1,7 +1,9 @@
 package dsw.gerumap.app.gui.swing.tree.controller;
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
+import dsw.gerumap.app.gui.swing.message.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 
@@ -12,6 +14,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.EventObject;
 
 public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionListener {
@@ -51,7 +54,20 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
         }
 
         MapTreeItem click = (MapTreeItem) clicked;
-        click.setName(e.getActionCommand());
+        String name = e.getActionCommand();
+        if(name.isEmpty()){
+            try {
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.BLANK_NAME);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }else{
+            try {
+                click.setName(name);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
 
         if(click.getMapNode() instanceof  Project){
             MainFrame.getInstance().getProjectView().refreshTabs(click.getMapNode());

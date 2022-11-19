@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import java.io.IOException;
+
 @Setter
 @Getter
 public class MapTreeItem extends DefaultMutableTreeNode {
@@ -21,7 +23,7 @@ public class MapTreeItem extends DefaultMutableTreeNode {
         return mapNode.getName();
     }
 
-    public void setName (String name) {
+    public void setName (String name) throws IOException {
         this.mapNode.setName(name);
     }
 

@@ -13,16 +13,16 @@ import java.awt.*;
 public class MapView extends JPanel implements Subscriber {
 
     private MindMap mindMap;
-    private final JLabel label;
-    int index = 0;
+    private JLabel label;
+    private int index;
 
 
-    public MapView(MindMap map) {
+    public MapView(MindMap map, int index) {
         setLayout(new FlowLayout());
         label = new JLabel("");
+        this.index = index;
         add(label);
         setMap(map);
-        index++;
     }
 
     public void setMap(MindMap mindMap) {
