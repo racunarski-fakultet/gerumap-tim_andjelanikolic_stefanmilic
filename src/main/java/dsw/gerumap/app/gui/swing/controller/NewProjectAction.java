@@ -2,6 +2,7 @@ package dsw.gerumap.app.gui.swing.controller;
 
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
+import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.message.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
@@ -32,6 +33,15 @@ public class NewProjectAction extends AbstractGeRuMapAction {
             }
             return;
         }
+
+        if(selected.getMapNode() instanceof Project){
+            MainFrame.getInstance().getMapTree().addChild(selected);
+            if(!(((Project) selected.getMapNode()).getAuthor() == null)) {
+                MainFrame.getInstance().getProjectView().refreshTabs(selected.getMapNode());
+            }
+            return;
+        }
+
 
         if(selected.getMapNode() instanceof Element){
             try {
