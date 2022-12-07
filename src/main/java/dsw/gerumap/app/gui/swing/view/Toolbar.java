@@ -15,4 +15,5 @@ public class Toolbar extends JToolBar {
         add(Box.createGlue());
         add(MainFrame.getInstance().getActionManager().getInfoAction());
     }
+
 }

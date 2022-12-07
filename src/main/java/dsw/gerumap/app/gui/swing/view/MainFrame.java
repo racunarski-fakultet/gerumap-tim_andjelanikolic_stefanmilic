@@ -24,6 +24,7 @@ public class MainFrame extends JFrame{
     private ActionManager actionManager;
     private JMenuBar menu;
     private JToolBar toolBar;
+    private JToolBar workToolBar;
     private MapTree mapTree;
     private MapTreeView projectExplorer;
     private ProjectView projectView;
@@ -58,6 +59,9 @@ public class MainFrame extends JFrame{
 
         toolBar = new Toolbar();
         add(toolBar, BorderLayout.NORTH);
+
+        workToolBar = new WorkToolbar();
+        add(workToolBar, BorderLayout.EAST);
 
         JPanel rightPanel = projectView;
         rightPanel.addMouseListener(new MouseAdapter(){
