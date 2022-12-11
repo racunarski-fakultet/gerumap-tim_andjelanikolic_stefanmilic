@@ -1,4 +1,12 @@
 package dsw.gerumap.app.state.controller;
 
-public class AddStateController {
+import dsw.gerumap.app.gui.swing.controller.AbstractGeRuMapAction;
+
+import java.awt.event.ActionEvent;
+
+public class AddStateController extends AbstractGeRuMapAction {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }

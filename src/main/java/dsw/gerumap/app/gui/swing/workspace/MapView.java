@@ -1,6 +1,6 @@
 package dsw.gerumap.app.gui.swing.workspace;
 
-import dsw.gerumap.app.gui.swing.workspace.panel.view.ElementPanelView;
+import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPanelView;
 import dsw.gerumap.app.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
 import lombok.Getter;
@@ -18,11 +18,9 @@ public class MapView extends JPanel implements Subscriber {
     private MindMap mindMap;
     private JLabel label;
     private int index;
-    private List<ElementPanelView> painters;
 
 
     public MapView(MindMap map, int index) {
-        painters = new ArrayList<>();
         setLayout(new FlowLayout());
         label = new JLabel("");
         this.index = index;
