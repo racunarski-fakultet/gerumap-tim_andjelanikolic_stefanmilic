@@ -1,6 +1,5 @@
 package dsw.gerumap.app.gui.swing.workspace;
 
-import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPanelView;
 import dsw.gerumap.app.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
 import lombok.Getter;
@@ -8,8 +7,6 @@ import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Setter
 @Getter

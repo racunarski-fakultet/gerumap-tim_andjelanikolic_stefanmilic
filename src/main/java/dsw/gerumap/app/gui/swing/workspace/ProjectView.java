@@ -4,6 +4,7 @@ import dsw.gerumap.app.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
+import dsw.gerumap.app.state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +17,8 @@ public class ProjectView extends JPanel implements Subscriber {
     private List<MapView> tabs;
     private JLabel lblNameAndAuthor;
 
+    private StateManager stateManager;
+
     public ProjectView(){
         initialise();
     }
@@ -24,12 +27,15 @@ public class ProjectView extends JPanel implements Subscriber {
         tabs = new ArrayList<MapView>();
         lblNameAndAuthor = new JLabel("Autor i ime projekta");
         tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.WRAP_TAB_LAYOUT);
+        stateManager = new StateManager();
 
         setLayout(new BorderLayout());
 
         add(lblNameAndAuthor, BorderLayout.NORTH);
         add(tabbedPane, BorderLayout.CENTER);
     }
+
+
 
     public void updateLabel() {
         if (project == null) {
@@ -77,4 +83,33 @@ public class ProjectView extends JPanel implements Subscriber {
         }
         updateLabel();
     }
+
+    public void startAddState () {
+        this.stateManager.setAddState();
+    }
+
+    public void startAddConnectionState() {
+        this.stateManager.setAddConnectionState();
+    }
+
+    public void startDeleteState() {
+        this.stateManager.setDeleteState();
+    }
+
+    public void startMoveState() {
+        this.stateManager.setMoveState();
+    }
+
+    public void startZoomState() {
+        this.stateManager.setZoomState();
+    }
+
+    public void startSelectState() {
+        this.stateManager.setSelectionState();
+    }
+    public void startSettingsState() {
+        this.stateManager.setSettingState();
+    }
+
+
 }

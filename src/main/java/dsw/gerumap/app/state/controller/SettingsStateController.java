@@ -5,16 +5,16 @@ import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import java.awt.event.ActionEvent;
 
-public class MoveStateController extends AbstractGeRuMapAction {
+public class SettingsStateController extends AbstractGeRuMapAction {
 
-    public MoveStateController  () {
+    public SettingsStateController () {
         putValue(SMALL_ICON, loadIcon("/images/delete.png"));
-        putValue(NAME, "Move element");
-        putValue(SHORT_DESCRIPTION, "Move element");
+        putValue(NAME, "Settings");
+        putValue(SHORT_DESCRIPTION, "Settings");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainFrame.getInstance().getProjectView().startMoveState();
+        MainFrame.getInstance().getProjectView().startSettingsState();
     }
 }

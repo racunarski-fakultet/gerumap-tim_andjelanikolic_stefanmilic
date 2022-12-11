@@ -1,5 +1,6 @@
 package dsw.gerumap.app.core;
 
+import dsw.gerumap.app.state.StateManager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ public class ApplicationFramework {
     protected Gui gui;
     protected MapRepository mapRepository;
     protected MessageGenerator messageGenerator;
+
     private static ApplicationFramework instance;
     private ApplicationFramework() {
 
