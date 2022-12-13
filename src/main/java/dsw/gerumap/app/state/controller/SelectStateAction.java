@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 public class SelectStateAction extends AbstractGeRuMapAction {
 
     public SelectStateAction() {
-        putValue(SMALL_ICON, loadIcon("/images/delete.png"));
+//        putValue(SMALL_ICON, loadIcon("/images/delete.png"));
         putValue(NAME, "Select");
         putValue(SHORT_DESCRIPTION, "Select");
     }

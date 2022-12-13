@@ -1,5 +1,6 @@
 package dsw.gerumap.app.gui.swing.workspace;
 
+import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPainter;
 import dsw.gerumap.app.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
 import lombok.Getter;
@@ -15,7 +16,7 @@ public class MapView extends JPanel implements Subscriber{
     private MindMap mindMap;
     private JLabel label;
     private int index;
-    private List<Painter> painters;
+    private List<ElementPainter> painters;
 
     public MapView(MindMap map, int index) {
         setLayout(new FlowLayout());
@@ -23,12 +24,14 @@ public class MapView extends JPanel implements Subscriber{
         this.index = index;
         add(label);
         setMap(map);
+        addMouseListener(new MouseController(this));
     }
 
     public void setMap(MindMap mindMap) {
         this.mindMap = mindMap;
         this.updateLabel();
         this.updateTabName();
+        this.mindMap.addSubs(this);
     }
 
     public void updateLabel() {
@@ -47,6 +50,17 @@ public class MapView extends JPanel implements Subscriber{
             return;
         }
         updateLabel();
+        repaint();
+        System.out.println("update");
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+//        for(ElementPainter p : painters){
+//            p.draw(g);
+//        }
+        System.out.println("paint");
     }
 
     @Override

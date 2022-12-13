@@ -5,9 +5,9 @@ import dsw.gerumap.app.state.model.*;
 public class StateManager {
 
     private State state;
-    private ConnectionState addConnectionState;
+    private ConnectionState connectionState;
     private SelectState selectState;
-    private TopicState addState;
+    private TopicState topicState;
     private DeleteState deleteState;
     private MoveState moveState;
     private ZoomState zoomState;
@@ -29,8 +29,8 @@ public class StateManager {
     }
 
     public void initialise () {
-        addState = new TopicState();
-        addConnectionState = new ConnectionState();
+        topicState = new TopicState();
+        connectionState = new ConnectionState();
         deleteState = new DeleteState();
         moveState = new MoveState();
         zoomState = new ZoomState();
@@ -43,12 +43,12 @@ public class StateManager {
         return state;
     }
 
-    public void setAddState () {
-        state = addState;
+    public void setTopicState() {
+        state = topicState;
     }
 
-    public void setAddConnectionState() {
-        state = addConnectionState;
+    public void setConnectionState() {
+        state = connectionState;
     }
 
     public void setDeleteState() {

@@ -1,13 +1,13 @@
 package dsw.gerumap.app.state.model;
 
-import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
+import dsw.gerumap.app.gui.swing.workspace.MapView;
 import dsw.gerumap.app.state.State;
 
 import java.awt.event.MouseEvent;
 
-public class ConnectionState implements State {
+public class ConnectionState extends State {
     @Override
-    public void misKliknut(int x, int y, MindMap map) {
+    public void misKliknut(int x, int y, MapView map) {
 
     }
 

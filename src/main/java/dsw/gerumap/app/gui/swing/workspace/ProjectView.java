@@ -32,6 +32,8 @@ public class ProjectView extends JPanel implements Subscriber {
 
         add(lblNameAndAuthor, BorderLayout.NORTH);
         add(tabbedPane, BorderLayout.CENTER);
+
+//        project.addSubs(this);
     }
 
     public void updateLabel() {
@@ -79,13 +81,14 @@ public class ProjectView extends JPanel implements Subscriber {
             return;
         }
         updateLabel();
+        System.out.println("update pv");
     }
 
-    public void startAddState () {
-        this.stateManager.setAddState();
+    public void startTopicState() {
+        this.stateManager.setTopicState();
     }
-    public void startAddConnectionState() {
-        this.stateManager.setAddConnectionState();
+    public void startConnectionState() {
+        this.stateManager.setConnectionState();
     }
     public void startDeleteState() {
         this.stateManager.setDeleteState();
@@ -103,7 +106,8 @@ public class ProjectView extends JPanel implements Subscriber {
         this.stateManager.setSettingState();
     }
 
-    public void clickedMouse(int x, int y, MindMap m){
+    public void misKliknut(int x, int y, MapView m){
         this.stateManager.getState().misKliknut(x, y, m);
+        System.out.println("miskliknut pv");
     }
 }

@@ -8,13 +8,13 @@ import java.awt.event.ActionEvent;
 public class TopicStateAction extends AbstractGeRuMapAction {
 
     public TopicStateAction() {;
-        putValue(SMALL_ICON, loadIcon("/images/delete.png"));
+//        putValue(SMALL_ICON, loadIcon("/images/delete.png"));
         putValue(NAME, "AddElement");
         putValue(SHORT_DESCRIPTION, "AddElement");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainFrame.getInstance().getProjectView().startAddState();
+        MainFrame.getInstance().getProjectView().startTopicState();
     }
 }
