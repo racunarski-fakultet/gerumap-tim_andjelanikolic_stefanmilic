@@ -5,8 +5,7 @@ import dsw.gerumap.app.state.State;
 
 import java.awt.event.MouseEvent;
 
-public class SettingsState implements State {
-
+public class TopicState implements State {
     @Override
     public void misKliknut(int x, int y, MindMap map) {
 

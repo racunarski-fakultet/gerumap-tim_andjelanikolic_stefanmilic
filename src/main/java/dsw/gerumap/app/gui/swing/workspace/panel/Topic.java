@@ -12,6 +12,4 @@ public class Topic extends Element {
     public Topic(String name, MapNode parent) {
         super(name, parent);
     }
-
-
 }

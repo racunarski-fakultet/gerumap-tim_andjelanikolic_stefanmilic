@@ -7,15 +7,15 @@ import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.List;
 
 @Setter
 @Getter
-public class MapView extends JPanel implements Subscriber {
-
+public class MapView extends JPanel implements Subscriber{
     private MindMap mindMap;
     private JLabel label;
     private int index;
-
+    private List<Painter> painters;
 
     public MapView(MindMap map, int index) {
         setLayout(new FlowLayout());
@@ -54,4 +54,3 @@ public class MapView extends JPanel implements Subscriber {
         return mindMap.getName();
     }
 }
-

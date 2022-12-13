@@ -2,7 +2,6 @@ package dsw.gerumap.app.gui.swing.controller;
 
 
 import dsw.gerumap.app.state.controller.*;
-import dsw.gerumap.app.state.model.AddConnectionState;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,13 +15,13 @@ public class ActionManager {
     private InfoAction infoAction;
     private AuthorAction authorAction;
 
-    private AddConnectionStateController addConnectionStateController;
-    private AddStateController addStateController;
-    private DeleteStateController deleteStateAction;
-    private MoveStateController moveStateController;
-    private SelectStateContoller selectStateContoller;
-    private ZoomStateController zoomStateController;
-    private SettingsStateController settingsStateController;
+    private ConnectionStateAction addConnectionStateController;
+    private TopicStateAction addStateController;
+    private DeleteStateAction deleteStateAction;
+    private MoveStateAction moveStateController;
+    private SelectStateAction selectStateContoller;
+    private ZoomStateAction zoomStateController;
+    private SettingsStateAction settingsStateController;
 
 
 
@@ -36,13 +35,13 @@ public class ActionManager {
         deleteAction = new DeleteAction();
         infoAction = new InfoAction();
         authorAction = new AuthorAction();
-        addConnectionStateController = new AddConnectionStateController();
-        addStateController = new AddStateController();
-        moveStateController = new MoveStateController();
-        selectStateContoller = new SelectStateContoller();
-        zoomStateController = new ZoomStateController();
-        deleteStateAction = new DeleteStateController();
-        settingsStateController = new SettingsStateController();
+        addConnectionStateController = new ConnectionStateAction();
+        addStateController = new TopicStateAction();
+        moveStateController = new MoveStateAction();
+        selectStateContoller = new SelectStateAction();
+        zoomStateController = new ZoomStateAction();
+        deleteStateAction = new DeleteStateAction();
+        settingsStateController = new SettingsStateAction();
     }
 
 

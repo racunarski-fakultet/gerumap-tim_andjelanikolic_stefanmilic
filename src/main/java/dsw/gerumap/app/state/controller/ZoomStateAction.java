@@ -5,16 +5,16 @@ import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import java.awt.event.ActionEvent;
 
-public class SettingsStateController extends AbstractGeRuMapAction {
+public class ZoomStateAction extends AbstractGeRuMapAction {
 
-    public SettingsStateController () {
+    public ZoomStateAction() {
         putValue(SMALL_ICON, loadIcon("/images/delete.png"));
-        putValue(NAME, "Settings");
-        putValue(SHORT_DESCRIPTION, "Settings");
+        putValue(NAME, "Zoom");
+        putValue(SHORT_DESCRIPTION, "Zoom");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainFrame.getInstance().getProjectView().startSettingsState();
+        MainFrame.getInstance().getProjectView().startZoomState();
     }
 }

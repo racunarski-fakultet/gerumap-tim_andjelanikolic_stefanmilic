@@ -16,7 +16,6 @@ public class ProjectView extends JPanel implements Subscriber {
     private Project project;
     private List<MapView> tabs;
     private JLabel lblNameAndAuthor;
-
     private StateManager stateManager;
 
     public ProjectView(){
@@ -34,8 +33,6 @@ public class ProjectView extends JPanel implements Subscriber {
         add(lblNameAndAuthor, BorderLayout.NORTH);
         add(tabbedPane, BorderLayout.CENTER);
     }
-
-
 
     public void updateLabel() {
         if (project == null) {
@@ -87,23 +84,18 @@ public class ProjectView extends JPanel implements Subscriber {
     public void startAddState () {
         this.stateManager.setAddState();
     }
-
     public void startAddConnectionState() {
         this.stateManager.setAddConnectionState();
     }
-
     public void startDeleteState() {
         this.stateManager.setDeleteState();
     }
-
     public void startMoveState() {
         this.stateManager.setMoveState();
     }
-
     public void startZoomState() {
         this.stateManager.setZoomState();
     }
-
     public void startSelectState() {
         this.stateManager.setSelectionState();
     }
@@ -111,5 +103,7 @@ public class ProjectView extends JPanel implements Subscriber {
         this.stateManager.setSettingState();
     }
 
-
+    public void clickedMouse(int x, int y, MindMap m){
+        this.stateManager.getState().misKliknut(x, y, m);
+    }
 }

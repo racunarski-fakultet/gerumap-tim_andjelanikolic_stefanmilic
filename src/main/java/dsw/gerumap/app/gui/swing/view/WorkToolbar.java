@@ -10,12 +10,12 @@ public class WorkToolbar extends JToolBar {
         super(VERTICAL);
         setFloatable(false);
 
+        add(MainFrame.getInstance().getActionManager().getSelectStateContoller());
+        add(MainFrame.getInstance().getActionManager().getMoveStateController());
         add(MainFrame.getInstance().getActionManager().getAddStateController());
         add(MainFrame.getInstance().getActionManager().getAddConnectionStateController());
-        add(MainFrame.getInstance().getActionManager().getSelectStateContoller());
         add(MainFrame.getInstance().getActionManager().getDeleteStateAction());
         add(MainFrame.getInstance().getActionManager().getZoomStateController());
-        add(MainFrame.getInstance().getActionManager().getMoveStateController());
         add(Box.createGlue());
         add(MainFrame.getInstance().getActionManager().getSettingsStateController());
     }

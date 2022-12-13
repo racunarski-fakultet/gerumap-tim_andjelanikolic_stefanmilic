@@ -5,16 +5,16 @@ import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import java.awt.event.ActionEvent;
 
-public class DeleteStateController extends AbstractGeRuMapAction {
+public class TopicStateAction extends AbstractGeRuMapAction {
 
-    public DeleteStateController () {
+    public TopicStateAction() {;
         putValue(SMALL_ICON, loadIcon("/images/delete.png"));
-        putValue(NAME, "Delete element");
-        putValue(SHORT_DESCRIPTION, "Delete element");
+        putValue(NAME, "AddElement");
+        putValue(SHORT_DESCRIPTION, "AddElement");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainFrame.getInstance().getProjectView().startDeleteState();
+        MainFrame.getInstance().getProjectView().startAddState();
     }
 }
