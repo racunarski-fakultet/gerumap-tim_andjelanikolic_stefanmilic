@@ -19,12 +19,14 @@ public class MindMap extends MapNodeComposite {
     }
 
     @Override
-    public void addChild(MapNode child) {
+    public void addChild(MapNode child) throws IOException {
         if (child != null && child instanceof Element) {
             Element element = (Element) child;
-            if (!this.getChildren().contains(element)) {
-                this.getChildren().add(element);
-            }
+//            if (!this.getChildren().contains(element)) {
+//                this.getChildren().add(element);
+//            }
+            this.getChildren().add(element);
+            notify(this);
         }
     }
 

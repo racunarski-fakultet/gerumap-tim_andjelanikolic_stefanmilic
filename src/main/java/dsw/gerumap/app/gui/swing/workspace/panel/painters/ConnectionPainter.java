@@ -1,23 +1,32 @@
 package dsw.gerumap.app.gui.swing.workspace.panel.painters;
 
-import dsw.gerumap.app.gui.swing.workspace.panel.ElementPanel;
+import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.awt.*;
 import java.awt.geom.Line2D;
 
+@Getter
+@Setter
 public class ConnectionPainter extends ElementPainter {
-    public ConnectionPainter(ElementPanel element, Shape s) {
-        super(element, new Line2D.Float());
+
+    Shape s;
+    public ConnectionPainter(Element element, Shape s) {
+        super(element);
+        this.s = s;
     }
 
     @Override
-    public void draw(Graphics g) {
-        super.draw(g);
+    public void draw(Graphics g, Element element) {
+        Graphics2D graphics = (Graphics2D) g;
+        graphics.setColor(element.getColor());
+        graphics.setStroke(new BasicStroke(element.getStroke()));
+        graphics.draw(getS());
     }
 
     @Override
-    public void elementAt(int x, int y) {
-        super.elementAt(x, y);
+    public boolean elementAt(Point position, Element element) {
+        return getS().contains(position);
     }
-
 }

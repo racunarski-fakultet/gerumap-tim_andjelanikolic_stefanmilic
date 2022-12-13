@@ -11,7 +11,7 @@ import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
-
+import java.io.IOException;
 
 
 public class MapTreeImplementation implements MapTree{
@@ -29,7 +29,7 @@ public class MapTreeImplementation implements MapTree{
     }
 
     @Override
-    public void addChild(MapTreeItem parent) {
+    public void addChild(MapTreeItem parent) throws IOException {
         if (!((parent.getMapNode()) instanceof MapNodeComposite)) {
             return;
         }

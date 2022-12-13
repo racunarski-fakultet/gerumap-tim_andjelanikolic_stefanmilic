@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.maprepository.composite;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public abstract class MapNodeComposite extends MapNode{
         this.children = children;
     }
 
-    public abstract void addChild(MapNode child);
+    public abstract void addChild(MapNode child) throws IOException;
     public abstract void removeChild(MapNode child);
 
     public MapNode getChildByName(String name) {

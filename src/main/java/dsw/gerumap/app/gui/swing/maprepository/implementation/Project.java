@@ -43,7 +43,6 @@ public class Project extends MapNodeComposite {
         if (subscriber == null || subscribers.contains(subscriber))
             return;
         subscribers.add(subscriber);
-        System.out.println(subscriber.toString());
     }
 
     @Override

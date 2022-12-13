@@ -2,12 +2,16 @@ package dsw.gerumap.app.gui.swing.maprepository.implementation;
 
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.observer.Subscriber;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.awt.*;
 import java.io.IOException;
 
 @NoArgsConstructor
+@Getter
+@Setter
 public class Element extends MapNode {
 
     private Color color = Color.black;

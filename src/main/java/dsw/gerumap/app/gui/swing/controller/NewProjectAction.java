@@ -35,7 +35,11 @@ public class NewProjectAction extends AbstractGeRuMapAction {
         }
 
         if(selected.getMapNode() instanceof Project){
-            MainFrame.getInstance().getMapTree().addChild(selected);
+            try {
+                MainFrame.getInstance().getMapTree().addChild(selected);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             if(!(((Project) selected.getMapNode()).getAuthor() == null)) {
                 MainFrame.getInstance().getProjectView().refreshTabs(selected.getMapNode());
             }
@@ -52,7 +56,11 @@ public class NewProjectAction extends AbstractGeRuMapAction {
         }
 
 
-        MainFrame.getInstance().getMapTree().addChild(selected);
+        try {
+            MainFrame.getInstance().getMapTree().addChild(selected);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
 
     }
 }

@@ -8,6 +8,7 @@ import dsw.gerumap.app.state.StateManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,7 +107,7 @@ public class ProjectView extends JPanel implements Subscriber {
         this.stateManager.setSettingState();
     }
 
-    public void misKliknut(int x, int y, MapView m){
+    public void misKliknut(int x, int y, MapView m) throws IOException {
         this.stateManager.getState().misKliknut(x, y, m);
         System.out.println("miskliknut pv");
     }

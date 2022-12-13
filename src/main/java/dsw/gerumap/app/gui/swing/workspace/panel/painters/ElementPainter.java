@@ -1,29 +1,19 @@
 package dsw.gerumap.app.gui.swing.workspace.panel.painters;
 
-import dsw.gerumap.app.gui.swing.workspace.panel.ElementPanel;
+import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
 
-import javax.swing.*;
 import java.awt.*;
 
 public abstract class ElementPainter{
 
-    ElementPanel element;
-    Shape s;
+    Element element;
 
-    public ElementPainter(ElementPanel element, Shape s) {
+    public ElementPainter(Element element) {
         this.element = element;
-        this.s = s;
     }
 
-    public void draw (Graphics g) {
-        Graphics2D graphics = (Graphics2D) g;
-        graphics.setColor(element.getColor());
-        graphics.setStroke(new BasicStroke(element.getStroke()));
-        graphics.draw(s);
-    }
+    public abstract void draw (Graphics g, Element element);
 
-    public void elementAt (int x, int y) {
-        s.contains(x, y);
-    }
+    public abstract boolean elementAt (Point position, Element element);
 
 }

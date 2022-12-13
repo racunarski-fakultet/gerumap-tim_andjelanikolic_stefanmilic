@@ -8,7 +8,6 @@ import java.awt.event.MouseEvent;
 public class ConnectionState extends State {
     @Override
     public void misKliknut(int x, int y, MapView map) {
-
     }
 
     @Override

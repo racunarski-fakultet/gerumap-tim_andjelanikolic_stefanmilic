@@ -20,7 +20,11 @@ public class MouseController implements MouseListener, Subscriber {
     @Override
     public void mouseClicked(MouseEvent e) {
         Point position = e.getPoint();
-        MainFrame.getInstance().getProjectView().misKliknut(position.x, position.y, mapView);
+        try {
+            MainFrame.getInstance().getProjectView().misKliknut(position.x, position.y, mapView);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
         System.out.println("mousecontroler");
     }
 
