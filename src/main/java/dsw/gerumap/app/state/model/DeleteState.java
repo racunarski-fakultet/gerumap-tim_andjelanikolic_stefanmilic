@@ -21,6 +21,7 @@ public class DeleteState extends State {
                 System.out.println(el.toString());
                 System.out.println(map.getMindMap().getChildren().toString());
                 map.getMindMap().getChildren().remove(el);
+                map.update(map);
                 System.out.println(map.getMindMap().getChildren().toString());
             }
         }
