@@ -13,22 +13,12 @@ import java.awt.*;
 @Setter
 @ToString
 public class Topic extends Element {
-
-    private String name;
     private int x, y;
     private int w = 100, l = 50;
 
-    public Topic(String name, int x, int y) {
-        this.name = name;
+    public Topic(String name, MapNode parent, Color color, int stroke, int x, int y) {
+        super(name, parent, color, stroke);
         this.x = x;
         this.y = y;
     }
-
-    public Topic(Color color, int stroke, String name, int x, int y) {
-        super(color, stroke);
-        this.name = name;
-        this.x = x;
-        this.y = y;
-    }
-
 }

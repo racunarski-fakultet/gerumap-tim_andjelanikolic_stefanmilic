@@ -21,10 +21,6 @@ public class ConnectionPainter extends ElementPainter {
         this.s = s;
     }
 
-    public ConnectionPainter(Shape s) {
-        this.s = s;
-    }
-
     @Override
     public void draw(Graphics g) {
         Graphics2D graphics = (Graphics2D) g;

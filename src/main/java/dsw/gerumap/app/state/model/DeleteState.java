@@ -9,8 +9,12 @@ import dsw.gerumap.app.state.State;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DeleteState extends State {
+
+    List<ElementPainter> nova = new ArrayList<>();
 
     @Override
     public void misKliknut(int x, int y, MapView map) {
@@ -18,12 +22,14 @@ public class DeleteState extends State {
             Point pos = new Point(x, y);
             if(p.elementAt(pos)){
                 Topic el = (Topic) map.getMindMap().getChildByName(p.getElement().getName());
-                System.out.println(el.toString());
-                System.out.println(map.getMindMap().getChildren().toString());
                 map.getMindMap().getChildren().remove(el);
+                nova.add(p);
                 map.update(map);
-                System.out.println(map.getMindMap().getChildren().toString());
             }
+        }
+
+        for(ElementPainter n : nova){
+            map.getPainters().remove(n);
         }
     }
 

@@ -90,16 +90,6 @@ public class MapView extends JPanel implements Subscriber{
         update(pos2);
     }
 
-    public void setElementColor(Element element, Color color) throws IOException {
-        for(MapNode mn : mindMap.getChildren()){
-            Element el = (Element) mn;
-            if(el.equals(element)){
-                el.setColor(color);
-                update(element);
-            }
-        }
-    }
-
     @Override
     public String toString() {
         return mindMap.getName();

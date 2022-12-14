@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TopicState extends State {
     @Override
     public void misKliknut(int x, int y, MapView map) throws IOException {
-        Topic topic = new Topic("Pojam " + map.getMindMap().getChildren().size(), x, y);
+        Topic topic = new Topic("Pojam " + map.getMindMap().getChildren().size(), map.getMindMap(), Color.BLACK, 2, x, y);
         Ellipse2D shape = new Ellipse2D.Float(topic.getX(), topic.getY(), topic.getW(), topic.getL());
         TopicPainter tp = new TopicPainter(topic, shape);
         map.getPainters().add(tp);

@@ -12,17 +12,22 @@ import java.io.IOException;
 @NoArgsConstructor
 @Getter
 public class Element extends MapNode {
-
     private Color color = Color.black;
     private int stroke = 2;
 
-    public Element(Color color, int stroke) {
-        this.color = color;
-        this.stroke = stroke;
-    }
+//    public Element(Color color, int stroke) {
+//        this.color = color;
+//        this.stroke = stroke;
+//    }
 
     public Element(String name, MapNode parent) {
         super(name, parent);
+    }
+
+    public Element(String name, MapNode parent, Color color, int stroke) {
+        super(name, parent);
+        this.color = color;
+        this.stroke = stroke;
     }
 
     @Override
@@ -51,6 +56,7 @@ public class Element extends MapNode {
 
     public void setColor(Color color) throws IOException {
         this.color = color;
+        notify(this);
     }
 
     public void setStroke(int stroke) throws IOException {
