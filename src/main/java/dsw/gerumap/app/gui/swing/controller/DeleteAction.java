@@ -50,12 +50,20 @@ public class DeleteAction extends AbstractGeRuMapAction {
         }
 
         if(selected.getMapNode() instanceof MindMap){
-            MainFrame.getInstance().getMapTree().deleteChild(selected);
+            try {
+                MainFrame.getInstance().getMapTree().deleteChild(selected);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             MainFrame.getInstance().getProjectView().refreshTabs(selected.getMapNode().getParent());
             return;
         }
 
-        MainFrame.getInstance().getMapTree().deleteChild(selected);
+        try {
+            MainFrame.getInstance().getMapTree().deleteChild(selected);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 }
 

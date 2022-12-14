@@ -24,7 +24,7 @@ public abstract class MapNodeComposite extends MapNode{
     }
 
     public abstract void addChild(MapNode child) throws IOException;
-    public abstract void removeChild(MapNode child);
+    public abstract void removeChild(MapNode child) throws IOException;
 
     public MapNode getChildByName(String name) {
         for (MapNode child: this.getChildren()) {

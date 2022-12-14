@@ -48,7 +48,7 @@ public class MapTreeImplementation implements MapTree{
     }
 
     @Override
-    public void deleteChild(MapTreeItem child) {
+    public void deleteChild(MapTreeItem child) throws IOException {
         MapTreeItem parent = (MapTreeItem) child.getParent();
         parent.remove(child);
         ((MapNodeComposite) parent.getMapNode()).removeChild(child.getMapNode());

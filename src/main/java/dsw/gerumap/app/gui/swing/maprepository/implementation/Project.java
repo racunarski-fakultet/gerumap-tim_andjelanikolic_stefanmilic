@@ -64,6 +64,6 @@ public class Project extends MapNodeComposite {
 
     public void setAuthor(String author) throws IOException {
         this.author = author;
-        notify(author);
+        notify(this);
     }
 }

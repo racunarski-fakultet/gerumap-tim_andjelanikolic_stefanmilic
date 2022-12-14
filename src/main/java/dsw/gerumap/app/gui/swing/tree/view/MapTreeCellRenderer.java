@@ -22,13 +22,13 @@ public class MapTreeCellRenderer extends DefaultTreeCellRenderer {
         URL imageURL = null;
 
         if (((MapTreeItem)value).getMapNode() instanceof ProjectExplorer) {
-            imageURL = getClass().getResource("/images/projectExplorer.jpg");
+            imageURL = getClass().getResource("/images/projectExplorer.png");
         }
         else if (((MapTreeItem)value).getMapNode() instanceof Project) {
-            imageURL = getClass().getResource("/images/tproject.gif");
+            imageURL = getClass().getResource("/images/project.png");
         }
         else if(((MapTreeItem)value).getMapNode() instanceof MindMap){
-          imageURL = getClass().getResource("/images/mindmap.jpg");
+          imageURL = getClass().getResource("/images/mindMap.png");
         }
         else if(((MapTreeItem)value).getMapNode() instanceof Element) {
             imageURL = getClass().getResource("/images/element.png");

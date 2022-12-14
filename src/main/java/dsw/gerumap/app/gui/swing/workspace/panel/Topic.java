@@ -5,19 +5,28 @@ import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.awt.*;
 
 @Getter
 @Setter
+@ToString
 public class Topic extends Element {
 
-    private String nameTopic;
+    private String name;
     private int x, y;
-    private int w = 200, l = 100;
+    private int w = 100, l = 50;
 
-    public Topic(String nameTopic, int x, int y) {
-        this.nameTopic = nameTopic;
+    public Topic(String name, int x, int y) {
+        this.name = name;
+        this.x = x;
+        this.y = y;
+    }
+
+    public Topic(Color color, int stroke, String name, int x, int y) {
+        super(color, stroke);
+        this.name = name;
         this.x = x;
         this.y = y;
     }

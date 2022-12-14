@@ -100,15 +100,20 @@ public class ProjectView extends JPanel implements Subscriber {
     public void startZoomState() {
         this.stateManager.setZoomState();
     }
-    public void startSelectState() {
-        this.stateManager.setSelectionState();
-    }
-    public void startSettingsState() {
-        this.stateManager.setSettingState();
+    public void startSelectState() {this.stateManager.setSelectionState();}
+    public void startEditState() {
+        this.stateManager.setEditState();
     }
 
     public void misKliknut(int x, int y, MapView m) throws IOException {
         this.stateManager.getState().misKliknut(x, y, m);
-        System.out.println("miskliknut pv");
+    }
+
+    public void misOtpusten(int x, int y, MapView m){
+        this.stateManager.getState().misOtpusten(x, y, m);
+    }
+
+    public void misPovucen(int x, int y, MapView m) {
+        this.stateManager.getState().misPovucen(x, y, m);
     }
 }

@@ -14,12 +14,13 @@ public class ZoomState extends State {
     }
 
     @Override
-    public void misOtpusten(MouseEvent e) {
+    public void misOtpusten(int x, int y, MapView map) {
 
     }
 
     @Override
-    public void misPovucen(MouseEvent e) {
+    public void misPovucen(int x, int y, MapView map) {
 
     }
+
 }

@@ -12,30 +12,29 @@ import java.awt.*;
 public class TopicPainter extends ElementPainter{
 
     private Shape s;
+    private Element element;
 
     public TopicPainter(Element element, Shape s) {
-        super(element);
+        this.element = element;
         this.s = s;
     }
 
-
     @Override
-    public void draw(Graphics g, Element element) {
+    public void draw(Graphics g) {
         Graphics2D graphics = (Graphics2D) g;
         graphics.setColor(element.getColor());
         graphics.setStroke(new BasicStroke(element.getStroke()));
         graphics.draw(getS());
 
         if (element instanceof Topic){
-            graphics.setPaint(Color.BLACK);
             Topic el = (Topic)element;
-            g.drawString(el.getNameTopic(), (int)el.getX()+60,
+            g.drawString(el.getName(), (int)el.getX()+26,
                     (int)el.getY()+20);
         }
     }
 
     @Override
-    public boolean elementAt(Point position, Element element) {
+    public boolean elementAt(Point position) {
         return getS().contains(position);
     }
 }

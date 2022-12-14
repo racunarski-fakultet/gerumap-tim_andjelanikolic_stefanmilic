@@ -1,7 +1,5 @@
 package dsw.gerumap.app.gui.swing.view;
 
-import dsw.gerumap.app.gui.swing.controller.ActionManager;
-
 import javax.swing.*;
 
 public class WorkToolbar extends JToolBar {
@@ -17,7 +15,7 @@ public class WorkToolbar extends JToolBar {
         add(MainFrame.getInstance().getActionManager().getDeleteStateAction());
         add(MainFrame.getInstance().getActionManager().getZoomStateController());
         add(Box.createGlue());
-        add(MainFrame.getInstance().getActionManager().getSettingsStateController());
+        add(MainFrame.getInstance().getActionManager().getEditStateAction());
     }
 
 }

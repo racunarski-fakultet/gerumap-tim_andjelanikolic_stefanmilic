@@ -7,6 +7,7 @@ import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
 import dsw.gerumap.app.gui.swing.workspace.panel.painters.TopicPainter;
 import dsw.gerumap.app.state.State;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
 import java.io.IOException;
@@ -23,12 +24,14 @@ public class TopicState extends State {
     }
 
     @Override
-    public void misOtpusten(MouseEvent e) {
+    public void misOtpusten(int x, int y, MapView map) {
 
     }
 
     @Override
-    public void misPovucen(MouseEvent e) {
+    public void misPovucen(int x, int y, MapView map) {
 
     }
+
+
 }

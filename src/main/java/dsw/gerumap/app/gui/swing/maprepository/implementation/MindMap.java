@@ -31,10 +31,11 @@ public class MindMap extends MapNodeComposite {
     }
 
     @Override
-    public void removeChild(MapNode child) {
+    public void removeChild(MapNode child) throws IOException {
         if (child != null && child instanceof Element) {
             Element element = (Element) child;
             this.getChildren().remove(element);
+            notify(this);
         }
     }
 
@@ -43,7 +44,7 @@ public class MindMap extends MapNodeComposite {
         if (subscriber == null || subscribers.contains(subscriber))
             return;
         subscribers.add(subscriber);
-        System.out.println(subscriber.toString());
+        System.out.println(subscriber);
     }
 
     @Override

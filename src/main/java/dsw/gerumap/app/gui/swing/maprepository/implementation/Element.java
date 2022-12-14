@@ -11,7 +11,6 @@ import java.io.IOException;
 
 @NoArgsConstructor
 @Getter
-@Setter
 public class Element extends MapNode {
 
     private Color color = Color.black;
@@ -42,11 +41,19 @@ public class Element extends MapNode {
 
     @Override
     public void notify(Object notification) throws IOException {
-        if (notification == null || subscribers.isEmpty()) {
+        if ((notification == null) || subscribers.isEmpty()) {
             return;
         }
 
         for (Subscriber subscriber:subscribers)
             subscriber.update(notification);
+    }
+
+    public void setColor(Color color) throws IOException {
+        this.color = color;
+    }
+
+    public void setStroke(int stroke) throws IOException {
+        this.stroke = stroke;
     }
 }

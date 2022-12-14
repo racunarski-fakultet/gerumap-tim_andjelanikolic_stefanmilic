@@ -8,9 +8,9 @@ import java.awt.event.ActionEvent;
 public class ConnectionStateAction extends AbstractGeRuMapAction {
 
     public ConnectionStateAction() {
-//        putValue(SMALL_ICON, loadIcon("/images/delete.png"));
-        putValue(NAME, "Add connection");
-        putValue(SHORT_DESCRIPTION, "Add conneciton");
+        putValue(SMALL_ICON, loadIcon("/images/connection.png"));
+        putValue(NAME, "Connect");
+        putValue(SHORT_DESCRIPTION, "Connect");
     }
 
     @Override

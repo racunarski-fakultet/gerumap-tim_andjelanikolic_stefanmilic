@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
 
-public class MouseController implements MouseListener, Subscriber {
+public class MouseController extends MouseAdapter implements Subscriber{
 
     MapView mapView;
 
@@ -18,7 +18,7 @@ public class MouseController implements MouseListener, Subscriber {
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void mousePressed(MouseEvent e) {
         Point position = e.getPoint();
         try {
             MainFrame.getInstance().getProjectView().misKliknut(position.x, position.y, mapView);
@@ -29,23 +29,15 @@ public class MouseController implements MouseListener, Subscriber {
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
     public void mouseReleased(MouseEvent e) {
-
+        Point position = e.getPoint();
+        MainFrame.getInstance().getProjectView().misOtpusten(position.x, position.y, mapView);
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
+    public void mouseDragged(MouseEvent e) {
+        Point position = e.getPoint();
+        MainFrame.getInstance().getProjectView().misPovucen(position.x, position.y, mapView);
     }
 
     @Override

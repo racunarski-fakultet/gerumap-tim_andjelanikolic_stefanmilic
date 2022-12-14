@@ -9,37 +9,48 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Setter
 @Getter
 public class MapView extends JPanel implements Subscriber{
     private MindMap mindMap;
-    private JLabel label;
     private int index;
     private List<ElementPainter> painters;
+    private MapSelectionModel selectionModel;
+    private Point pos1 = null;
+    private Point pos2 = null;
+    private JScrollBar vertical;
+    private JScrollBar horizontal;
 
     public MapView(MindMap map, int index) {
-        setLayout(new FlowLayout());
-        label = new JLabel("");
+        setLayout(new BorderLayout());
+        setBackground(Color.LIGHT_GRAY);
+
+        horizontal = new JScrollBar(0);
+        vertical = new JScrollBar(1);
+        add(horizontal, BorderLayout.SOUTH);
+        add(vertical, BorderLayout.EAST);
+
         this.index = index;
-        add(label);
-        setMap(map);
+        selectionModel = new MapSelectionModel();
         painters = new ArrayList<>();
+
         addMouseListener(new MouseController(this));
+        addMouseMotionListener(new MouseController(this));
+
+        setMap(map);
     }
 
     public void setMap(MindMap mindMap) {
         this.mindMap = mindMap;
-        this.updateLabel();
         this.updateTabName();
         this.mindMap.addSubs(this);
-    }
-
-    public void updateLabel() {
-        this.label.setText(this.mindMap.getName());
     }
 
     public void updateTabName() {
@@ -53,7 +64,7 @@ public class MapView extends JPanel implements Subscriber{
         if(mindMap == null){
             return;
         }
-        updateLabel();
+
         repaint();
         System.out.println("update");
     }
@@ -61,12 +72,32 @@ public class MapView extends JPanel implements Subscriber{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D)g;
+//        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
         for(ElementPainter p : painters){
-            for(MapNode el : mindMap.getChildren()){
-                p.draw(g, (Element) el);
-            }
+            p.draw(g2d);
         }
         System.out.println("paint");
+    }
+
+    public void setPos1(Point pos1) {
+        this.pos1 = pos1;
+        update(pos1);
+    }
+
+    public void setPos2(Point pos2) {
+        this.pos2 = pos2;
+        update(pos2);
+    }
+
+    public void setElementColor(Element element, Color color) throws IOException {
+        for(MapNode mn : mindMap.getChildren()){
+            Element el = (Element) mn;
+            if(el.equals(element)){
+                el.setColor(color);
+                update(element);
+            }
+        }
     }
 
     @Override

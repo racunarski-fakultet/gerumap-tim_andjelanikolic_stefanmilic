@@ -11,6 +11,6 @@ public interface MapTree {
     MapTreeView generateTree(ProjectExplorer projectExplorer);
     void addChild(MapTreeItem parent) throws IOException;
     MapTreeItem getSelectedNode();
-    void deleteChild (MapTreeItem chlild);
+    void deleteChild (MapTreeItem chlild) throws IOException;
 
 }
