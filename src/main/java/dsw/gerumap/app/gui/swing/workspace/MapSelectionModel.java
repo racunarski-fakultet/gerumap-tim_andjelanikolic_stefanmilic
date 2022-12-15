@@ -6,6 +6,7 @@ import dsw.gerumap.app.observer.Subscriber;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,27 +23,48 @@ public class MapSelectionModel implements Publisher {
         this.subscribers = new ArrayList<>();
     }
 
+    public void addElement(Element el) throws IOException {
+        if (el != null) {
+            this.getSelected().add(el);
+            el.setColor(Color.BLUE);
+            notify(this);
+        }
+    }
+
+    public void clearList() throws IOException {
+        for(Element el : this.getSelected()){
+            el.setColor(Color.BLACK);
+        }
+        getSelected().clear();
+    }
+
     @Override
     public void addSubs(Subscriber subscriber) {
-        if (subscriber == null || subscribers.contains(subscriber))
+        if(subscriber == null)
             return;
-        subscribers.add(subscriber);
+        if(this.subscribers ==null)
+            this.subscribers = new ArrayList<>();
+        if(this.subscribers.contains(subscriber))
+            return;
+        this.subscribers.add(subscriber);
     }
 
     @Override
     public void removeSubs(Subscriber subscriber) {
-        if (subscriber == null || !subscribers.contains(subscriber))
+        if(subscriber == null || this.subscribers == null || !this.subscribers.contains(subscriber))
             return;
-        subscribers.remove(subscriber);
+        this.subscribers.remove(subscriber);
     }
 
     @Override
     public void notify(Object notification) throws IOException {
-        if ((notification == null) || subscribers.isEmpty()) {
+        if(notification == null || this.subscribers == null || this.subscribers.isEmpty())
             return;
-        }
 
-        for (Subscriber subscriber:subscribers)
-            subscriber.update(notification);
+        for(Subscriber sub : subscribers){
+            sub.update(notification);
+        }
     }
+
+
 }

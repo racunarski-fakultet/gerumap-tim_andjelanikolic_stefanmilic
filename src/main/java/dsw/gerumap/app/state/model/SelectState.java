@@ -15,20 +15,14 @@ public class SelectState extends State {
     @Override
     public void misKliknut(int x, int y, MapView map) throws IOException {
         if(!(map.getSelectionModel().getSelected().isEmpty())) {
-            for(Element el : map.getSelectionModel().getSelected()){
-                el.setColor(Color.BLACK);
-            }
-            map.getSelectionModel().getSelected().clear();
+            map.getSelectionModel().clearList();
         }
 
         for(ElementPainter p : map.getPainters()){
             Point pos = new Point(x, y);
             if(p.elementAt(pos)){
-                map.getSelectionModel().getSelected().add(p.getElement());
-                System.out.println(map.getSelectionModel().getSelected().toString());
-                System.out.println("selektovan");
-                p.getElement().setColor(Color.BLUE);
-                map.update(map);
+                map.getSelectionModel().addElement(p.getElement());
+                System.out.println("selektovani: " + map.getSelectionModel().getSelected().toString());
             }
         }
     }

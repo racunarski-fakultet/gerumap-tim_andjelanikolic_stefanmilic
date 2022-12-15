@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @Getter
 public class Project extends MapNodeComposite {
@@ -38,32 +39,35 @@ public class Project extends MapNodeComposite {
         }
     }
 
-    @Override
-    public void addSubs(Subscriber subscriber) {
-        if (subscriber == null || subscribers.contains(subscriber))
-            return;
-        subscribers.add(subscriber);
-    }
-
-    @Override
-    public void removeSubs(Subscriber subscriber) {
-        if (subscriber == null || !subscribers.contains(subscriber))
-            return;
-        subscribers.remove(subscriber);
-    }
-
-    @Override
-    public void notify(Object notification) throws IOException {
-        if (notification == null || subscribers.isEmpty()) {
-            return;
-        }
-
-        for (Subscriber subscriber:subscribers)
-            subscriber.update(notification);
-    }
+//    @Override
+//    public void addSubs(Subscriber subscriber) {
+//        if(subscriber == null)
+//            return;
+//        if(this.subscribers ==null)
+//            this.subscribers = new ArrayList<>();
+//        if(this.subscribers.contains(subscriber))
+//            return;
+//        this.subscribers.add(subscriber);
+//    }
+//
+//    @Override
+//    public void removeSubs(Subscriber subscriber) {
+//        if(subscriber == null || this.subscribers == null || !this.subscribers.contains(subscriber))
+//            return;
+//        this.subscribers.remove(subscriber);
+//    }
+//
+//    @Override
+//    public void notify(Object notification) throws IOException {
+//        if(notification == null || this.subscribers == null || this.subscribers.isEmpty())
+//            return;
+//
+//        for(Subscriber sub : subscribers){
+//            sub.update(notification);
+//        }
+//    }
 
     public void setAuthor(String author) throws IOException {
         this.author = author;
-        notify(this);
     }
 }

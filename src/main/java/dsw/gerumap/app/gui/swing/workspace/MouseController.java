@@ -6,7 +6,6 @@ import dsw.gerumap.app.observer.Subscriber;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.IOException;
 
 public class MouseController extends MouseAdapter implements Subscriber{
@@ -31,13 +30,21 @@ public class MouseController extends MouseAdapter implements Subscriber{
     @Override
     public void mouseReleased(MouseEvent e) {
         Point position = e.getPoint();
-        MainFrame.getInstance().getProjectView().misOtpusten(position.x, position.y, mapView);
+        try {
+            MainFrame.getInstance().getProjectView().misOtpusten(position.x, position.y, mapView);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
         Point position = e.getPoint();
-        MainFrame.getInstance().getProjectView().misPovucen(position.x, position.y, mapView);
+        try {
+            MainFrame.getInstance().getProjectView().misPovucen(position.x, position.y, mapView);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override

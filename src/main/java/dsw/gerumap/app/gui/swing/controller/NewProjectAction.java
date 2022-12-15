@@ -2,6 +2,7 @@ package dsw.gerumap.app.gui.swing.controller;
 
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
+import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.message.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
@@ -47,9 +48,10 @@ public class NewProjectAction extends AbstractGeRuMapAction {
         }
 
 
-        if(selected.getMapNode() instanceof Element){
+        if(selected.getMapNode() instanceof MindMap){
             try {
                 ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.CANNOT_ADD_CHILD_TO_LEAF);
+                return;
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

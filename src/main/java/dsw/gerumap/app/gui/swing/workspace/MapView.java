@@ -50,7 +50,8 @@ public class MapView extends JPanel implements Subscriber{
     public void setMap(MindMap mindMap) {
         this.mindMap = mindMap;
         this.updateTabName();
-        this.mindMap.addSubs(this);
+//        this.mindMap.addSubs(this);
+//        System.out.println(this.mindMap.getSubscribers().toString());
     }
 
     public void updateTabName() {
@@ -78,6 +79,7 @@ public class MapView extends JPanel implements Subscriber{
             p.draw(g2d);
         }
         System.out.println("paint");
+        System.out.println(this.mindMap.getSubscribers().toString());
     }
 
     public void setPos1(Point pos1) {

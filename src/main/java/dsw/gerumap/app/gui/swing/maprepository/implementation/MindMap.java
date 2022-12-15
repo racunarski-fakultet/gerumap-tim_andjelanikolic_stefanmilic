@@ -5,6 +5,7 @@ import dsw.gerumap.app.gui.swing.maprepository.composite.MapNodeComposite;
 import dsw.gerumap.app.observer.Subscriber;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class MindMap extends MapNodeComposite {
 
@@ -39,30 +40,33 @@ public class MindMap extends MapNodeComposite {
         }
     }
 
-    @Override
-    public void addSubs(Subscriber subscriber) {
-        if (subscriber == null || subscribers.contains(subscriber))
-            return;
-        subscribers.add(subscriber);
-        System.out.println(subscriber);
-    }
-
-    @Override
-    public void removeSubs(Subscriber subscriber) {
-        if (subscriber == null || !subscribers.contains(subscriber))
-            return;
-        subscribers.remove(subscriber);
-    }
-
-    @Override
-    public void notify(Object notification) throws IOException {
-        if (notification == null || subscribers.isEmpty()) {
-            return;
-        }
-
-        for (Subscriber subscriber:subscribers)
-            subscriber.update(notification);
-    }
+//    @Override
+//    public void addSubs(Subscriber subscriber) {
+//        if(subscriber == null)
+//            return;
+//        if(this.subscribers ==null)
+//            this.subscribers = new ArrayList<>();
+//        if(this.subscribers.contains(subscriber))
+//            return;
+//        this.subscribers.add(subscriber);
+//    }
+//
+//    @Override
+//    public void removeSubs(Subscriber subscriber) {
+//        if(subscriber == null || this.subscribers == null || !this.subscribers.contains(subscriber))
+//            return;
+//        this.subscribers.remove(subscriber);
+//    }
+//
+//    @Override
+//    public void notify(Object notification) throws IOException {
+//        if(notification == null || this.subscribers == null || this.subscribers.isEmpty())
+//            return;
+//
+//        for(Subscriber sub : subscribers){
+//            sub.update(notification);
+//        }
+//    }
 
     @Override
     public String toString() {

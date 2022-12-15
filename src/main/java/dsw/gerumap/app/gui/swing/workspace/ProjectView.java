@@ -33,8 +33,6 @@ public class ProjectView extends JPanel implements Subscriber {
 
         add(lblNameAndAuthor, BorderLayout.NORTH);
         add(tabbedPane, BorderLayout.CENTER);
-
-//        project.addSubs(this);
     }
 
     public void updateLabel() {
@@ -52,6 +50,7 @@ public class ProjectView extends JPanel implements Subscriber {
         project = (Project) selected;
 
         project.addSubs(this);
+        System.out.println(project.getSubscribers().toString());
 
         if (project == null) {
             tabbedPane.setVisible(false);
@@ -59,7 +58,11 @@ public class ProjectView extends JPanel implements Subscriber {
         }
 
         for (MapNode child: ((Project) selected).getChildren()){
+            if(!child.getSubscribers().isEmpty()) {
+                child.getSubscribers().clear();
+            }
             MapView tab = new MapView((MindMap)child, tabbedPane.getTabCount());
+            child.addSubs(tab);
             tabs.add(tab);
         }
 
@@ -107,13 +110,14 @@ public class ProjectView extends JPanel implements Subscriber {
 
     public void misKliknut(int x, int y, MapView m) throws IOException {
         this.stateManager.getState().misKliknut(x, y, m);
+        System.out.println("misklikunt pv");
     }
 
-    public void misOtpusten(int x, int y, MapView m){
+    public void misOtpusten(int x, int y, MapView m) throws IOException {
         this.stateManager.getState().misOtpusten(x, y, m);
     }
 
-    public void misPovucen(int x, int y, MapView m) {
+    public void misPovucen(int x, int y, MapView m) throws IOException {
         this.stateManager.getState().misPovucen(x, y, m);
     }
 }

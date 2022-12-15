@@ -1,1 +1,2 @@
-[ERROR] [Wed Dec 14 14:54:06 CET 2022] Please set author for this project
+[ERROR] [Thu Dec 15 14:48:27 CET 2022] You can only set the author for Projects.
+[ERROR] [Thu Dec 15 14:48:32 CET 2022] Cannot add child.

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 
 @Getter
 @Setter
@@ -14,9 +15,16 @@ public class TopicPainter extends ElementPainter{
     private Shape s;
     private Element element;
 
-    public TopicPainter(Element element, Shape s) {
+//    public TopicPainter(Element element, Shape s) {
+//        this.element = element;
+//        this.s = s;
+//    }
+
+
+    public TopicPainter(Element element) {
         this.element = element;
-        this.s = s;
+        Topic topic = (Topic)this.element;
+        s = new Ellipse2D.Float(topic.getX(), topic.getY(), topic.getW(), topic.getL());
     }
 
     @Override
@@ -36,5 +44,9 @@ public class TopicPainter extends ElementPainter{
     @Override
     public boolean elementAt(Point position) {
         return getS().contains(position);
+    }
+
+    public void setS(Shape s) {
+
     }
 }

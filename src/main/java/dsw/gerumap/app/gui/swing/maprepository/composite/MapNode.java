@@ -24,7 +24,7 @@ public abstract  class MapNode implements Publisher {
     public MapNode(String name, MapNode parent) {
         this.name = name;
         this.parent = parent;
-        this.subscribers = new ArrayList<>();
+        subscribers = new ArrayList<>();
     }
 
     @Override
@@ -39,5 +39,33 @@ public abstract  class MapNode implements Publisher {
     public void setName(String name) throws IOException {
         this.name = name;
         notify(name);
+    }
+
+    @Override
+    public void addSubs(Subscriber subscriber) {
+        if(subscriber == null)
+            return;
+        if(this.subscribers ==null)
+            this.subscribers = new ArrayList<>();
+        if(this.subscribers.contains(subscriber))
+            return;
+        this.subscribers.add(subscriber);
+    }
+
+    @Override
+    public void removeSubs(Subscriber subscriber) {
+        if(subscriber == null || this.subscribers == null || !this.subscribers.contains(subscriber))
+            return;
+        this.subscribers.remove(subscriber);
+    }
+
+    @Override
+    public void notify(Object notification) throws IOException {
+        if(notification == null || this.subscribers == null || this.subscribers.isEmpty())
+            return;
+
+        for(Subscriber sub : subscribers){
+            sub.update(notification);
+        }
     }
 }
