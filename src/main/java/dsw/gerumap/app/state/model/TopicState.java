@@ -17,9 +17,9 @@ import java.io.IOException;
 public class TopicState extends State {
     @Override
     public void misKliknut(int x, int y, MapView map) throws IOException {
-        String name = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input your name");
+        String name = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input text");
         if(name.isEmpty())
-            name = "Pojam" + map.getMindMap().getChildren().size(); // dodati metode da izbroji koliko ima topic a koliko link
+            name = "Pojam" + map.getMindMap().numberOfTopics();
 
         Topic topic = new Topic(name, map.getMindMap(), Color.BLACK, 2, x, y);
         topic.addSubs(map);

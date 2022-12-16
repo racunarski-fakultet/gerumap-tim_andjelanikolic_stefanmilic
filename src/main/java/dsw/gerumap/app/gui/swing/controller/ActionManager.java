@@ -15,12 +15,12 @@ public class ActionManager {
     private InfoAction infoAction;
     private AuthorAction authorAction;
 
-    private ConnectionStateAction addConnectionStateController;
-    private TopicStateAction addStateController;
-    private DeleteStateAction deleteStateAction;
-    private MoveStateAction moveStateController;
-    private SelectStateAction selectStateContoller;
-    private ZoomStateAction zoomStateController;
+    private ConnectionStateAction connectionStateAction;
+    private TopicStateAction topicStateAction;
+    private MoveStateAction moveStateAction;
+    private SelectStateAction selectStateAction;
+    private DeleteElementsAction deleteElementsAction;
+    private ZoomAction zoomAction;
     private EditAction editAction;
 
 
@@ -35,12 +35,12 @@ public class ActionManager {
         deleteAction = new DeleteAction();
         infoAction = new InfoAction();
         authorAction = new AuthorAction();
-        addConnectionStateController = new ConnectionStateAction();
-        addStateController = new TopicStateAction();
-        moveStateController = new MoveStateAction();
-        selectStateContoller = new SelectStateAction();
-        zoomStateController = new ZoomStateAction();
-        deleteStateAction = new DeleteStateAction();
+        connectionStateAction = new ConnectionStateAction();
+        topicStateAction = new TopicStateAction();
+        moveStateAction = new MoveStateAction();
+        selectStateAction = new SelectStateAction();
+        zoomAction = new ZoomAction();
+        deleteElementsAction = new DeleteElementsAction();
         editAction = new EditAction();
     }
 

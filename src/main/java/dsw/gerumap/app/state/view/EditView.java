@@ -54,10 +54,19 @@ public class EditView extends JDialog{
                     }
                 }
             }
+            this.setVisible(false);
         });
 
         btnStroke.addActionListener(e -> {
-            int stroke = Integer.parseInt(JOptionPane.showInputDialog(MainFrame.getInstance(), "Input new stroke"));
+            String strStroke = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input new stroke");
+            int stroke = 0;
+            try{
+                stroke = Integer.parseInt(strStroke);
+            }catch (NumberFormatException ex){
+                JOptionPane.showMessageDialog(null, "You must only enter an integer","Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+//            int stroke = Integer.parseInt(JOptionPane.showInputDialog(MainFrame.getInstance(), "Input new stroke"));
 
             for(MapView map : MainFrame.getInstance().getProjectView().getTabs()) {
                 for (Element element : map.getSelectionModel().getSelected()) {
@@ -68,10 +77,11 @@ public class EditView extends JDialog{
                     }
                 }
             }
+            this.setVisible(false);
         });
 
         btnName.addActionListener(e -> {
-            String name = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input your name");
+            String name = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input text");
 
             for(MapView map : MainFrame.getInstance().getProjectView().getTabs()) {
                 for (Element element : map.getSelectionModel().getSelected()) {
@@ -82,6 +92,11 @@ public class EditView extends JDialog{
                     }
                 }
             }
+            this.setVisible(false);
+        });
+
+        btnExit.addActionListener(e -> {
+            this.setVisible(false);
         });
 
         add(mainPanel);

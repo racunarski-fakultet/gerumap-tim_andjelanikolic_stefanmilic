@@ -71,11 +71,9 @@ public class SelectState extends State {
             }
         }
 
-        if(!nova.isEmpty()) {
-            for (ElementPainter n : nova) {
-                map.getPainters().remove(n);
-                msp = new MultiSelectionPainter();
-            }
+        for (ElementPainter n : nova) {
+            map.getPainters().remove(n);
+            msp = new MultiSelectionPainter();
         }
         map.update(this);
     }

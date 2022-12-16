@@ -5,9 +5,9 @@ import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import java.awt.event.ActionEvent;
 
-public class ZoomStateAction extends AbstractGeRuMapAction {
+public class ZoomAction extends AbstractGeRuMapAction {
 
-    public ZoomStateAction() {
+    public ZoomAction() {
         putValue(SMALL_ICON, loadIcon("/images/zoom.png"));
         putValue(NAME, "Zoom");
         putValue(SHORT_DESCRIPTION, "Zoom");
@@ -15,6 +15,6 @@ public class ZoomStateAction extends AbstractGeRuMapAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        MainFrame.getInstance().getProjectView().startZoomState();
+
     }
 }

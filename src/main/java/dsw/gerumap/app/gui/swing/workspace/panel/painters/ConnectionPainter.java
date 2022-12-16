@@ -25,7 +25,7 @@ public class ConnectionPainter extends ElementPainter {
     @Override
     public void draw(Graphics g) {
         Graphics2D graphics = (Graphics2D) g;
-        graphics.setColor(Color.BLACK);
+        graphics.setColor(element.getColor());
 
         s = new Line2D.Float(pos1.x, pos1.y, pos2.x, pos2.y);
 

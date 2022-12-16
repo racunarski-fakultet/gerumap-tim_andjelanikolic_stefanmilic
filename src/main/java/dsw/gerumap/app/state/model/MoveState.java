@@ -33,7 +33,7 @@ public class MoveState extends State {
 
     @Override
     public void misPovucen(int x, int y, MapView map) throws IOException {
-        for(ElementPainter p : map.getPainters()){
+        for(ElementPainter p : map.getPainters()){ // kad ima vise elemenata nece da radi
             Topic t = (Topic) p.getElement();
             if(map.getSelectionModel().getSelected().contains(t)) {
                 if (flag == 1) {

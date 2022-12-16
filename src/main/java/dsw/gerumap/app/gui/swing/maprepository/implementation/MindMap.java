@@ -2,10 +2,9 @@ package dsw.gerumap.app.gui.swing.maprepository.implementation;
 
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNodeComposite;
-import dsw.gerumap.app.observer.Subscriber;
+import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MindMap extends MapNodeComposite {
 
@@ -38,6 +37,16 @@ public class MindMap extends MapNodeComposite {
             this.getChildren().remove(element);
             notify(this);
         }
+    }
+
+    public int numberOfTopics(){
+        int num = 0;
+        for(MapNode el : getChildren()){
+            if(el instanceof Topic){
+                num++;
+            }
+        }
+        return num;
     }
 
     @Override

@@ -98,14 +98,8 @@ public class ProjectView extends JPanel implements Subscriber {
     public void startConnectionState() {
         this.stateManager.setConnectionState();
     }
-    public void startDeleteState() {
-        this.stateManager.setDeleteState();
-    }
     public void startMoveState() {
         this.stateManager.setMoveState();
-    }
-    public void startZoomState() {
-        this.stateManager.setZoomState();
     }
     public void startSelectState() {this.stateManager.setSelectionState();}
 

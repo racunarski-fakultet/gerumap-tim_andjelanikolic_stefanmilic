@@ -1,1 +1,1 @@
-[ERROR] [Fri Dec 16 15:24:57 CET 2022] Must insert name
+[ERROR] [Fri Dec 16 17:23:34 CET 2022] Node not selected.

@@ -9,9 +9,7 @@ public class StateManager {
     private ConnectionState connectionState;
     private SelectState selectState;
     private TopicState topicState;
-    private DeleteState deleteState;
     private MoveState moveState;
-    private ZoomState zoomState;
 
     public StateManager () {
          initialise();
@@ -20,9 +18,7 @@ public class StateManager {
     public void initialise () {
         topicState = new TopicState();
         connectionState = new ConnectionState();
-        deleteState = new DeleteState();
         moveState = new MoveState();
-        zoomState = new ZoomState();
         selectState = new SelectState();
         state = selectState;
     }
@@ -37,16 +33,10 @@ public class StateManager {
     public void setConnectionState() {
         state = connectionState;
     }
-    public void setDeleteState() {
-        state = deleteState;
-    }
     public void setMoveState() {
         state = moveState;
     }
     public void setSelectionState() {
         state = selectState;
-    }
-    public void setZoomState() {
-        state= zoomState;
     }
 }

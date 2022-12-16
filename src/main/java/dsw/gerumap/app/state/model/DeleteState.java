@@ -21,27 +21,24 @@ public class DeleteState extends State {
 
     @Override
     public void misKliknut(int x, int y, MapView map) throws IOException {
+
         for(ElementPainter p : map.getPainters()){
-            Point pos = new Point(x, y);
-            if(p.elementAt(pos)){
-                if(p.getElement() instanceof Topic){
-                    Topic t = (Topic) p.getElement();
-                    for(ConnectionPainter painter : t.getConnectionList()){
-                        nova.add(painter);
+            for(Element el : map.getSelectionModel().getSelected()){
+                if(p.getElement().equals(el)){
+                    if(p.getElement() instanceof Topic) {
+                        Topic t = (Topic) p.getElement();
+                        for (ConnectionPainter painter : t.getConnectionList()) {
+                            nova.add(painter);
+                        }
                     }
                     nova.add(p);
-                    System.out.println("topic");
                 }
-//                else{
-//                    System.out.println("veza");
-//                    map.getMindMap().removeChild(p.getElement());
-//                    nova.add(p);
-//                }
             }
         }
 
         for(ElementPainter n : nova){
             map.getMindMap().removeChild(n.getElement());
+            map.getSelectionModel().getSelected().remove(n.getElement());
             map.getPainters().remove(n);
         }
     }
