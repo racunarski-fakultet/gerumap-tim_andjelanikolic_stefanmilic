@@ -14,19 +14,4 @@ public class MindMapFactory extends NodeFactory {
     public MapNode createNode(MapNode node) {
         return new MindMap("MindMap" + ((Project) node).getChildren().size(), node);
     }
-
-    @Override
-    public void addSubs(Subscriber subscriber) {
-
-    }
-
-    @Override
-    public void removeSubs(Subscriber subscriber) {
-
-    }
-
-    @Override
-    public void notify(Object notification) {
-
-    }
 }

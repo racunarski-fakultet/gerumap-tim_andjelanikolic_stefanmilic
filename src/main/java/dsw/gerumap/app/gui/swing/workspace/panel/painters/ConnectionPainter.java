@@ -12,19 +12,23 @@ import java.awt.geom.Line2D;
 public class ConnectionPainter extends ElementPainter {
 
     private Shape s;
-    private Element element1;
-    private Element element2;
+    private Element element;
+    private Point pos1;
+    private Point pos2;
 
-    public ConnectionPainter(Element element1, Element element2, Shape s) {
-        this.element1 = element1;
-        this.element2 = element2;
-        this.s = s;
+    public ConnectionPainter(Point pos1, Point pos2, Element element) {
+        this.element = element;
+        this.pos1 = pos1;
+        this.pos2 = pos2;
     }
 
     @Override
     public void draw(Graphics g) {
         Graphics2D graphics = (Graphics2D) g;
         graphics.setColor(Color.BLACK);
+
+        s = new Line2D.Float(pos1.x, pos1.y, pos2.x, pos2.y);
+
         graphics.setStroke(new BasicStroke(2));
         graphics.draw(getS());
     }

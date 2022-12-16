@@ -13,8 +13,6 @@ public class MoveState extends State {
     int flag = 0;
     @Override
     public void misKliknut(int x, int y, MapView map) {
-//        Topic topic = (Topic) map.getSelectionModel().getSelected().get(map.getSelectionModel().getSelected().size() - 1);
-//        if(topic.getX() == x && topic.getY() == y){
         Point point = new Point(x, y);
         for(ElementPainter p : map.getPainters()){
             Topic t = (Topic) p.getElement();
@@ -35,7 +33,6 @@ public class MoveState extends State {
 
     @Override
     public void misPovucen(int x, int y, MapView map) throws IOException {
-//        Topic topic = (Topic) map.getSelectionModel().getSelected().get(map.getSelectionModel().getSelected().size() - 1);
         for(ElementPainter p : map.getPainters()){
             Topic t = (Topic) p.getElement();
             if(map.getSelectionModel().getSelected().contains(t)) {
@@ -45,9 +42,6 @@ public class MoveState extends State {
                 }
             }
         }
-//        topic.setX(x);
-//        topic.setY(y);
-//        map.update(topic);
     }
 
 }

@@ -14,39 +14,33 @@ public class TopicPainter extends ElementPainter{
 
     private Shape s;
     private Element element;
-
-//    public TopicPainter(Element element, Shape s) {
-//        this.element = element;
-//        this.s = s;
-//    }
-
+    private Topic topic;
 
     public TopicPainter(Element element) {
         this.element = element;
-        Topic topic = (Topic)this.element;
-        s = new Ellipse2D.Float(topic.getX(), topic.getY(), topic.getW(), topic.getL());
+        topic = (Topic)this.element;
+        System.out.println("ovo je " + topic);
     }
 
     @Override
     public void draw(Graphics g) {
         Graphics2D graphics = (Graphics2D) g;
+
         graphics.setColor(element.getColor());
         graphics.setStroke(new BasicStroke(element.getStroke()));
+
+        s = new Ellipse2D.Float(topic.getX()-50, topic.getY()-25, topic.getW(), topic.getL());
         graphics.draw(getS());
 
         if (element instanceof Topic){
             Topic el = (Topic)element;
-            g.drawString(el.getName(), (int)el.getX()+26,
-                    (int)el.getY()+20);
+            g.drawString(el.getName(), (int)el.getX(),
+                    (int)el.getY());
         }
     }
 
     @Override
     public boolean elementAt(Point position) {
         return getS().contains(position);
-    }
-
-    public void setS(Shape s) {
-
     }
 }

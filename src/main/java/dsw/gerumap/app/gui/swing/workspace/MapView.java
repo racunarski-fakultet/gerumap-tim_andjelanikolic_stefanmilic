@@ -2,6 +2,7 @@ package dsw.gerumap.app.gui.swing.workspace;
 
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
+import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
 import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPainter;
 import dsw.gerumap.app.observer.Subscriber;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
@@ -90,6 +91,15 @@ public class MapView extends JPanel implements Subscriber{
     public void setPos2(Point pos2) {
         this.pos2 = pos2;
         update(pos2);
+    }
+
+    public Element findElement(int x, int y){
+        for(ElementPainter p : getPainters()){
+            Topic t = (Topic) p.getElement();
+            if(t.getX() == x && t.getY() == y)
+                return p.getElement();
+        }
+        return null;
     }
 
     @Override

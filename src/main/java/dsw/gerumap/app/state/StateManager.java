@@ -35,7 +35,7 @@ public class StateManager {
         moveState = new MoveState();
         zoomState = new ZoomState();
         selectState = new SelectState();
-        editState = new EditState();
+//        editState = new EditState();
         state = selectState;
     }
 
@@ -59,9 +59,9 @@ public class StateManager {
         state = moveState;
     }
 
-    public void setEditState() {
-        state = editState;
-    }
+//    public void setEditState() {
+//        state = editState;
+//    }
     public void setSelectionState() {
         state = selectState;
     }

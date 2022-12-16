@@ -5,6 +5,8 @@ import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
 import dsw.gerumap.app.state.StateManager;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class ProjectView extends JPanel implements Subscriber {
     private JTabbedPane tabbedPane;
     private Project project;
@@ -79,6 +83,9 @@ public class ProjectView extends JPanel implements Subscriber {
         lblNameAndAuthor.setText("Autor i ime projekta");
     }
 
+//    public MapView getSelectedTab(){
+//    }
+
     @Override
     public void update(Object object) {
         if(project == null){
@@ -104,9 +111,9 @@ public class ProjectView extends JPanel implements Subscriber {
         this.stateManager.setZoomState();
     }
     public void startSelectState() {this.stateManager.setSelectionState();}
-    public void startEditState() {
-        this.stateManager.setEditState();
-    }
+//    public void startEditState() {
+//        this.stateManager.setEditState();
+//    }
 
     public void misKliknut(int x, int y, MapView m) throws IOException {
         this.stateManager.getState().misKliknut(x, y, m);

@@ -40,34 +40,6 @@ public class MindMap extends MapNodeComposite {
         }
     }
 
-//    @Override
-//    public void addSubs(Subscriber subscriber) {
-//        if(subscriber == null)
-//            return;
-//        if(this.subscribers ==null)
-//            this.subscribers = new ArrayList<>();
-//        if(this.subscribers.contains(subscriber))
-//            return;
-//        this.subscribers.add(subscriber);
-//    }
-//
-//    @Override
-//    public void removeSubs(Subscriber subscriber) {
-//        if(subscriber == null || this.subscribers == null || !this.subscribers.contains(subscriber))
-//            return;
-//        this.subscribers.remove(subscriber);
-//    }
-//
-//    @Override
-//    public void notify(Object notification) throws IOException {
-//        if(notification == null || this.subscribers == null || this.subscribers.isEmpty())
-//            return;
-//
-//        for(Subscriber sub : subscribers){
-//            sub.update(notification);
-//        }
-//    }
-
     @Override
     public String toString() {
         return getName();

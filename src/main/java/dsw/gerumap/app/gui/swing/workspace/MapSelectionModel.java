@@ -17,6 +17,7 @@ public class MapSelectionModel implements Publisher {
 
     private List<Element> selected;
     protected List<Subscriber> subscribers;
+    private Color oldColor;
 
     public MapSelectionModel() {
         selected = new ArrayList<>();
@@ -26,6 +27,7 @@ public class MapSelectionModel implements Publisher {
     public void addElement(Element el) throws IOException {
         if (el != null) {
             this.getSelected().add(el);
+            oldColor = el.getColor();
             el.setColor(Color.BLUE);
             notify(this);
         }
@@ -33,7 +35,7 @@ public class MapSelectionModel implements Publisher {
 
     public void clearList() throws IOException {
         for(Element el : this.getSelected()){
-            el.setColor(Color.BLACK);
+            el.setColor(oldColor);
         }
         getSelected().clear();
     }

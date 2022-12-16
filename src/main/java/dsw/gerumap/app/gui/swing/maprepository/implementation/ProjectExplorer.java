@@ -26,20 +26,5 @@ public class ProjectExplorer extends MapNodeComposite {
         }
     }
 
-
-    @Override
-    public void addSubs(Subscriber subscriber) {
-
-    }
-
-    @Override
-    public void removeSubs(Subscriber subscriber) {
-
-    }
-
-    @Override
-    public void notify(Object notification) {
-
-    }
 }
 
