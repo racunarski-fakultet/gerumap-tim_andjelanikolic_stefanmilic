@@ -83,9 +83,6 @@ public class ProjectView extends JPanel implements Subscriber {
         lblNameAndAuthor.setText("Autor i ime projekta");
     }
 
-//    public MapView getSelectedTab(){
-//    }
-
     @Override
     public void update(Object object) {
         if(project == null){
@@ -111,9 +108,6 @@ public class ProjectView extends JPanel implements Subscriber {
         this.stateManager.setZoomState();
     }
     public void startSelectState() {this.stateManager.setSelectionState();}
-//    public void startEditState() {
-//        this.stateManager.setEditState();
-//    }
 
     public void misKliknut(int x, int y, MapView m) throws IOException {
         this.stateManager.getState().misKliknut(x, y, m);

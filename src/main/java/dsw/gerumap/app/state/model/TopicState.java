@@ -19,12 +19,10 @@ public class TopicState extends State {
     public void misKliknut(int x, int y, MapView map) throws IOException {
         String name = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input your name");
         if(name.isEmpty())
-            name = "Pojam" + map.getMindMap().getChildren().size();
+            name = "Pojam" + map.getMindMap().getChildren().size(); // dodati metode da izbroji koliko ima topic a koliko link
 
         Topic topic = new Topic(name, map.getMindMap(), Color.BLACK, 2, x, y);
         topic.addSubs(map);
-//        Ellipse2D shape = new Ellipse2D.Float(topic.getX(), topic.getY(), topic.getW(), topic.getL());
-//        TopicPainter tp = new TopicPainter(topic, shape);
         TopicPainter tp = new TopicPainter(topic);
 
         map.getPainters().add(tp);

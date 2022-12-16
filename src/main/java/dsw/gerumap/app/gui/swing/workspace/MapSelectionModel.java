@@ -20,7 +20,7 @@ public class MapSelectionModel implements Publisher {
     private Color oldColor;
 
     public MapSelectionModel() {
-        selected = new ArrayList<>();
+        this.selected = new ArrayList<>();
         this.subscribers = new ArrayList<>();
     }
 

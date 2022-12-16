@@ -29,7 +29,7 @@ public abstract  class MapNode implements Publisher {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj != null && obj instanceof MapNode) {
+        if (obj instanceof MapNode) {
             MapNode otherObj = (MapNode) obj;
             return this.getName().equals(otherObj.getName());
         }

@@ -1,6 +1,7 @@
 package dsw.gerumap.app.state;
 
 import dsw.gerumap.app.state.model.*;
+import dsw.gerumap.app.state.view.EditView;
 
 public class StateManager {
 
@@ -11,18 +12,6 @@ public class StateManager {
     private DeleteState deleteState;
     private MoveState moveState;
     private ZoomState zoomState;
-    private EditState editState;
-
-    /*public StateManager(State state, AddConnectionState addConnectionState, AddState addState, DeleteState deleteState, MoveState moveState, ZoomState zoomState, SelectState selectState) {
-        this.state = state;
-        this.addConnectionState = addConnectionState;
-        this.addState = addState;
-        this.deleteState = deleteState;
-        this.moveState = moveState;
-        this.zoomState = zoomState;
-        this.selectState = selectState;
-
-    }*/
 
     public StateManager () {
          initialise();
@@ -35,7 +24,6 @@ public class StateManager {
         moveState = new MoveState();
         zoomState = new ZoomState();
         selectState = new SelectState();
-//        editState = new EditState();
         state = selectState;
     }
 
@@ -46,26 +34,18 @@ public class StateManager {
     public void setTopicState() {
         state = topicState;
     }
-
     public void setConnectionState() {
         state = connectionState;
     }
-
     public void setDeleteState() {
         state = deleteState;
     }
-
     public void setMoveState() {
         state = moveState;
     }
-
-//    public void setEditState() {
-//        state = editState;
-//    }
     public void setSelectionState() {
         state = selectState;
     }
-
     public void setZoomState() {
         state= zoomState;
     }

@@ -37,7 +37,9 @@ public class ConnectionState extends State {
             if(p.elementAt(pos1)){
                 t1 = (Topic) p.getElement();
                 t2 = (Topic) p.getElement();
-                connection = new Connection(t1, t2);
+
+                connection = new Connection("Link + " + map.getMindMap().getChildren().size(), t1.getParent(), Color.BLACK, 2, t1, t2);
+
                 connectionPainter = new ConnectionPainter(pos1, pos2,  connection);
                 nova.add(connectionPainter);
             }

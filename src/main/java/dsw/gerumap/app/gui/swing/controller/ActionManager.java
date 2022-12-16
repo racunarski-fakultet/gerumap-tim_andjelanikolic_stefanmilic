@@ -21,7 +21,7 @@ public class ActionManager {
     private MoveStateAction moveStateController;
     private SelectStateAction selectStateContoller;
     private ZoomStateAction zoomStateController;
-    private EditStateAction editStateAction;
+    private EditAction editAction;
 
 
 
@@ -41,7 +41,7 @@ public class ActionManager {
         selectStateContoller = new SelectStateAction();
         zoomStateController = new ZoomStateAction();
         deleteStateAction = new DeleteStateAction();
-        editStateAction = new EditStateAction();
+        editAction = new EditAction();
     }
 
 

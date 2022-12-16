@@ -27,22 +27,21 @@ public class DeleteState extends State {
                 if(p.getElement() instanceof Topic){
                     Topic t = (Topic) p.getElement();
                     for(ConnectionPainter painter : t.getConnectionList()){
-//                        map.getMindMap().removeChild(painter.getElement());
                         nova.add(painter);
                     }
-                    map.getMindMap().removeChild(p.getElement());
                     nova.add(p);
                     System.out.println("topic");
                 }
-                else if(p.getElement() instanceof Connection){
-                    System.out.println("veza");
-                    map.getMindMap().removeChild(p.getElement());
-                    nova.add(p);
-                }
+//                else{
+//                    System.out.println("veza");
+//                    map.getMindMap().removeChild(p.getElement());
+//                    nova.add(p);
+//                }
             }
         }
 
         for(ElementPainter n : nova){
+            map.getMindMap().removeChild(n.getElement());
             map.getPainters().remove(n);
         }
     }

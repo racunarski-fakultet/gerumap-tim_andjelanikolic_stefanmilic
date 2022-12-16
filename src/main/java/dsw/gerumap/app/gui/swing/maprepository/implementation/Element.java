@@ -11,6 +11,7 @@ import java.io.IOException;
 
 @NoArgsConstructor
 @Getter
+@Setter
 public class Element extends MapNode {
     private Color color;
     private int stroke;
@@ -30,4 +31,8 @@ public class Element extends MapNode {
         notify(this);
     }
 
+    public void setStroke(int stroke) throws IOException {
+        this.stroke = stroke;
+        notify(this);
+    }
 }
