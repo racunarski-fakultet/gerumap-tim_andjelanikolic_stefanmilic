@@ -33,10 +33,10 @@ public class MultiSelectionPainter extends ElementPainter{
     @Override
     public void draw(Graphics g) {
         Graphics2D g2d = (Graphics2D)g;
-        g2d.setColor(Color.RED);
+        g2d.setColor(Color.GRAY);
 
         shape = new Rectangle2D.Float(x, y, w, l);
-        Stroke dashed = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
+        Stroke dashed = new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{9}, 0);
 
         g2d.setStroke(dashed);
         g2d.draw(shape);

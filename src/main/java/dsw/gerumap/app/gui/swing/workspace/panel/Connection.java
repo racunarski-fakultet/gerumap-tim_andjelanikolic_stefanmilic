@@ -21,4 +21,13 @@ public class Connection extends Element {
         this.secondTopic = secondTopic;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Connection) {
+            Connection otherObj = (Connection) obj;
+            return ((this.getFirstTopic().equals(otherObj.getFirstTopic()) && this.getSecondTopic().equals(otherObj.getSecondTopic())) ||
+                    (this.getFirstTopic().equals(otherObj.getSecondTopic()) && this.getSecondTopic().equals(otherObj.getFirstTopic())));
+        }
+        return false;
+    }
 }

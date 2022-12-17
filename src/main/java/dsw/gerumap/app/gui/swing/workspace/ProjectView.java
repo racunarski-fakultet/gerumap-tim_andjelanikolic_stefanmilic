@@ -9,6 +9,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,19 +18,20 @@ import java.util.List;
 
 @Getter
 @Setter
-public class ProjectView extends JPanel implements Subscriber {
+public class ProjectView extends JPanel implements Subscriber, ChangeListener {
     private JTabbedPane tabbedPane;
     private Project project;
     private List<MapView> tabs;
     private JLabel lblNameAndAuthor;
     private StateManager stateManager;
+    private int selectedIndex;
 
     public ProjectView(){
         initialise();
     }
 
     private void initialise(){
-        tabs = new ArrayList<MapView>();
+        tabs = new ArrayList<>();
         lblNameAndAuthor = new JLabel("Autor i ime projekta");
         tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.WRAP_TAB_LAYOUT);
         stateManager = new StateManager();
@@ -73,8 +76,10 @@ public class ProjectView extends JPanel implements Subscriber {
         for (MapView tabovi : tabs) {
             tabbedPane.addTab(tabovi.getMindMap().getName(), tabovi);
         }
+
         updateLabel();
         tabbedPane.setVisible(true);
+        tabbedPane.addChangeListener(this);
     }
 
     public void clearTab(){
@@ -114,5 +119,11 @@ public class ProjectView extends JPanel implements Subscriber {
 
     public void misPovucen(int x, int y, MapView m) throws IOException {
         this.stateManager.getState().misPovucen(x, y, m);
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent e) {
+        selectedIndex = tabbedPane.getSelectedIndex();
+        System.out.println(selectedIndex);
     }
 }

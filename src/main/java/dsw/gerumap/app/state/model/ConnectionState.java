@@ -55,17 +55,34 @@ public class ConnectionState extends State {
         pos2.setLocation(x, y);
 
         for(ElementPainter p : map.getPainters()){
-            if(p.elementAt(pos2)){
+            if(p.elementAt(pos2) && p.getElement() instanceof Topic){
                 connectionPainter.setPos2(pos2);
 
                 t2 = (Topic) p.getElement();
                 connection.setSecondTopic(t2);
-
-                t1.getConnectionList().add(connectionPainter);
-                t2.getConnectionList().add(connectionPainter);
-                map.getMindMap().addChild(connection);
             }
         }
+
+        for(ConnectionPainter painter : t1.getConnectionList()){
+            Connection c1 = (Connection) painter.getElement();
+            if(c1.equals(connection)){
+                map.getPainters().remove(connectionPainter);
+                map.update(this);
+                return;
+            }
+        }
+
+        for(ConnectionPainter painter : t2.getConnectionList()){
+            Connection c1 = (Connection) painter.getElement();
+            if(c1.equals(connection)){
+                map.getPainters().remove(connectionPainter);
+                map.update(this);
+                return;
+            }
+        }
+        t1.getConnectionList().add(connectionPainter);
+        t2.getConnectionList().add(connectionPainter);
+        map.getMindMap().addChild(connection);
     }
 
     @Override

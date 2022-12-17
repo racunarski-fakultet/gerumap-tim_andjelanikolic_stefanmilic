@@ -1,5 +1,6 @@
 package dsw.gerumap.app.state.view;
 
+import com.sun.tools.javac.Main;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.workspace.MapView;
@@ -44,15 +45,15 @@ public class EditView extends JDialog{
         btnColor.addActionListener(e -> {
             Color newColor = JColorChooser.showDialog(null, "Choose a color", Color.BLACK);
 
-            for(MapView map : MainFrame.getInstance().getProjectView().getTabs()){
-                for(Element element : map.getSelectionModel().getSelected()){
-                    try {
-                        element.setColor(newColor);
-                        map.getSelectionModel().setOldColor(newColor);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
+            MapView map = MainFrame.getInstance().getProjectView().getTabs().get(MainFrame.getInstance().getProjectView().getSelectedIndex());
+
+            for(Element element : map.getSelectionModel().getSelected()){
+                try {
+                    element.setColor(newColor);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
+                map.getSelectionModel().setOldColor(newColor);
             }
             this.setVisible(false);
         });
@@ -67,14 +68,13 @@ public class EditView extends JDialog{
                 return;
             }
 //            int stroke = Integer.parseInt(JOptionPane.showInputDialog(MainFrame.getInstance(), "Input new stroke"));
+            MapView map = MainFrame.getInstance().getProjectView().getTabs().get(MainFrame.getInstance().getProjectView().getSelectedIndex());
 
-            for(MapView map : MainFrame.getInstance().getProjectView().getTabs()) {
-                for (Element element : map.getSelectionModel().getSelected()) {
-                    try {
-                        element.setStroke(stroke);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
+            for (Element element : map.getSelectionModel().getSelected()) {
+                try {
+                    element.setStroke(stroke);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
             }
             this.setVisible(false);
@@ -82,16 +82,16 @@ public class EditView extends JDialog{
 
         btnName.addActionListener(e -> {
             String name = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input text");
+            MapView map = MainFrame.getInstance().getProjectView().getTabs().get(MainFrame.getInstance().getProjectView().getSelectedIndex());
 
-            for(MapView map : MainFrame.getInstance().getProjectView().getTabs()) {
-                for (Element element : map.getSelectionModel().getSelected()) {
-                    try {
-                        element.setName(name);
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
+            for (Element element : map.getSelectionModel().getSelected()) {
+                try {
+                    element.setName(name);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
             }
+
             this.setVisible(false);
         });
 

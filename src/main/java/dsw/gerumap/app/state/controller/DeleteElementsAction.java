@@ -25,30 +25,30 @@ public class DeleteElementsAction extends AbstractGeRuMapAction {
     public void actionPerformed(ActionEvent e) {
         List<ElementPainter> nova = new ArrayList<>();
 //        MainFrame.getInstance().getProjectView().startDeleteState();
-        for(MapView map : MainFrame.getInstance().getProjectView().getTabs()){ //kako naci selektovanu mapu je problem
-            for(ElementPainter p : map.getPainters()){
-                for(Element el : map.getSelectionModel().getSelected()){
-                    if(p.getElement().equals(el)){
-                        if(p.getElement() instanceof Topic) {
-                            Topic t = (Topic) p.getElement();
-                            for (ConnectionPainter painter : t.getConnectionList()) {
-                                nova.add(painter);
-                            }
+
+        MapView map = MainFrame.getInstance().getProjectView().getTabs().get(MainFrame.getInstance().getProjectView().getSelectedIndex());
+        for(ElementPainter p : map.getPainters()){
+            for(Element el : map.getSelectionModel().getSelected()){
+                if(p.getElement().equals(el)){
+                    if(p.getElement() instanceof Topic) {
+                        Topic t = (Topic) p.getElement();
+                        for (ConnectionPainter painter : t.getConnectionList()) {
+                            nova.add(painter);
                         }
-                        nova.add(p);
                     }
+                    nova.add(p);
                 }
-            }
-            for(ElementPainter n : nova){
-                try {
-                    map.getMindMap().removeChild(n.getElement());
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                map.getSelectionModel().getSelected().remove(n.getElement());
-                map.getPainters().remove(n);
             }
         }
-
+        for(ElementPainter n : nova){
+            try {
+                map.getMindMap().removeChild(n.getElement());
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            map.getSelectionModel().getSelected().remove(n.getElement());
+            map.getPainters().remove(n);
+        }
     }
+
 }

@@ -24,14 +24,11 @@ public class MapView extends JPanel implements Subscriber{
     private int index;
     private List<ElementPainter> painters;
     private MapSelectionModel selectionModel;
-    private Point pos1 = null;
-    private Point pos2 = null;
     private JScrollBar vertical;
     private JScrollBar horizontal;
 
     public MapView(MindMap map, int index) {
         setLayout(new BorderLayout());
-        setBackground(Color.LIGHT_GRAY);
 
         horizontal = new JScrollBar(0);
         vertical = new JScrollBar(1);
@@ -83,24 +80,14 @@ public class MapView extends JPanel implements Subscriber{
         System.out.println(this.mindMap.getSubscribers().toString());
     }
 
-    public void setPos1(Point pos1) {
-        this.pos1 = pos1;
-        update(pos1);
-    }
-
-    public void setPos2(Point pos2) {
-        this.pos2 = pos2;
-        update(pos2);
-    }
-
-    public Element findElement(int x, int y){
-        for(ElementPainter p : getPainters()){
-            Topic t = (Topic) p.getElement();
-            if(t.getX() == x && t.getY() == y)
-                return p.getElement();
-        }
-        return null;
-    }
+//    public Element findElement(int x, int y){
+//        for(ElementPainter p : getPainters()){
+//            Topic t = (Topic) p.getElement();
+//            if(t.getX() == x && t.getY() == y)
+//                return p.getElement();
+//        }
+//        return null;
+//    }
 
     @Override
     public String toString() {

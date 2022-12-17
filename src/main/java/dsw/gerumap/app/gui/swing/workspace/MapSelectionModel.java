@@ -67,6 +67,4 @@ public class MapSelectionModel implements Publisher {
             sub.update(notification);
         }
     }
-
-
 }

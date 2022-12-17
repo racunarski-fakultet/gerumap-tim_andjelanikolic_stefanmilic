@@ -18,7 +18,6 @@ import java.util.List;
 public class SelectState extends State {
     private MultiSelectionPainter msp = new MultiSelectionPainter();
     private int x1, y1;
-    private int flag;
     private List<ElementPainter> nova = new ArrayList<>();
 
     @Override
@@ -33,17 +32,11 @@ public class SelectState extends State {
             Point pos = new Point(x, y);
             if(p.elementAt(pos)){
                 map.getSelectionModel().addElement(p.getElement());
-                System.out.println("selektuj");
             }
             else{
-//                msp = new MultiSelectionPainter(x, y, x, y);
-                msp.setX(x);
-                msp.setY(y);
-
                 x1 = x;
                 y1 = y;
 
-                System.out.println("klik");
                 nova.add(msp);
             }
         }
@@ -55,10 +48,26 @@ public class SelectState extends State {
     }
 
     @Override
-    public void misOtpusten(int x, int y, MapView map) throws IOException {
+    public void misOtpusten(int x, int y, MapView map) {
+
+        for (ElementPainter n : nova) {
+            map.getPainters().remove(n);
+            msp = new MultiSelectionPainter();
+        }
+        map.update(this);
+    }
+
+    @Override
+    public void misPovucen(int x, int y, MapView map) throws IOException {
+        if(!(map.getSelectionModel().getSelected().isEmpty())) {
+            map.getSelectionModel().clearList();
+        }
+
+        msp.updatePoints(x1, y1, x, y);
+        map.update(msp);
 
         for(ElementPainter p : map.getPainters()){
-            if(p == msp || p instanceof MultiSelectionPainter)
+            if(p instanceof MultiSelectionPainter)
                 continue;
 
             if(msp.getShape() == null){
@@ -70,40 +79,5 @@ public class SelectState extends State {
                 map.getSelectionModel().addElement(p.getElement());
             }
         }
-
-        for (ElementPainter n : nova) {
-            map.getPainters().remove(n);
-            msp = new MultiSelectionPainter();
-        }
-        map.update(this);
     }
-
-    @Override
-    public void misPovucen(int x, int y, MapView map){
-
-        msp.updatePoints(x1, y1, x, y);
-        map.update(msp);
-        System.out.println("pravivuce");
-
-
-//        for(ElementPainter p : map.getPainters()){
-//            Topic t = (Topic) p.getElement();
-//
-////            if(flag == 1){
-//                if(map.getSelectionModel().getSelected().contains(t)) {
-//                    t.setX(x);
-//                    t.setY(y);
-//                }else{
-//                    msp.updatePoints(x1, y1, x, y);
-//                    map.update(msp);
-//                    System.out.println("pravi2");
-//                }
-////            }
-////            else if(flag == 0){
-//
-////            }
-//        }
-    }
-
-
 }
