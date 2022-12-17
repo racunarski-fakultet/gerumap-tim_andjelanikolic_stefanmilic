@@ -1,1 +1,4 @@
-[ERROR] [Sat Dec 17 15:04:24 CET 2022] Cannot add child.
+[ERROR] [Sat Dec 17 21:11:00 CET 2022] You must open mind map
+[ERROR] [Sat Dec 17 21:11:02 CET 2022] Node not selected.
+[ERROR] [Sat Dec 17 21:11:07 CET 2022] You must select elements
+[ERROR] [Sat Dec 17 21:11:13 CET 2022] You must select elements

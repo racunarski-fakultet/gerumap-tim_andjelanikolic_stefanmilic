@@ -1,7 +1,9 @@
 package dsw.gerumap.app.state.model;
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
+import dsw.gerumap.app.gui.swing.message.EventType;
 import dsw.gerumap.app.gui.swing.workspace.MapView;
 import dsw.gerumap.app.gui.swing.workspace.panel.Connection;
 import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
@@ -27,10 +29,12 @@ public class ConnectionState extends State {
     private Point pos2;
 
     @Override
-    public void misKliknut(int x, int y, MapView map) {
+    public void misKliknut(int x, int y, MapView map){
 
         pos1 = new Point(x, y);
         pos2 = new Point(x, y);
+        t1 = null;
+        t2 = null;
         nova.clear();
 
         for(ElementPainter p : map.getPainters()){
@@ -52,16 +56,25 @@ public class ConnectionState extends State {
 
     @Override
     public void misOtpusten(int x, int y, MapView map) throws IOException {
+        if(t1 == null || t2 == null){
+            return;
+        }
         pos2.setLocation(x, y);
 
         for(ElementPainter p : map.getPainters()){
             if(p.elementAt(pos2) && p.getElement() instanceof Topic){
                 connectionPainter.setPos2(pos2);
-
                 t2 = (Topic) p.getElement();
                 connection.setSecondTopic(t2);
+                break;
             }
         }
+
+
+        if(t1.equals(t2)){
+            map.getPainters().remove(connectionPainter);
+        }
+
 
         for(ConnectionPainter painter : t1.getConnectionList()){
             Connection c1 = (Connection) painter.getElement();
@@ -80,6 +93,7 @@ public class ConnectionState extends State {
                 return;
             }
         }
+
         t1.getConnectionList().add(connectionPainter);
         t2.getConnectionList().add(connectionPainter);
         map.getMindMap().addChild(connection);
