@@ -12,6 +12,7 @@ import lombok.Setter;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,10 @@ public class MapView extends JPanel implements Subscriber{
     private MapSelectionModel selectionModel;
     private JScrollBar vertical;
     private JScrollBar horizontal;
+    double translateX = 0;
+    double translateY = 0;
+    double scalingf = 1;
+    private AffineTransform transformation = new AffineTransform();
 
     public MapView(MindMap map, int index) {
         setLayout(new BorderLayout());
@@ -72,6 +77,9 @@ public class MapView extends JPanel implements Subscriber{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D)g;
+
+        g2d.setTransform(transformation);
+
 //        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
         for(ElementPainter p : painters){
             p.draw(g2d);
@@ -88,6 +96,24 @@ public class MapView extends JPanel implements Subscriber{
 //        }
 //        return null;
 //    }
+
+    private void setUpTransformation(){
+        transformation.setToScale(scalingf,scalingf);
+        transformation.translate(translateX,translateY);
+        repaint();
+    }
+
+    public void zoomIn(){
+        scalingf *= 1.2;
+        if(scalingf > 3) scalingf = 3;
+        setUpTransformation();
+
+    }
+    public void zoomOut(){
+        scalingf *= 0.8;
+        if(scalingf < 0.4) scalingf = 0.4;
+        setUpTransformation();
+    }
 
     @Override
     public String toString() {

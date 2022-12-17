@@ -20,8 +20,10 @@ public class ActionManager {
     private MoveStateAction moveStateAction;
     private SelectStateAction selectStateAction;
     private DeleteElementsAction deleteElementsAction;
-    private ZoomAction zoomAction;
+    private ZoomInAction zoomInAction;
+    private ZoomOutAction zoomOutAction;
     private EditAction editAction;
+
 
 
 
@@ -39,7 +41,8 @@ public class ActionManager {
         topicStateAction = new TopicStateAction();
         moveStateAction = new MoveStateAction();
         selectStateAction = new SelectStateAction();
-        zoomAction = new ZoomAction();
+        zoomInAction = new ZoomInAction();
+        zoomOutAction = new ZoomOutAction();
         deleteElementsAction = new DeleteElementsAction();
         editAction = new EditAction();
     }

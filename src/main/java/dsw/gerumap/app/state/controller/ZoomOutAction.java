@@ -5,16 +5,17 @@ import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import java.awt.event.ActionEvent;
 
-public class ZoomAction extends AbstractGeRuMapAction {
+public class ZoomOutAction extends AbstractGeRuMapAction {
 
-    public ZoomAction() {
+    public ZoomOutAction() {
         putValue(SMALL_ICON, loadIcon("/images/zoom.png"));
-        putValue(NAME, "Zoom");
-        putValue(SHORT_DESCRIPTION, "Zoom");
+        putValue(NAME, "Zoom out");
+        putValue(SHORT_DESCRIPTION, "Zoom out");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        MainFrame.getInstance().getProjectView().getTabs().get(MainFrame.getInstance().getProjectView().getSelectedIndex()).zoomOut();
     }
+
 }

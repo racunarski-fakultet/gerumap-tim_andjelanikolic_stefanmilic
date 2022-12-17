@@ -34,7 +34,7 @@ public class TopicPainter extends ElementPainter{
 
         if (element instanceof Topic){
             Topic el = (Topic)element;
-            g.drawString(el.getName(), (int)el.getX(),
+            g.drawString(el.getName(), (int)el.getX() - el.toString().length()/2,
                     (int)el.getY());
         }
     }
