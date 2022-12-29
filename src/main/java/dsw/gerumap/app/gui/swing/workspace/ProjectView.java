@@ -94,7 +94,6 @@ public class ProjectView extends JPanel implements Subscriber, ChangeListener {
             return;
         }
         updateLabel();
-        System.out.println("update pv");
     }
 
     public void startTopicState() {
@@ -110,7 +109,6 @@ public class ProjectView extends JPanel implements Subscriber, ChangeListener {
 
     public void misKliknut(int x, int y, MapView m) throws IOException {
         this.stateManager.getState().misKliknut(x, y, m);
-        System.out.println("misklikunt pv");
     }
 
     public void misOtpusten(int x, int y, MapView m) throws IOException {
@@ -124,6 +122,5 @@ public class ProjectView extends JPanel implements Subscriber, ChangeListener {
     @Override
     public void stateChanged(ChangeEvent e) {
         selectedIndex = tabbedPane.getSelectedIndex();
-        System.out.println(selectedIndex);
     }
 }

@@ -1,7 +1,9 @@
 package dsw.gerumap.app.state.view;
 
 import com.sun.tools.javac.Main;
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
+import dsw.gerumap.app.gui.swing.message.EventType;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.workspace.MapView;
 
@@ -27,7 +29,7 @@ public class EditView extends JDialog{
         setLocationRelativeTo(owner);
     }
 
-    private void initialise(){
+    private void initialise() throws IOException {
         JPanel mainPanel = new JPanel(new GridLayout(2, 2));
 
         mainPanel.setBorder(new TitledBorder(new EtchedBorder(), "Edit"));
@@ -60,14 +62,21 @@ public class EditView extends JDialog{
 
         btnStroke.addActionListener(e -> {
             String strStroke = JOptionPane.showInputDialog(MainFrame.getInstance(), "Input new stroke");
+            if(strStroke == null){
+                return;
+            }
             int stroke = 0;
             try{
                 stroke = Integer.parseInt(strStroke);
             }catch (NumberFormatException ex){
-                JOptionPane.showMessageDialog(null, "You must only enter an integer","Error", JOptionPane.WARNING_MESSAGE);
+                try {
+                    ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.ENTER_INTEGER);
+                } catch (IOException exc) {
+                    throw new RuntimeException(exc);
+                }
                 return;
             }
-//            int stroke = Integer.parseInt(JOptionPane.showInputDialog(MainFrame.getInstance(), "Input new stroke"));
+
             MapView map = MainFrame.getInstance().getProjectView().getTabs().get(MainFrame.getInstance().getProjectView().getSelectedIndex());
 
             for (Element element : map.getSelectionModel().getSelected()) {
@@ -98,6 +107,7 @@ public class EditView extends JDialog{
         btnExit.addActionListener(e -> {
             this.setVisible(false);
         });
+
 
         add(mainPanel);
     }

@@ -16,13 +16,6 @@ public class MultiSelectionPainter extends ElementPainter{
     private int x, y, w, l;
     private Shape shape;
 
-    public MultiSelectionPainter(int x, int y, int w, int l) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.l = l;
-    }
-
     public void updatePoints(int x, int y, int x2, int y2){
         this.x = Math.min(x, x2);
         this.y = Math.min(y, y2);

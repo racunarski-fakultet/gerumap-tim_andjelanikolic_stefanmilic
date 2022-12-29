@@ -53,8 +53,6 @@ public class MapView extends JPanel implements Subscriber{
     public void setMap(MindMap mindMap) {
         this.mindMap = mindMap;
         this.updateTabName();
-//        this.mindMap.addSubs(this);
-//        System.out.println(this.mindMap.getSubscribers().toString());
     }
 
     public void updateTabName() {
@@ -70,7 +68,6 @@ public class MapView extends JPanel implements Subscriber{
         }
 
         repaint();
-        System.out.println("update");
     }
 
     @Override
@@ -80,22 +77,10 @@ public class MapView extends JPanel implements Subscriber{
 
         g2d.setTransform(transformation);
 
-//        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.8f));
         for(ElementPainter p : painters){
             p.draw(g2d);
         }
-        System.out.println("paint");
-        System.out.println(this.mindMap.getSubscribers().toString());
     }
-
-//    public Element findElement(int x, int y){
-//        for(ElementPainter p : getPainters()){
-//            Topic t = (Topic) p.getElement();
-//            if(t.getX() == x && t.getY() == y)
-//                return p.getElement();
-//        }
-//        return null;
-//    }
 
     private void setUpTransformation(){
         transformation.setToScale(scalingf,scalingf);
@@ -104,14 +89,14 @@ public class MapView extends JPanel implements Subscriber{
     }
 
     public void zoomIn(){
-        scalingf *= 1.2;
-        if(scalingf > 3) scalingf = 3;
+        scalingf *= 1.6;
+        if(scalingf > 4.096) scalingf = 4.096;
         setUpTransformation();
 
     }
     public void zoomOut(){
-        scalingf *= 0.8;
-        if(scalingf < 0.4) scalingf = 0.4;
+        scalingf *= 0.625;
+        if(scalingf < 0.390625) scalingf = 0.390625;
         setUpTransformation();
     }
 

@@ -1,6 +1,9 @@
 package dsw.gerumap.app.state.controller;
 
+import com.sun.tools.javac.Main;
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.AbstractGeRuMapAction;
+import dsw.gerumap.app.gui.swing.message.EventType;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.state.view.EditView;
 
@@ -17,13 +20,29 @@ public class EditAction extends AbstractGeRuMapAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        MainFrame.getInstance().getProjectView().startEditState();
         EditView edit;
-        try {
-            edit = new EditView(MainFrame.getInstance(), "Edit", false);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+
+        if (!MainFrame.getInstance().getProjectView().getTabs().isEmpty()) {
+            if (MainFrame.getInstance().getProjectView().getTabs().get(MainFrame.getInstance().getProjectView().getSelectedIndex()).getSelectionModel().getSelected().isEmpty()) {
+                try {
+                    ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.SELECT_ELEMENTS);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            } else {
+                try {
+                    edit = new EditView(MainFrame.getInstance(), "Edit", false);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                edit.setVisible(true);
+            }
+        }else{
+            try {
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.OPEN_MIND_MAP);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
-        edit.setVisible(true);
     }
 }

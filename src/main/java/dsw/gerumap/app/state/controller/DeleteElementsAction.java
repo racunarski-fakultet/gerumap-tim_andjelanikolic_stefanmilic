@@ -1,7 +1,9 @@
 package dsw.gerumap.app.state.controller;
 
+import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.controller.AbstractGeRuMapAction;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
+import dsw.gerumap.app.gui.swing.message.EventType;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.workspace.MapView;
 import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
@@ -23,31 +25,38 @@ public class DeleteElementsAction extends AbstractGeRuMapAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        List<ElementPainter> nova = new ArrayList<>();
-//        MainFrame.getInstance().getProjectView().startDeleteState();
-
-        MapView map = MainFrame.getInstance().getProjectView().getTabs().get(MainFrame.getInstance().getProjectView().getSelectedIndex());
-        for(ElementPainter p : map.getPainters()){
-            for(Element el : map.getSelectionModel().getSelected()){
-                if(p.getElement().equals(el)){
-                    if(p.getElement() instanceof Topic) {
-                        Topic t = (Topic) p.getElement();
-                        for (ConnectionPainter painter : t.getConnectionList()) {
-                            nova.add(painter);
-                        }
-                    }
-                    nova.add(p);
-                }
-            }
-        }
-        for(ElementPainter n : nova){
+        if (MainFrame.getInstance().getProjectView().getTabs().isEmpty()) {
             try {
-                map.getMindMap().removeChild(n.getElement());
+                ApplicationFramework.getInstance().getMessageGenerator().generateMessage(EventType.OPEN_MIND_MAP);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            map.getSelectionModel().getSelected().remove(n.getElement());
-            map.getPainters().remove(n);
+        } else {
+            List<ElementPainter> nova = new ArrayList<>();
+
+            MapView map = MainFrame.getInstance().getProjectView().getTabs().get(MainFrame.getInstance().getProjectView().getSelectedIndex());
+            for (ElementPainter p : map.getPainters()) {
+                for (Element el : map.getSelectionModel().getSelected()) {
+                    if (p.getElement().equals(el)) {
+                        if (p.getElement() instanceof Topic) {
+                            Topic t = (Topic) p.getElement();
+                            for (ConnectionPainter painter : t.getConnectionList()) {
+                                nova.add(painter);
+                            }
+                        }
+                        nova.add(p);
+                    }
+                }
+            }
+            for (ElementPainter n : nova) {
+                try {
+                    map.getMindMap().removeChild(n.getElement());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                map.getSelectionModel().getSelected().remove(n.getElement());
+                map.getPainters().remove(n);
+            }
         }
     }
 

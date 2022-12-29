@@ -19,7 +19,6 @@ public class TopicPainter extends ElementPainter{
     public TopicPainter(Element element) {
         this.element = element;
         topic = (Topic)this.element;
-        System.out.println("ovo je " + topic);
     }
 
     @Override
@@ -34,7 +33,7 @@ public class TopicPainter extends ElementPainter{
 
         if (element instanceof Topic){
             Topic el = (Topic)element;
-            g.drawString(el.getName(), (int)el.getX() - el.toString().length()/2,
+            g.drawString(el.getName(), (int)el.getX()-20,
                     (int)el.getY());
         }
     }

@@ -43,6 +43,14 @@ public class MessageGeneratorImplemetation implements MessageGenerator {
                 return new Message("Please set author for this project", EventType.ERROR);
             case BLANK_NAME:
                 return new Message("Name cannot be blank", EventType.ERROR);
+            case MUST_INSERT_TEXT:
+                return new Message("Must insert text", EventType.ERROR);
+            case ENTER_INTEGER:
+                return new Message("You must only enter an integer", EventType.ERROR);
+            case SELECT_ELEMENTS:
+                return new Message("You must select elements", EventType.ERROR);
+            case OPEN_MIND_MAP:
+                return new Message("You must open mind map", EventType.ERROR);
             default:
                 return null;
         }

@@ -19,19 +19,24 @@ public class MouseController extends MouseAdapter implements Subscriber{
     @Override
     public void mousePressed(MouseEvent e) {
         Point position = e.getPoint();
+        double scaling = mapView.getScalingf();
+        int x = (int) (position.x / scaling);
+        int y = (int) (position.y / scaling);
         try {
-            MainFrame.getInstance().getProjectView().misKliknut(position.x, position.y, mapView);
+            MainFrame.getInstance().getProjectView().misKliknut(x, y, mapView);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-        System.out.println("mousecontroler");
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         Point position = e.getPoint();
+        double scaling = mapView.getScalingf();
+        int x = (int) (position.x / scaling);
+        int y = (int) (position.y / scaling);
         try {
-            MainFrame.getInstance().getProjectView().misOtpusten(position.x, position.y, mapView);
+            MainFrame.getInstance().getProjectView().misOtpusten(x, y, mapView);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
@@ -40,8 +45,11 @@ public class MouseController extends MouseAdapter implements Subscriber{
     @Override
     public void mouseDragged(MouseEvent e) {
         Point position = e.getPoint();
+        double scaling = mapView.getScalingf();
+        int x = (int) (position.x / scaling);
+        int y = (int) (position.y / scaling);
         try {
-            MainFrame.getInstance().getProjectView().misPovucen(position.x, position.y, mapView);
+            MainFrame.getInstance().getProjectView().misPovucen(x, y, mapView);
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
