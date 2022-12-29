@@ -12,9 +12,8 @@ import java.io.File;
 public class SaveAction extends AbstractGeRuMapAction{
 
     public SaveAction() {
-        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
-                KeyEvent.VK_S, ActionEvent.CTRL_MASK));
-        //putValue(SMALL_ICON, loadIcon("/images/plus.png"));
+        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+        putValue(SMALL_ICON, loadIcon("/images/save.png"));
         putValue(NAME, "Save action");
         putValue(SHORT_DESCRIPTION, "Save action");
     }
@@ -41,7 +40,6 @@ public class SaveAction extends AbstractGeRuMapAction{
             }
 
         }
-
 
         ApplicationFramework.getInstance().getSerializer().saveProject(project);
 

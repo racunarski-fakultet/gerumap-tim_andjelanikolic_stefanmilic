@@ -5,12 +5,12 @@ import dsw.gerumap.app.observer.Subscriber;
 
 public interface Gui extends Subscriber {
 
-    public void start();
+    void start();
 
-    public void disableUndoAction();
-    public void disableRedoAction();
-    public void enableUndoAction();
-    public void enableRedoAction();
+    void disableUndoAction();
+    void disableRedoAction();
+    void enableUndoAction();
+    void enableRedoAction();
 
     CommandManager getCommandManager();
 

@@ -1,16 +1,11 @@
 package dsw.gerumap.app.state.model;
 
-import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
-import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.workspace.MapView;
-import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
 import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPainter;
 import dsw.gerumap.app.gui.swing.workspace.panel.painters.MultiSelectionPainter;
 import dsw.gerumap.app.state.State;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

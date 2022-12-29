@@ -10,10 +10,10 @@ import java.io.IOException;
 public interface MapTree {
 
     MapTreeView generateTree(ProjectExplorer projectExplorer);
-    void addChild(MapTreeItem parent) throws IOException;
     MapTreeItem getSelectedNode();
     MapTreeView getTreeView();
-    void loadProject(Project node) throws IOException;
+    void addChild(MapTreeItem parent) throws IOException;
     void deleteChild (MapTreeItem chlild) throws IOException;
+    void loadProject(Project node) throws IOException;
 
 }

@@ -10,8 +10,7 @@ import java.io.IOException;
 public class UndoAction extends AbstractGeRuMapAction{
 
     public UndoAction () {
-        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
-                KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
         putValue(SMALL_ICON, loadIcon("/images/undo.png"));
         putValue(NAME, "Undo");
         putValue(SHORT_DESCRIPTION, "Undo");

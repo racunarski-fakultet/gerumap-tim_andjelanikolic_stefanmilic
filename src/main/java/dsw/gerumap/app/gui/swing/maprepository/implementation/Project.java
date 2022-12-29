@@ -15,7 +15,7 @@ public class Project extends MapNodeComposite {
 
     private String filePath;
     private boolean changed = true;
-    String author;
+    private String author;
 
     public Project(String name, MapNode parent) {
         super(name, parent);
@@ -44,8 +44,16 @@ public class Project extends MapNodeComposite {
         }
     }
 
+    @Override
+    public void setName(String name) throws IOException {
+        super.setName(name);
+        notify(this);
+        changed = true;
+    }
+
     public void setAuthor(String author) throws IOException {
         this.author = author;
+        notify(this);
         changed = true;
     }
 }

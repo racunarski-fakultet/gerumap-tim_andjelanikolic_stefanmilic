@@ -10,7 +10,7 @@ import java.io.IOException;
 public class RedoAction extends AbstractGeRuMapAction{
 
     public RedoAction() {
-        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_X, ActionEvent.CTRL_MASK));
+        putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
         putValue(SMALL_ICON, loadIcon("/images/redo.png "));
         putValue(NAME, "Redo");
         putValue(SHORT_DESCRIPTION, "Redo");

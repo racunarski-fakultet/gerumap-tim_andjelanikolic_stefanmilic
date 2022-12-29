@@ -6,7 +6,7 @@ import dsw.gerumap.app.gui.swing.error.ConsoleLogger;
 import dsw.gerumap.app.gui.swing.error.FileLogger;
 import dsw.gerumap.app.gui.swing.maprepository.MapRepositoryImplemetation;
 import dsw.gerumap.app.gui.swing.message.MessageGeneratorImplemetation;
-import dsw.gerumap.app.gui.swing.serializer.JasonSerializer;
+import dsw.gerumap.app.gui.swing.serializer.GsonSerializer;
 
 public class AppCore  {
 
@@ -18,7 +18,7 @@ public class AppCore  {
         MapRepository mapRepository = new MapRepositoryImplemetation();
         Logger consoleLogger = new ConsoleLogger();
         Logger fileLogger = new FileLogger();
-        Serializer serializer = new JasonSerializer();
+        Serializer serializer = new GsonSerializer();
 
         MessageGenerator messageGenerator = new MessageGeneratorImplemetation();
         messageGenerator.addSubs(gui);

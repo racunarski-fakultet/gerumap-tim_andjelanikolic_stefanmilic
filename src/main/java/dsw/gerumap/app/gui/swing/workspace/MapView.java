@@ -52,7 +52,7 @@ public class MapView extends JPanel implements Subscriber{
 
     public void setMap(MindMap mindMap) {
         this.mindMap = mindMap;
-        this.updateTabName();
+        updateTabName();
     }
 
     public void updateTabName() {
@@ -67,6 +67,7 @@ public class MapView extends JPanel implements Subscriber{
             return;
         }
 
+        updateTabName();
         repaint();
     }
 
@@ -99,9 +100,9 @@ public class MapView extends JPanel implements Subscriber{
         if(scalingf < 0.390625) scalingf = 0.390625;
         setUpTransformation();
     }
-
-    @Override
-    public String toString() {
-        return mindMap.getName();
-    }
+//
+//    @Override
+//    public String toString() {
+//        return mindMap.getName();
+//    }
 }

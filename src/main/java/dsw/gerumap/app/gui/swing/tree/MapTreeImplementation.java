@@ -41,9 +41,9 @@ public class MapTreeImplementation implements MapTree{
 
         MapNode child = createChild(parent.getMapNode());
         AbstractCommand command = new AddChildCommand(parent, new MapTreeItem(child));
+
         ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
-        //parent.add(new MapTreeItem(child));
-        //((MapNodeComposite) parent.getMapNode()).addChild(child);
+
         mapTreeView.expandPath(mapTreeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(mapTreeView);
     }

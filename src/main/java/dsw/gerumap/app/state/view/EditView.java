@@ -1,6 +1,5 @@
 package dsw.gerumap.app.state.view;
 
-import com.sun.tools.javac.Main;
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
 import dsw.gerumap.app.gui.swing.message.EventType;

@@ -4,6 +4,7 @@ import dsw.gerumap.app.gui.swing.commands.AbstractCommand;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNodeComposite;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import lombok.Getter;
 
 import java.io.IOException;
 

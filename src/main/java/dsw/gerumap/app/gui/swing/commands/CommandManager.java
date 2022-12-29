@@ -12,7 +12,6 @@ import java.util.List;
 public class CommandManager {
 
     private List<AbstractCommand> commands = new ArrayList<>();
-
     private int currentCommand = 0;
 
     public void addCommand(AbstractCommand command) throws IOException {

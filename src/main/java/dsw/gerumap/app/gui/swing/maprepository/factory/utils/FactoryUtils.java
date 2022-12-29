@@ -19,9 +19,9 @@ public class FactoryUtils {
         else if(parent instanceof Project){
             return new MindMapFactory();
         }
-        else if(parent instanceof MindMap){
-            return new ElementFactory();
-        }
+//        else if(parent instanceof MindMap){
+//            return new ElementFactory();
+//        }
 
         return null;
     }

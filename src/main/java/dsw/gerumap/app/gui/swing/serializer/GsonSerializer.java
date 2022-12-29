@@ -9,7 +9,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class JasonSerializer implements Serializer {
+public class GsonSerializer implements Serializer {
 
     private final Gson gson = new Gson();
 

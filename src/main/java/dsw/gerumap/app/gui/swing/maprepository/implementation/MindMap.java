@@ -1,5 +1,6 @@
 package dsw.gerumap.app.gui.swing.maprepository.implementation;
 
+import dsw.gerumap.app.gui.swing.commands.CommandManager;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNodeComposite;
 import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
@@ -9,6 +10,7 @@ import java.io.IOException;
 public class MindMap extends MapNodeComposite {
 
     private boolean template;
+    private CommandManager commandManager = new CommandManager();
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);
@@ -37,6 +39,12 @@ public class MindMap extends MapNodeComposite {
             this.getChildren().remove(element);
             notify(this);
         }
+    }
+
+    @Override
+    public void setName(String name) throws IOException {
+        super.setName(name);
+        notify(this);
     }
 
     public int numberOfTopics(){

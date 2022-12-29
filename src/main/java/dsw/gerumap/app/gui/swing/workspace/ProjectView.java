@@ -27,12 +27,8 @@ public class ProjectView extends JPanel implements Subscriber, ChangeListener {
     private int selectedIndex;
 
     public ProjectView(){
-        initialise();
-    }
-
-    private void initialise(){
         tabs = new ArrayList<>();
-        lblNameAndAuthor = new JLabel("Autor i ime projekta");
+        lblNameAndAuthor = new JLabel("Project (author)");
         tabbedPane = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.WRAP_TAB_LAYOUT);
         stateManager = new StateManager();
 
@@ -42,40 +38,49 @@ public class ProjectView extends JPanel implements Subscriber, ChangeListener {
         add(tabbedPane, BorderLayout.CENTER);
     }
 
+
     public void updateLabel() {
         if (project == null) {
-            lblNameAndAuthor.setText("Autor i ime projekta");
+            lblNameAndAuthor.setText("Project (author)");
             return;
         }
 
         lblNameAndAuthor.setText(project.getName() + " (" + project.getAuthor() + ")");
     }
 
-    public void refreshTabs(MapNode selected){
+    public void refreshTabs(){
         tabbedPane.removeAll();
         tabs.clear();
-        project = (Project) selected;
 
+        if(!(project == null) && !(project.getSubscribers().isEmpty()))
+            project.removeSubs(this);
+
+//        project = (Project) selected;
         project.addSubs(this);
-        System.out.println(project.getSubscribers().toString());
 
         if (project == null) {
             tabbedPane.setVisible(false);
             return;
         }
 
-        for (MapNode child: ((Project) selected).getChildren()){
+//        for (MapNode child: ((Project) selected).getChildren()){
+        for (MapNode child: project.getChildren()){
             if(!child.getSubscribers().isEmpty()) {
                 child.getSubscribers().clear();
             }
             MapView tab = new MapView((MindMap)child, tabbedPane.getTabCount());
             child.addSubs(tab);
+
             tabs.add(tab);
+            tabbedPane.addTab(child.getName(), tab);
+//            for(MapNode e : ((MindMap) child).getChildren()){
+//                tab.getPainters().add(e)
+//            }
         }
 
-        for (MapView tabovi : tabs) {
-            tabbedPane.addTab(tabovi.getMindMap().getName(), tabovi);
-        }
+//        for (MapView tabovi : tabs) {
+//            tabbedPane.addTab(tabovi.getMindMap().getName(), tabovi);
+//        }
 
         updateLabel();
         tabbedPane.setVisible(true);
@@ -85,7 +90,7 @@ public class ProjectView extends JPanel implements Subscriber, ChangeListener {
     public void clearTab(){
         tabbedPane.removeAll();
         tabs.clear();
-        lblNameAndAuthor.setText("Autor i ime projekta");
+        lblNameAndAuthor.setText("Project (author)");
     }
 
     @Override
@@ -93,6 +98,9 @@ public class ProjectView extends JPanel implements Subscriber, ChangeListener {
         if(project == null){
             return;
         }
+        System.out.println("update pv");
+
+        refreshTabs();
         updateLabel();
     }
 

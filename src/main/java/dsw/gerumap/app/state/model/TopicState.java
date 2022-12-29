@@ -1,21 +1,14 @@
 package dsw.gerumap.app.state.model;
 
-import dsw.gerumap.app.core.ApplicationFramework;
-import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
-import dsw.gerumap.app.gui.swing.message.EventType;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.workspace.MapView;
 import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
 import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPainter;
 import dsw.gerumap.app.gui.swing.workspace.panel.painters.TopicPainter;
-import dsw.gerumap.app.observer.Subscriber;
 import dsw.gerumap.app.state.State;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
 import java.io.IOException;
 
 public class TopicState extends State {
@@ -37,7 +30,7 @@ public class TopicState extends State {
         if(name == null)
             return;
         if(name.isEmpty()) {
-            name = "Pojam" + map.getMindMap().numberOfTopics();
+            name = "Topic " + map.getMindMap().numberOfTopics();
         }
 
         Topic topic = new Topic(name, map.getMindMap(), Color.BLACK, 2, x, y);

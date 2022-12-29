@@ -71,7 +71,8 @@ public class MainFrame extends JFrame{
 
 
                     if(selected.getMapNode() instanceof Project){
-                        MainFrame.getInstance().getProjectView().refreshTabs(selected.getMapNode());
+//                        MainFrame.getInstance().getProjectView().refreshTabs(selected.getMapNode());
+                        MainFrame.getInstance().getProjectView().refreshTabs();
                         SwingUtilities.updateComponentTreeUI(MainFrame.getInstance());
                     }
                 }

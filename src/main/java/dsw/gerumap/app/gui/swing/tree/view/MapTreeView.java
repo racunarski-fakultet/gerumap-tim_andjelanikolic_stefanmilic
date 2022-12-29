@@ -1,5 +1,6 @@
 package dsw.gerumap.app.gui.swing.tree.view;
 
+import com.sun.tools.javac.Main;
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.message.EventType;
@@ -30,14 +31,16 @@ public class MapTreeView extends JTree {
         MouseListener ml = new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 int selRow = getRowForLocation(e.getX(), e.getY());
-                TreePath selPath = getPathForLocation(e.getX(), e.getY());
+//                TreePath selPath = getPathForLocation(e.getX(), e.getY());
                 if(selRow != -1 && e.getClickCount() == 2) {
 
                     MapTreeItem selected = MainFrame.getInstance().getMapTree().getSelectedNode();
 
                     if(selected.getMapNode() instanceof Project){
                         if(((Project) selected.getMapNode()).getAuthor() != null) {
-                            MainFrame.getInstance().getProjectView().refreshTabs(selected.getMapNode());
+//                            MainFrame.getInstance().getProjectView().refreshTabs(selected.getMapNode());
+                            MainFrame.getInstance().getProjectView().setProject((Project) selected.getMapNode());
+                            MainFrame.getInstance().getProjectView().refreshTabs();
                             SwingUtilities.updateComponentTreeUI(MainFrame.getInstance());
                         }else{
                             try {
