@@ -24,7 +24,10 @@ public class ActionManager {
     private ZoomOutAction zoomOutAction;
     private EditAction editAction;
 
-
+    private UndoAction undoAction;
+    private RedoAction redoAction;
+    private OpenAction openAction;
+    private SaveAction saveAction;
 
 
     public ActionManager(){
@@ -45,6 +48,10 @@ public class ActionManager {
         zoomOutAction = new ZoomOutAction();
         deleteElementsAction = new DeleteElementsAction();
         editAction = new EditAction();
+        undoAction = new UndoAction();
+        redoAction = new RedoAction();
+        openAction = new OpenAction();
+        saveAction = new SaveAction();
     }
 
 

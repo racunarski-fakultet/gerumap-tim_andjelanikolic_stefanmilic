@@ -1,11 +1,16 @@
 package dsw.gerumap.app.gui.swing.tree;
 
+import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.commands.AbstractCommand;
+import dsw.gerumap.app.gui.swing.commands.implementation.AddChildCommand;
 import dsw.gerumap.app.gui.swing.maprepository.NodeFactory;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNodeComposite;
 import dsw.gerumap.app.gui.swing.maprepository.factory.utils.FactoryUtils;
+import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.ProjectExplorer;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
+import dsw.gerumap.app.gui.swing.tree.model.MapTreeModel;
 import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 
 
@@ -17,12 +22,12 @@ import java.io.IOException;
 public class MapTreeImplementation implements MapTree{
 
     private MapTreeView mapTreeView;
-    private DefaultTreeModel treeModel;
+    private MapTreeModel treeModel;
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
         MapTreeItem root = new MapTreeItem(projectExplorer);
-        treeModel = new DefaultTreeModel(root);
+        treeModel = new MapTreeModel(root);
         mapTreeView = new MapTreeView(treeModel);
 
         return mapTreeView;
@@ -35,8 +40,10 @@ public class MapTreeImplementation implements MapTree{
         }
 
         MapNode child = createChild(parent.getMapNode());
-        parent.add(new MapTreeItem(child));
-        ((MapNodeComposite) parent.getMapNode()).addChild(child);
+        AbstractCommand command = new AddChildCommand(parent, new MapTreeItem(child));
+        ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
+        //parent.add(new MapTreeItem(child));
+        //((MapNodeComposite) parent.getMapNode()).addChild(child);
         mapTreeView.expandPath(mapTreeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(mapTreeView);
     }
@@ -45,6 +52,23 @@ public class MapTreeImplementation implements MapTree{
     public MapTreeItem getSelectedNode() {
 
         return (MapTreeItem) mapTreeView.getLastSelectedPathComponent();
+    }
+
+    @Override
+    public MapTreeView getTreeView() {
+        return mapTreeView;
+    }
+
+    @Override
+    public void loadProject(Project node) throws IOException {
+        MapTreeItem loadedProject = new MapTreeItem(node);
+        treeModel.getRoot().add(loadedProject);
+
+        MapNodeComposite mapNode = (MapNodeComposite) treeModel.getRoot().getMapNode();
+        mapNode.addChild(node);
+
+        mapTreeView.expandPath(mapTreeView.getSelectionPath());
+        SwingUtilities.updateComponentTreeUI(mapTreeView);
     }
 
     @Override

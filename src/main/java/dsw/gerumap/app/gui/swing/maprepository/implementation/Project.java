@@ -10,8 +10,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @Getter
+@Setter
 public class Project extends MapNodeComposite {
 
+    private String filePath;
+    private boolean changed = true;
     String author;
 
     public Project(String name, MapNode parent) {
@@ -43,5 +46,6 @@ public class Project extends MapNodeComposite {
 
     public void setAuthor(String author) throws IOException {
         this.author = author;
+        changed = true;
     }
 }
