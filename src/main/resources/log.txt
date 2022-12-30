@@ -1,1 +1,1 @@
-[ERROR] [Thu Dec 29 22:55:34 CET 2022] Please set author for this project
+[ERROR] [Fri Dec 30 13:31:42 CET 2022] Must insert name

@@ -4,13 +4,21 @@ import dsw.gerumap.app.gui.swing.commands.CommandManager;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNodeComposite;
 import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
+import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPainter;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+@Getter
+@Setter
 public class MindMap extends MapNodeComposite {
 
     private boolean template;
     private CommandManager commandManager = new CommandManager();
+    private List<ElementPainter> painterList = new ArrayList<>();
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);

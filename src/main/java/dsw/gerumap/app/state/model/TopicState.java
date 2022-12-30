@@ -1,5 +1,8 @@
 package dsw.gerumap.app.state.model;
 
+import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.commands.AbstractCommand;
+import dsw.gerumap.app.gui.swing.commands.implementation.AddTopicCommand;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 import dsw.gerumap.app.gui.swing.workspace.MapView;
 import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
@@ -16,7 +19,7 @@ public class TopicState extends State {
     public void misKliknut(int x, int y, MapView map) throws IOException {
         Point pos = new Point(x, y);
         int flag = 0;
-        for(ElementPainter p : map.getPainters()){
+        for(ElementPainter p : map.getMindMap().getPainterList()){
             if(p.elementAt(pos)){
                 flag = 1;
                 break;
@@ -34,11 +37,14 @@ public class TopicState extends State {
         }
 
         Topic topic = new Topic(name, map.getMindMap(), Color.BLACK, 2, x, y);
-        topic.addSubs(map);
         TopicPainter tp = new TopicPainter(topic);
 
-        map.getPainters().add(tp);
-        map.getMindMap().addChild(topic);
+        topic.addSubs(map);
+
+        AbstractCommand command = new AddTopicCommand(map, tp);
+        ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
+//        map.getMindMap().getPainterList().add(tp);
+//        map.getMindMap().addChild(topic);
     }
 
     @Override

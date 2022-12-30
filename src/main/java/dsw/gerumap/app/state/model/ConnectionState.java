@@ -1,6 +1,8 @@
 package dsw.gerumap.app.state.model;
 
 import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.commands.AbstractCommand;
+import dsw.gerumap.app.gui.swing.commands.implementation.AddConnectionCommand;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
 import dsw.gerumap.app.gui.swing.message.EventType;
@@ -37,7 +39,7 @@ public class ConnectionState extends State {
         t2 = null;
         nova.clear();
 
-        for(ElementPainter p : map.getPainters()){
+        for(ElementPainter p : map.getMindMap().getPainterList()){
             if(p.elementAt(pos1)){
                 t1 = (Topic) p.getElement();
                 t2 = (Topic) p.getElement();
@@ -50,7 +52,7 @@ public class ConnectionState extends State {
         }
 
         for(ElementPainter n : nova){
-            map.getPainters().add(n);
+            map.getMindMap().getPainterList().add(n);
         }
     }
 
@@ -61,7 +63,7 @@ public class ConnectionState extends State {
         }
         pos2.setLocation(x, y);
 
-        for(ElementPainter p : map.getPainters()){
+        for(ElementPainter p : map.getMindMap().getPainterList()){
             if(p.elementAt(pos2) && p.getElement() instanceof Topic){
                 connectionPainter.setPos2(pos2);
                 t2 = (Topic) p.getElement();
@@ -70,16 +72,15 @@ public class ConnectionState extends State {
             }
         }
 
-
         if(t1.equals(t2)){
-            map.getPainters().remove(connectionPainter);
+            map.getMindMap().getPainterList().remove(connectionPainter);
         }
 
 
         for(ConnectionPainter painter : t1.getConnectionList()){
             Connection c1 = (Connection) painter.getElement();
             if(c1.equals(connection)){
-                map.getPainters().remove(connectionPainter);
+                map.getMindMap().getPainterList().remove(connectionPainter);
                 map.update(this);
                 return;
             }
@@ -88,15 +89,17 @@ public class ConnectionState extends State {
         for(ConnectionPainter painter : t2.getConnectionList()){
             Connection c1 = (Connection) painter.getElement();
             if(c1.equals(connection)){
-                map.getPainters().remove(connectionPainter);
+                map.getMindMap().getPainterList().remove(connectionPainter);
                 map.update(this);
                 return;
             }
         }
 
-        t1.getConnectionList().add(connectionPainter);
-        t2.getConnectionList().add(connectionPainter);
-        map.getMindMap().addChild(connection);
+        AbstractCommand command = new AddConnectionCommand(t1, t2, map, connectionPainter, connection);
+        ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
+//        t1.getConnectionList().add(connectionPainter);
+//        t2.getConnectionList().add(connectionPainter);
+//        map.getMindMap().addChild(connection);
     }
 
     @Override

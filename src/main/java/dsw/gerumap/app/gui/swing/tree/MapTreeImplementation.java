@@ -3,6 +3,7 @@ package dsw.gerumap.app.gui.swing.tree;
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.commands.AbstractCommand;
 import dsw.gerumap.app.gui.swing.commands.implementation.AddChildCommand;
+import dsw.gerumap.app.gui.swing.commands.implementation.RemoveChildCommand;
 import dsw.gerumap.app.gui.swing.maprepository.NodeFactory;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNodeComposite;
@@ -15,7 +16,6 @@ import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 
 
 import javax.swing.*;
-import javax.swing.tree.DefaultTreeModel;
 import java.io.IOException;
 
 
@@ -47,6 +47,17 @@ public class MapTreeImplementation implements MapTree{
         mapTreeView.expandPath(mapTreeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(mapTreeView);
     }
+    @Override
+    public void deleteChild(MapTreeItem child) throws IOException {
+        MapTreeItem parent = (MapTreeItem) child.getParent();
+//        parent.remove(child);
+//        ((MapNodeComposite) parent.getMapNode()).removeChild(child.getMapNode());
+        AbstractCommand command = new RemoveChildCommand(parent, child);
+
+        ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
+
+        SwingUtilities.updateComponentTreeUI(mapTreeView);
+    }
 
     @Override
     public MapTreeItem getSelectedNode() {
@@ -70,17 +81,9 @@ public class MapTreeImplementation implements MapTree{
         mapTreeView.expandPath(mapTreeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(mapTreeView);
     }
-
-    @Override
-    public void deleteChild(MapTreeItem child) throws IOException {
-        MapTreeItem parent = (MapTreeItem) child.getParent();
-        parent.remove(child);
-        ((MapNodeComposite) parent.getMapNode()).removeChild(child.getMapNode());
-        SwingUtilities.updateComponentTreeUI(mapTreeView);
-    }
-
     private MapNode createChild(MapNode parent) {
         NodeFactory nf = FactoryUtils.getNodeFactory(parent);
         return nf.getNode(parent);
     }
+
 }

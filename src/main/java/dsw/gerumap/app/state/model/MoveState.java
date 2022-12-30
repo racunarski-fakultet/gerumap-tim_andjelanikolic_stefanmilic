@@ -1,5 +1,8 @@
 package dsw.gerumap.app.state.model;
 
+import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.commands.AbstractCommand;
+import dsw.gerumap.app.gui.swing.commands.implementation.MoveCommand;
 import dsw.gerumap.app.gui.swing.workspace.MapView;
 import dsw.gerumap.app.gui.swing.workspace.panel.Connection;
 import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
@@ -17,7 +20,7 @@ public class MoveState extends State {
     @Override
     public void misKliknut(int x, int y, MapView map) {
         Point point = new Point(x, y);
-        for(ElementPainter p : map.getPainters()){
+        for(ElementPainter p : map.getMindMap().getPainterList()){
             if(p.getElement() instanceof Topic){
                 Topic t = (Topic) p.getElement();
                 if(map.getSelectionModel().getSelected().contains(t)){
@@ -34,14 +37,17 @@ public class MoveState extends State {
         }
     }
     @Override
-    public void misOtpusten(int x, int y, MapView map){
-
+    public void misOtpusten(int x, int y, MapView map) throws IOException {
+        if (flag == 1) {
+            AbstractCommand command = new MoveCommand(map, x, y, xPrvo, yPrvo);
+            ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
+        }
     }
 
     @Override
     public void misPovucen(int x, int y, MapView map) throws IOException {
         if (flag == 1) {
-            for(ElementPainter p : map.getPainters()){
+            for(ElementPainter p : map.getMindMap().getPainterList()){
                 if(p.getElement() instanceof Topic){
                     Topic t = (Topic) p.getElement();
                     if (map.getSelectionModel().getSelected().contains(t)) {

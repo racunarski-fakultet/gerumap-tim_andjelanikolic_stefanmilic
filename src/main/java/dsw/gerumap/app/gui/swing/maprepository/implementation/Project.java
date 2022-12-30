@@ -32,6 +32,7 @@ public class Project extends MapNodeComposite {
             MindMap mindMap = (MindMap) child;
             this.getChildren().add(mindMap);
             notify(this);
+            changed = true;
         }
     }
 
@@ -41,6 +42,7 @@ public class Project extends MapNodeComposite {
             MindMap mindMap = (MindMap) child;
             this.getChildren().remove(mindMap);
             notify(this);
+            changed = true;
         }
     }
 

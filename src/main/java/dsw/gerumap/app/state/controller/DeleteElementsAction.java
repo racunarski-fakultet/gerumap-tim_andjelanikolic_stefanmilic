@@ -1,6 +1,8 @@
 package dsw.gerumap.app.state.controller;
 
 import dsw.gerumap.app.core.ApplicationFramework;
+import dsw.gerumap.app.gui.swing.commands.AbstractCommand;
+import dsw.gerumap.app.gui.swing.commands.implementation.RemoveElementCommand;
 import dsw.gerumap.app.gui.swing.controller.AbstractGeRuMapAction;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
 import dsw.gerumap.app.gui.swing.message.EventType;
@@ -35,7 +37,7 @@ public class DeleteElementsAction extends AbstractGeRuMapAction {
             List<ElementPainter> nova = new ArrayList<>();
 
             MapView map = MainFrame.getInstance().getProjectView().getTabs().get(MainFrame.getInstance().getProjectView().getSelectedIndex());
-            for (ElementPainter p : map.getPainters()) {
+            for (ElementPainter p : map.getMindMap().getPainterList()) {
                 for (Element el : map.getSelectionModel().getSelected()) {
                     if (p.getElement().equals(el)) {
                         if (p.getElement() instanceof Topic) {
@@ -48,15 +50,21 @@ public class DeleteElementsAction extends AbstractGeRuMapAction {
                     }
                 }
             }
-            for (ElementPainter n : nova) {
-                try {
-                    map.getMindMap().removeChild(n.getElement());
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                map.getSelectionModel().getSelected().remove(n.getElement());
-                map.getPainters().remove(n);
+            AbstractCommand command = new RemoveElementCommand(nova, map);
+            try {
+                ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
+//            for (ElementPainter n : nova) {
+//                try {
+//                    map.getMindMap().removeChild(n.getElement());
+//                } catch (IOException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+//                map.getSelectionModel().getSelected().remove(n.getElement());
+//                map.getMindMap().getPainterList().remove(n);
+//            }
         }
     }
 

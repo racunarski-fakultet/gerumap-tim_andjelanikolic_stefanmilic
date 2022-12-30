@@ -23,7 +23,6 @@ import java.util.Map;
 public class MapView extends JPanel implements Subscriber{
     private MindMap mindMap;
     private int index;
-    private List<ElementPainter> painters;
     private MapSelectionModel selectionModel;
     private JScrollBar vertical;
     private JScrollBar horizontal;
@@ -42,7 +41,6 @@ public class MapView extends JPanel implements Subscriber{
 
         this.index = index;
         selectionModel = new MapSelectionModel();
-        painters = new ArrayList<>();
 
         addMouseListener(new MouseController(this));
         addMouseMotionListener(new MouseController(this));
@@ -78,7 +76,7 @@ public class MapView extends JPanel implements Subscriber{
 
         g2d.setTransform(transformation);
 
-        for(ElementPainter p : painters){
+        for(ElementPainter p : mindMap.getPainterList()){
             p.draw(g2d);
         }
     }
@@ -100,9 +98,4 @@ public class MapView extends JPanel implements Subscriber{
         if(scalingf < 0.390625) scalingf = 0.390625;
         setUpTransformation();
     }
-//
-//    @Override
-//    public String toString() {
-//        return mindMap.getName();
-//    }
 }

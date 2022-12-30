@@ -23,7 +23,7 @@ public class SelectState extends State {
 
         nova.clear();
 
-        for(ElementPainter p : map.getPainters()){
+        for(ElementPainter p : map.getMindMap().getPainterList()){
             Point pos = new Point(x, y);
             if(p.elementAt(pos)){
                 map.getSelectionModel().addElement(p.getElement());
@@ -37,7 +37,7 @@ public class SelectState extends State {
         }
         if(!nova.isEmpty()) {
             for (ElementPainter n : nova) {
-                map.getPainters().add(n);
+                map.getMindMap().getPainterList().add(n);
             }
         }
     }
@@ -46,7 +46,7 @@ public class SelectState extends State {
     public void misOtpusten(int x, int y, MapView map) {
 
         for (ElementPainter n : nova) {
-            map.getPainters().remove(n);
+            map.getMindMap().getPainterList().remove(n);
             msp = new MultiSelectionPainter();
         }
         map.update(this);
@@ -61,12 +61,12 @@ public class SelectState extends State {
         msp.updatePoints(x1, y1, x, y);
         map.update(msp);
 
-        for(ElementPainter p : map.getPainters()){
+        for(ElementPainter p : map.getMindMap().getPainterList()){
             if(p instanceof MultiSelectionPainter)
                 continue;
 
             if(msp.getShape() == null){
-                map.getPainters().remove(msp);
+                map.getMindMap().getPainterList().remove(msp);
                 return;
             }
 

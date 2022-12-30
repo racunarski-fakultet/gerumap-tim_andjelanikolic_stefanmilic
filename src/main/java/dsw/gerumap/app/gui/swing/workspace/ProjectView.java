@@ -55,15 +55,13 @@ public class ProjectView extends JPanel implements Subscriber, ChangeListener {
         if(!(project == null) && !(project.getSubscribers().isEmpty()))
             project.removeSubs(this);
 
-//        project = (Project) selected;
         project.addSubs(this);
 
         if (project == null) {
             tabbedPane.setVisible(false);
             return;
         }
-
-//        for (MapNode child: ((Project) selected).getChildren()){
+        System.out.println(project.getChildren());
         for (MapNode child: project.getChildren()){
             if(!child.getSubscribers().isEmpty()) {
                 child.getSubscribers().clear();
@@ -73,14 +71,7 @@ public class ProjectView extends JPanel implements Subscriber, ChangeListener {
 
             tabs.add(tab);
             tabbedPane.addTab(child.getName(), tab);
-//            for(MapNode e : ((MindMap) child).getChildren()){
-//                tab.getPainters().add(e)
-//            }
         }
-
-//        for (MapView tabovi : tabs) {
-//            tabbedPane.addTab(tabovi.getMindMap().getName(), tabovi);
-//        }
 
         updateLabel();
         tabbedPane.setVisible(true);
