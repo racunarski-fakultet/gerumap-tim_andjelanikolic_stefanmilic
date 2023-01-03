@@ -47,13 +47,13 @@ public class MapTreeImplementation implements MapTree{
         mapTreeView.expandPath(mapTreeView.getSelectionPath());
         SwingUtilities.updateComponentTreeUI(mapTreeView);
     }
+
     @Override
     public void deleteChild(MapTreeItem child) throws IOException {
         MapTreeItem parent = (MapTreeItem) child.getParent();
 //        parent.remove(child);
 //        ((MapNodeComposite) parent.getMapNode()).removeChild(child.getMapNode());
         AbstractCommand command = new RemoveChildCommand(parent, child);
-
         ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
 
         SwingUtilities.updateComponentTreeUI(mapTreeView);
@@ -61,7 +61,6 @@ public class MapTreeImplementation implements MapTree{
 
     @Override
     public MapTreeItem getSelectedNode() {
-
         return (MapTreeItem) mapTreeView.getLastSelectedPathComponent();
     }
 

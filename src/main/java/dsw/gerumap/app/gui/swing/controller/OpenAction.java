@@ -15,8 +15,8 @@ public class OpenAction extends AbstractGeRuMapAction{
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(
                 KeyEvent.VK_O, ActionEvent.CTRL_MASK));
         putValue(SMALL_ICON, loadIcon("/images/open .png"));
-        putValue(NAME, "Open action");
-        putValue(SHORT_DESCRIPTION, "Open action");
+        putValue(NAME, "Open");
+        putValue(SHORT_DESCRIPTION, "Open");
     }
 
     @Override

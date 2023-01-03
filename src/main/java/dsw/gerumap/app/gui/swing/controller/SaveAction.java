@@ -14,8 +14,8 @@ public class SaveAction extends AbstractGeRuMapAction{
     public SaveAction() {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
         putValue(SMALL_ICON, loadIcon("/images/save.png"));
-        putValue(NAME, "Save action");
-        putValue(SHORT_DESCRIPTION, "Save action");
+        putValue(NAME, "Save");
+        putValue(SHORT_DESCRIPTION, "Save");
     }
 
     @Override

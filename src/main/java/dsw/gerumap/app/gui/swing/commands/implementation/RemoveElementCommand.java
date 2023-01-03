@@ -5,11 +5,9 @@ import dsw.gerumap.app.gui.swing.workspace.MapView;
 import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPainter;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RemoveElementCommand extends AbstractCommand {
-
     private List<ElementPainter> painters ;
     private MapView map;
 

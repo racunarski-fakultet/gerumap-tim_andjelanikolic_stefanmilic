@@ -11,20 +11,26 @@ import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPainter;
 import dsw.gerumap.app.state.State;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MoveState extends State {
     int flag = 0;
+    int pocetnoX, pocetnoY;
     int xPrvo, yPrvo;
+    private List<ElementPainter> painteri = new ArrayList<>();
     @Override
     public void misKliknut(int x, int y, MapView map) {
+        painteri.clear();
         Point point = new Point(x, y);
         for(ElementPainter p : map.getMindMap().getPainterList()){
             if(p.getElement() instanceof Topic){
                 Topic t = (Topic) p.getElement();
                 if(map.getSelectionModel().getSelected().contains(t)){
                     if(p.elementAt(point)){
+                        pocetnoX = x;
+                        pocetnoY = y;
                         xPrvo = x;
                         yPrvo = y;
                         flag = 1;
@@ -38,11 +44,12 @@ public class MoveState extends State {
     }
     @Override
     public void misOtpusten(int x, int y, MapView map) throws IOException {
-        if (flag == 1) {
-            AbstractCommand command = new MoveCommand(map, x, y, xPrvo, yPrvo);
+        if(flag == 1) {
+            AbstractCommand command = new MoveCommand(map, painteri, x, y, pocetnoX, pocetnoY);
             ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
         }
     }
+
 
     @Override
     public void misPovucen(int x, int y, MapView map) throws IOException {
@@ -51,6 +58,8 @@ public class MoveState extends State {
                 if(p.getElement() instanceof Topic){
                     Topic t = (Topic) p.getElement();
                     if (map.getSelectionModel().getSelected().contains(t)) {
+                        if(!painteri.contains(p))
+                            painteri.add(p);
                         t.setX(t.getX() - (xPrvo - x));
                         t.setY(t.getY() - (yPrvo - y));
                         for(ConnectionPainter painter : t.getConnectionList()){

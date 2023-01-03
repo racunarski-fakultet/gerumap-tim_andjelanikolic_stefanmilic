@@ -3,9 +3,6 @@ package dsw.gerumap.app.state.model;
 import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.commands.AbstractCommand;
 import dsw.gerumap.app.gui.swing.commands.implementation.AddConnectionCommand;
-import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
-import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
-import dsw.gerumap.app.gui.swing.message.EventType;
 import dsw.gerumap.app.gui.swing.workspace.MapView;
 import dsw.gerumap.app.gui.swing.workspace.panel.Connection;
 import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
@@ -14,12 +11,9 @@ import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPainter;
 import dsw.gerumap.app.state.State;
 
 import java.awt.*;
-import java.awt.geom.Line2D;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ConnectionState extends State {
     Topic t1;
@@ -74,8 +68,9 @@ public class ConnectionState extends State {
 
         if(t1.equals(t2)){
             map.getMindMap().getPainterList().remove(connectionPainter);
+            map.update(this);
+            return;
         }
-
 
         for(ConnectionPainter painter : t1.getConnectionList()){
             Connection c1 = (Connection) painter.getElement();
@@ -97,9 +92,6 @@ public class ConnectionState extends State {
 
         AbstractCommand command = new AddConnectionCommand(t1, t2, map, connectionPainter, connection);
         ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
-//        t1.getConnectionList().add(connectionPainter);
-//        t2.getConnectionList().add(connectionPainter);
-//        map.getMindMap().addChild(connection);
     }
 
     @Override

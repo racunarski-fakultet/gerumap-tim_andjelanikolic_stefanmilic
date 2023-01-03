@@ -14,7 +14,6 @@ public class ActionManager {
     private DeleteAction deleteAction;
     private InfoAction infoAction;
     private AuthorAction authorAction;
-
     private ConnectionStateAction connectionStateAction;
     private TopicStateAction topicStateAction;
     private MoveStateAction moveStateAction;
@@ -23,11 +22,11 @@ public class ActionManager {
     private ZoomInAction zoomInAction;
     private ZoomOutAction zoomOutAction;
     private EditAction editAction;
-
     private UndoAction undoAction;
     private RedoAction redoAction;
     private OpenAction openAction;
     private SaveAction saveAction;
+    private ExportAction exportAction;
 
 
     public ActionManager(){
@@ -52,6 +51,7 @@ public class ActionManager {
         redoAction = new RedoAction();
         openAction = new OpenAction();
         saveAction = new SaveAction();
+        exportAction = new ExportAction();
     }
 
 
