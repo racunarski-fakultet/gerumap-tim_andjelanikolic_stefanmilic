@@ -13,7 +13,6 @@ import java.io.IOException;
 
 public class AuthorAction extends AbstractGeRuMapAction {
 
-
     public AuthorAction () {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.ALT_MASK));
         putValue(SMALL_ICON, loadIcon("/images/author.png"));

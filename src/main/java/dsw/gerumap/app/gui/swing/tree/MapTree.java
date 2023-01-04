@@ -13,7 +13,7 @@ public interface MapTree {
     MapTreeItem getSelectedNode();
     MapTreeView getTreeView();
     void addChild(MapTreeItem parent) throws IOException;
-    void deleteChild (MapTreeItem chlild) throws IOException;
+    void deleteChild (MapTreeItem child) throws IOException;
     void loadProject(Project node) throws IOException;
 
 }

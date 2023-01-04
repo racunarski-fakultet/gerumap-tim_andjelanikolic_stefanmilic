@@ -5,18 +5,18 @@ import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNodeComposite;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.ProjectExplorer;
 
-public class MapRepositoryImplemetation implements MapRepository {
+public class MapRepositoryImplementation implements MapRepository {
 
     private ProjectExplorer projectExplorer;
 
-    public MapRepositoryImplemetation() {
+    public MapRepositoryImplementation() {
         projectExplorer = new ProjectExplorer("My Project Explorer");
     }
 
-    @Override
-    public void addChild(MapNodeComposite parent, MapNode child) {
-
-    }
+//    @Override
+//    public void addChild(MapNodeComposite parent, MapNode child) {
+//
+//    }
 
     @Override
     public ProjectExplorer getProjectExplorer() {

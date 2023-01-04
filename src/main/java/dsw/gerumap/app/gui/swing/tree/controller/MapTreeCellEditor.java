@@ -1,12 +1,8 @@
 package dsw.gerumap.app.gui.swing.tree.controller;
 
-import com.sun.tools.javac.Main;
 import dsw.gerumap.app.core.ApplicationFramework;
-import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
-import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.message.EventType;
 import dsw.gerumap.app.gui.swing.tree.model.MapTreeItem;
-import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeCellEditor;
@@ -69,17 +65,5 @@ public class MapTreeCellEditor extends DefaultTreeCellEditor implements ActionLi
                 throw new RuntimeException(ex);
             }
         }
-
-//        if(click.getMapNode() instanceof  Project){
-//            //MainFrame.getInstance().getProjectView().refreshTabs(click.getMapNode());
-//            MainFrame.getInstance().getProjectView().setProject((Project) click.getMapNode());
-//            MainFrame.getInstance().getProjectView().refreshTabs();
-//        }
-//
-//        if(click.getMapNode() instanceof MindMap){
-////            MainFrame.getInstance().getProjectView().refreshTabs(click.getMapNode().getParent());
-//            MainFrame.getInstance().getProjectView().setProject((Project) click.getMapNode().getParent());
-//            MainFrame.getInstance().getProjectView().refreshTabs();
-//        }
     }
 }

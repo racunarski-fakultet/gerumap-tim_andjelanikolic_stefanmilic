@@ -24,8 +24,8 @@ public class MapView extends JPanel implements Subscriber{
     private MindMap mindMap;
     private int index;
     private MapSelectionModel selectionModel;
-    private JScrollBar vertical;
-    private JScrollBar horizontal;
+//    private JScrollBar vertical;
+//    private JScrollBar horizontal;
     double translateX = 0;
     double translateY = 0;
     double scalingf = 1;
@@ -33,11 +33,10 @@ public class MapView extends JPanel implements Subscriber{
 
     public MapView(MindMap map, int index) {
         setLayout(new BorderLayout());
-
-        horizontal = new JScrollBar(0);
-        vertical = new JScrollBar(1);
-        add(horizontal, BorderLayout.SOUTH);
-        add(vertical, BorderLayout.EAST);
+//        horizontal = new JScrollBar(0);
+//        vertical = new JScrollBar(1);
+//        add(horizontal, BorderLayout.SOUTH);
+//        add(vertical, BorderLayout.EAST);
 
         this.index = index;
         selectionModel = new MapSelectionModel();

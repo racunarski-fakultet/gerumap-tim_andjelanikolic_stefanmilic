@@ -1,6 +1,5 @@
 package dsw.gerumap.app.core;
 
-import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
 
 import java.io.File;

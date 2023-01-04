@@ -1,1 +1,1 @@
-[ERROR] [Mon Jan 02 23:34:28 CET 2023] Node not selected.
+[ERROR] [Wed Jan 04 21:55:18 CET 2023] Please set author for this project

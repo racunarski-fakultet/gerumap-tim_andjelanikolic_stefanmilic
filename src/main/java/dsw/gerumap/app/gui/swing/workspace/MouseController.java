@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 public class MouseController extends MouseAdapter implements Subscriber{
-
     MapView mapView;
 
     public MouseController(MapView mapView) {

@@ -1,9 +1,7 @@
 package dsw.gerumap.app.gui.swing.workspace.panel.painters;
 
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
-import dsw.gerumap.app.gui.swing.workspace.panel.Topic;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.awt.*;
@@ -12,7 +10,6 @@ import java.awt.geom.Line2D;
 @Getter
 @Setter
 public class ConnectionPainter extends ElementPainter {
-
     private Shape s;
     private Element element;
     private Point pos1;
@@ -23,7 +20,6 @@ public class ConnectionPainter extends ElementPainter {
         this.pos1 = pos1;
         this.pos2 = pos2;
     }
-
 
     @Override
     public void draw(Graphics g) {
@@ -40,6 +36,4 @@ public class ConnectionPainter extends ElementPainter {
     public boolean elementAt(Point position) {
         return getS().contains(position);
     }
-
-
 }

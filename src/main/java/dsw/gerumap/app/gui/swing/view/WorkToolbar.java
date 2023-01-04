@@ -13,6 +13,7 @@ public class WorkToolbar extends JToolBar {
         add(MainFrame.getInstance().getActionManager().getTopicStateAction());
         add(MainFrame.getInstance().getActionManager().getConnectionStateAction());
         add(MainFrame.getInstance().getActionManager().getDeleteElementsAction());
+        add(MainFrame.getInstance().getActionManager().getCentralTopicAction());
         add(MainFrame.getInstance().getActionManager().getZoomInAction());
         add(MainFrame.getInstance().getActionManager().getZoomOutAction());
         add(Box.createGlue());

@@ -1,7 +1,6 @@
 package dsw.gerumap.app.state;
 
 import dsw.gerumap.app.state.model.*;
-import dsw.gerumap.app.state.view.EditView;
 
 public class StateManager {
 

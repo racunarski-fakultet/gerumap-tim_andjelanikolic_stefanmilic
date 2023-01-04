@@ -18,7 +18,4 @@ public abstract class AbstractGeRuMapAction extends AbstractAction {
         }
         return icon;
     }
-
-
-
 }

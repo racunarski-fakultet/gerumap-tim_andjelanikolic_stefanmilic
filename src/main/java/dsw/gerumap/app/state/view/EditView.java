@@ -13,7 +13,6 @@ import java.awt.*;
 import java.io.IOException;
 
 public class EditView extends JDialog{
-
     JButton btnColor;
     JButton btnStroke;
     JButton btnName;

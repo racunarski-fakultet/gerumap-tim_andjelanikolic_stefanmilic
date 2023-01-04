@@ -11,7 +11,6 @@ import java.awt.geom.Ellipse2D;
 @Getter
 @Setter
 public class TopicPainter extends ElementPainter{
-
     private Shape s;
     private Element element;
     private Topic topic;

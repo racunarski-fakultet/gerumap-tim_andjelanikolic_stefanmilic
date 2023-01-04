@@ -2,12 +2,10 @@ package dsw.gerumap.app.gui.swing.maprepository.implementation;
 
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNode;
 import dsw.gerumap.app.gui.swing.maprepository.composite.MapNodeComposite;
-import dsw.gerumap.app.observer.Subscriber;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 @Getter
 @Setter

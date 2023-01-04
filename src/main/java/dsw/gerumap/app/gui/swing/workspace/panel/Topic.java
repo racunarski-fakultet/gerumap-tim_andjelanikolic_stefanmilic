@@ -19,8 +19,9 @@ import java.util.List;
 @NoArgsConstructor
 public class Topic extends Element{
     private int x, y;
+    private int nivo = 0;
     private int w = 100, l = 50;
-    private List<ConnectionPainter> connectionList;
+    private transient List<ConnectionPainter> connectionList;
 
     public Topic(String name, MapNode parent, Color color, int stroke, int x, int y) {
         super(name, parent, color, stroke);

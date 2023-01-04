@@ -56,15 +56,6 @@ public class DeleteElementsAction extends AbstractGeRuMapAction {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-//            for (ElementPainter n : nova) {
-//                try {
-//                    map.getMindMap().removeChild(n.getElement());
-//                } catch (IOException ex) {
-//                    throw new RuntimeException(ex);
-//                }
-//                map.getSelectionModel().getSelected().remove(n.getElement());
-//                map.getMindMap().getPainterList().remove(n);
-//            }
         }
     }
 

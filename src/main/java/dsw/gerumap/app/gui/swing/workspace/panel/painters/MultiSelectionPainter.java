@@ -1,6 +1,5 @@
 package dsw.gerumap.app.gui.swing.workspace.panel.painters;
 
-import dsw.gerumap.app.gui.swing.maprepository.implementation.Element;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -22,13 +22,13 @@ public class MoveState extends State {
     private List<ElementPainter> painteri = new ArrayList<>();
     @Override
     public void misKliknut(int x, int y, MapView map) {
-        painteri.clear();
         Point point = new Point(x, y);
         for(ElementPainter p : map.getMindMap().getPainterList()){
             if(p.getElement() instanceof Topic){
                 Topic t = (Topic) p.getElement();
                 if(map.getSelectionModel().getSelected().contains(t)){
                     if(p.elementAt(point)){
+                        painteri.clear();
                         pocetnoX = x;
                         pocetnoY = y;
                         xPrvo = x;

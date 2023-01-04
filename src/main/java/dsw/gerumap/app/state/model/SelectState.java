@@ -69,7 +69,6 @@ public class SelectState extends State {
                 map.getMindMap().getPainterList().remove(msp);
                 return;
             }
-
             if(msp.getShape().intersects(p.getS().getBounds().getX(), p.getS().getBounds().getY(), p.getS().getBounds().getWidth(), p.getS().getBounds().getHeight())){
                 map.getSelectionModel().addElement(p.getElement());
             }

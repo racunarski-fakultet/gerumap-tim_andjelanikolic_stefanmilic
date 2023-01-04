@@ -14,10 +14,10 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public abstract  class MapNode implements Publisher {
+public abstract class MapNode implements Publisher {
 
     private String name;
-    protected List<Subscriber> subscribers;
+    protected  transient List<Subscriber> subscribers;
     @ToString.Exclude
     private transient MapNode parent;
 

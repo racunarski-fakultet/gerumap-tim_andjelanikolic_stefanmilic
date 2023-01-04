@@ -19,6 +19,7 @@ public class ActionManager {
     private MoveStateAction moveStateAction;
     private SelectStateAction selectStateAction;
     private DeleteElementsAction deleteElementsAction;
+    private CentralTopicAction centralTopicAction;
     private ZoomInAction zoomInAction;
     private ZoomOutAction zoomOutAction;
     private EditAction editAction;
@@ -46,6 +47,7 @@ public class ActionManager {
         zoomInAction = new ZoomInAction();
         zoomOutAction = new ZoomOutAction();
         deleteElementsAction = new DeleteElementsAction();
+        centralTopicAction = new CentralTopicAction();
         editAction = new EditAction();
         undoAction = new UndoAction();
         redoAction = new RedoAction();
@@ -53,6 +55,4 @@ public class ActionManager {
         saveAction = new SaveAction();
         exportAction = new ExportAction();
     }
-
-
 }

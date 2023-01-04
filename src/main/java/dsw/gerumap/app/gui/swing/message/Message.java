@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class Message {
-
     private String content;
     private EventType type;
 

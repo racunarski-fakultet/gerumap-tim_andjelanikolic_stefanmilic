@@ -4,7 +4,6 @@ import dsw.gerumap.app.core.ApplicationFramework;
 import dsw.gerumap.app.gui.swing.view.MainFrame;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

@@ -12,10 +12,8 @@ import java.awt.*;
 @NoArgsConstructor
 public abstract class ElementPainter{
 
-    Element element;
-    Shape s;
-//    public ElementPainter(Element element) {}
-//    public ElementPainter(Element firstElement, Element secondElement){}
+    private Element element;
+    private Shape s;
 
     public abstract void draw (Graphics g);
 

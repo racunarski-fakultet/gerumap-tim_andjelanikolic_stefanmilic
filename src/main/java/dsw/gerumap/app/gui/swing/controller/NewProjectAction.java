@@ -41,9 +41,6 @@ public class NewProjectAction extends AbstractGeRuMapAction {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-//            if(!(((Project) selected.getMapNode()).getAuthor() == null)) {
-//                MainFrame.getInstance().getProjectView().refreshTabs(selected.getMapNode());
-//            }
             return;
         }
 

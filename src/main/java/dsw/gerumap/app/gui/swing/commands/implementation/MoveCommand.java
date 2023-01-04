@@ -9,7 +9,6 @@ import dsw.gerumap.app.gui.swing.workspace.panel.painters.ElementPainter;
 
 import java.awt.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MoveCommand extends AbstractCommand {

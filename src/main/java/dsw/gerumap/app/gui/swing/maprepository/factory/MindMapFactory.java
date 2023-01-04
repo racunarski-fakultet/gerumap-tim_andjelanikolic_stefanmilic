@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 public class MindMapFactory extends NodeFactory {
-
     @Override
     public MapNode createNode(MapNode node) {
         return new MindMap("MindMap " + ((Project) node).getChildren().size(), node);

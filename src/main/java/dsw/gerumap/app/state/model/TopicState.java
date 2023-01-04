@@ -43,8 +43,6 @@ public class TopicState extends State {
 
         AbstractCommand command = new AddTopicCommand(map, tp);
         ApplicationFramework.getInstance().getGui().getCommandManager().addCommand(command);
-//        map.getMindMap().getPainterList().add(tp);
-//        map.getMindMap().addChild(topic);
     }
 
     @Override

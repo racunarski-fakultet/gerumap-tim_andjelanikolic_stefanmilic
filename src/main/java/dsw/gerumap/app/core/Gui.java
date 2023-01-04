@@ -13,6 +13,4 @@ public interface Gui extends Subscriber {
     void enableRedoAction();
 
     CommandManager getCommandManager();
-
-
 }

@@ -16,6 +16,7 @@ import dsw.gerumap.app.gui.swing.tree.view.MapTreeView;
 
 
 import javax.swing.*;
+import javax.swing.tree.TreePath;
 import java.io.IOException;
 
 
@@ -23,10 +24,11 @@ public class MapTreeImplementation implements MapTree{
 
     private MapTreeView mapTreeView;
     private MapTreeModel treeModel;
+    private MapTreeItem root;
 
     @Override
     public MapTreeView generateTree(ProjectExplorer projectExplorer) {
-        MapTreeItem root = new MapTreeItem(projectExplorer);
+        root = new MapTreeItem(projectExplorer);
         treeModel = new MapTreeModel(root);
         mapTreeView = new MapTreeView(treeModel);
 

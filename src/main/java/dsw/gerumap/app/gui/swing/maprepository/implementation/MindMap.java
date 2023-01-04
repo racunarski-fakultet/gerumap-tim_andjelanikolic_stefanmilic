@@ -17,16 +17,16 @@ import java.util.List;
 public class MindMap extends MapNodeComposite {
 
     private boolean template;
-    private CommandManager commandManager = new CommandManager();
-    private List<ElementPainter> painterList = new ArrayList<>();
+    private transient CommandManager commandManager = new CommandManager();
+    private transient List<ElementPainter> painterList = new ArrayList<>();
 
     public MindMap(String name, MapNode parent) {
         super(name, parent);
     }
-    public MindMap(String name, MapNode parent, boolean template) {
-        super(name, parent);
-        this.template = template;
-    }
+//    public MindMap(String name, MapNode parent, boolean template) {
+//        super(name, parent);
+//        this.template = template;
+//    }
 
     @Override
     public void addChild(MapNode child) throws IOException {

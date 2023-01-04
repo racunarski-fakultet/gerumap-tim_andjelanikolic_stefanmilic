@@ -1,7 +1,6 @@
 package dsw.gerumap.app.gui.swing.controller;
 
 import dsw.gerumap.app.core.ApplicationFramework;
-import dsw.gerumap.app.gui.swing.maprepository.implementation.MindMap;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.Project;
 import dsw.gerumap.app.gui.swing.maprepository.implementation.ProjectExplorer;
 import dsw.gerumap.app.gui.swing.message.EventType;
@@ -48,16 +47,6 @@ public class DeleteAction extends AbstractGeRuMapAction {
         if(selected.getMapNode() instanceof Project){
             MainFrame.getInstance().getProjectView().clearTab();
         }
-
-//        if(selected.getMapNode() instanceof MindMap){
-//            try {
-//                MainFrame.getInstance().getMapTree().deleteChild(selected);
-//            } catch (IOException ex) {
-//                throw new RuntimeException(ex);
-//            }
-//            MainFrame.getInstance().getProjectView().refreshTabs(selected.getMapNode().getParent());
-//            return;
-//        }
 
         try {
             MainFrame.getInstance().getMapTree().deleteChild(selected);
